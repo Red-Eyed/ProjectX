@@ -5,7 +5,7 @@
 ######################################
 # target
 ######################################
-TARGET = Test
+TARGET = STM32F4Discovery_template
 
 ######################################
 # building variables
@@ -149,5 +149,8 @@ clean:
 # dependencies
 #######################################
 -include $(shell mkdir .dep 2>/dev/null) $(wildcard .dep/*)
+
+flash:
+	st-flash write $(BUILD_DIR)/$(TARGET).hex x8000000
 
 # *** EOF ***

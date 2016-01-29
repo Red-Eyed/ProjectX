@@ -1,0 +1,393 @@
+ARM GAS  /tmp/ccPhsQja.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m4
+   3              		.eabi_attribute 27, 1
+   4              		.fpu fpv4-sp-d16
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 6
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.thumb
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.main,"ax",%progbits
+  20              		.align	2
+  21              		.global	main
+  22              		.thumb
+  23              		.thumb_func
+  25              	main:
+  26              	.LFB129:
+  27              		.file 1 "Src/main.c"
+   1:Src/main.c    **** /**
+   2:Src/main.c    ****   ******************************************************************************
+   3:Src/main.c    ****   * File Name          : main.c
+   4:Src/main.c    ****   * Description        : Main program body
+   5:Src/main.c    ****   ******************************************************************************
+   6:Src/main.c    ****   *
+   7:Src/main.c    ****   * COPYRIGHT(c) 2016 STMicroelectronics
+   8:Src/main.c    ****   *
+   9:Src/main.c    ****   * Redistribution and use in source and binary forms, with or without modification,
+  10:Src/main.c    ****   * are permitted provided that the following conditions are met:
+  11:Src/main.c    ****   *   1. Redistributions of source code must retain the above copyright notice,
+  12:Src/main.c    ****   *      this list of conditions and the following disclaimer.
+  13:Src/main.c    ****   *   2. Redistributions in binary form must reproduce the above copyright notice,
+  14:Src/main.c    ****   *      this list of conditions and the following disclaimer in the documentation
+  15:Src/main.c    ****   *      and/or other materials provided with the distribution.
+  16:Src/main.c    ****   *   3. Neither the name of STMicroelectronics nor the names of its contributors
+  17:Src/main.c    ****   *      may be used to endorse or promote products derived from this software
+  18:Src/main.c    ****   *      without specific prior written permission.
+  19:Src/main.c    ****   *
+  20:Src/main.c    ****   * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  21:Src/main.c    ****   * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  22:Src/main.c    ****   * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+  23:Src/main.c    ****   * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+  24:Src/main.c    ****   * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  25:Src/main.c    ****   * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+  26:Src/main.c    ****   * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+  27:Src/main.c    ****   * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+  28:Src/main.c    ****   * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  29:Src/main.c    ****   * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  30:Src/main.c    ****   *
+  31:Src/main.c    ****   ******************************************************************************
+ARM GAS  /tmp/ccPhsQja.s 			page 2
+
+
+  32:Src/main.c    ****   */
+  33:Src/main.c    **** /* Includes ------------------------------------------------------------------*/
+  34:Src/main.c    **** #include "stm32f4xx_hal.h"
+  35:Src/main.c    **** #include "cmsis_os.h"
+  36:Src/main.c    **** #include "tim.h"
+  37:Src/main.c    **** #include "wwdg.h"
+  38:Src/main.c    **** #include "gpio.h"
+  39:Src/main.c    **** 
+  40:Src/main.c    **** /* USER CODE BEGIN Includes */
+  41:Src/main.c    **** 
+  42:Src/main.c    **** /* USER CODE END Includes */
+  43:Src/main.c    **** 
+  44:Src/main.c    **** /* Private variables ---------------------------------------------------------*/
+  45:Src/main.c    **** 
+  46:Src/main.c    **** /* USER CODE BEGIN PV */
+  47:Src/main.c    **** /* Private variables ---------------------------------------------------------*/
+  48:Src/main.c    **** 
+  49:Src/main.c    **** /* USER CODE END PV */
+  50:Src/main.c    **** 
+  51:Src/main.c    **** /* Private function prototypes -----------------------------------------------*/
+  52:Src/main.c    **** void SystemClock_Config(void);
+  53:Src/main.c    **** void MX_FREERTOS_Init(void);
+  54:Src/main.c    **** 
+  55:Src/main.c    **** /* USER CODE BEGIN PFP */
+  56:Src/main.c    **** /* Private function prototypes -----------------------------------------------*/
+  57:Src/main.c    **** 
+  58:Src/main.c    **** /* USER CODE END PFP */
+  59:Src/main.c    **** 
+  60:Src/main.c    **** /* USER CODE BEGIN 0 */
+  61:Src/main.c    **** 
+  62:Src/main.c    **** /* USER CODE END 0 */
+  63:Src/main.c    **** 
+  64:Src/main.c    **** int main(void)
+  65:Src/main.c    **** {
+  28              		.loc 1 65 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 1, uses_anonymous_args = 0
+  32 0000 80B5     		push	{r7, lr}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 7, -8
+  36              		.cfi_offset 14, -4
+  37 0002 00AF     		add	r7, sp, #0
+  38              	.LCFI1:
+  39              		.cfi_def_cfa_register 7
+  66:Src/main.c    **** 
+  67:Src/main.c    ****   /* USER CODE BEGIN 1 */
+  68:Src/main.c    **** 
+  69:Src/main.c    ****   /* USER CODE END 1 */
+  70:Src/main.c    **** 
+  71:Src/main.c    ****   /* MCU Configuration----------------------------------------------------------*/
+  72:Src/main.c    **** 
+  73:Src/main.c    ****   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
+  74:Src/main.c    ****   HAL_Init();
+  40              		.loc 1 74 0
+  41 0004 FFF7FEFF 		bl	HAL_Init
+ARM GAS  /tmp/ccPhsQja.s 			page 3
+
+
+  75:Src/main.c    **** 
+  76:Src/main.c    ****   /* Configure the system clock */
+  77:Src/main.c    ****   SystemClock_Config();
+  42              		.loc 1 77 0
+  43 0008 FFF7FEFF 		bl	SystemClock_Config
+  78:Src/main.c    **** 
+  79:Src/main.c    ****   /* Initialize all configured peripherals */
+  80:Src/main.c    ****   MX_GPIO_Init();
+  44              		.loc 1 80 0
+  45 000c FFF7FEFF 		bl	MX_GPIO_Init
+  81:Src/main.c    ****   MX_TIM6_Init();
+  46              		.loc 1 81 0
+  47 0010 FFF7FEFF 		bl	MX_TIM6_Init
+  82:Src/main.c    ****   MX_TIM7_Init();
+  48              		.loc 1 82 0
+  49 0014 FFF7FEFF 		bl	MX_TIM7_Init
+  83:Src/main.c    ****   MX_WWDG_Init();
+  50              		.loc 1 83 0
+  51 0018 FFF7FEFF 		bl	MX_WWDG_Init
+  84:Src/main.c    **** 
+  85:Src/main.c    ****   /* USER CODE BEGIN 2 */
+  86:Src/main.c    **** 
+  87:Src/main.c    ****   /* USER CODE END 2 */
+  88:Src/main.c    **** 
+  89:Src/main.c    ****   /* Call init function for freertos objects (in freertos.c) */
+  90:Src/main.c    ****   MX_FREERTOS_Init();
+  52              		.loc 1 90 0
+  53 001c FFF7FEFF 		bl	MX_FREERTOS_Init
+  91:Src/main.c    **** 
+  92:Src/main.c    ****   /* Start scheduler */
+  93:Src/main.c    ****   osKernelStart();
+  54              		.loc 1 93 0
+  55 0020 FFF7FEFF 		bl	osKernelStart
+  56              	.L2:
+  94:Src/main.c    ****   
+  95:Src/main.c    ****   /* We should never get here as control is now taken by the scheduler */
+  96:Src/main.c    **** 
+  97:Src/main.c    ****   /* Infinite loop */
+  98:Src/main.c    ****   /* USER CODE BEGIN WHILE */
+  99:Src/main.c    ****   while (1)
+ 100:Src/main.c    ****   {
+ 101:Src/main.c    ****   /* USER CODE END WHILE */
+ 102:Src/main.c    **** 
+ 103:Src/main.c    ****   /* USER CODE BEGIN 3 */
+ 104:Src/main.c    **** 
+ 105:Src/main.c    ****   }
+  57              		.loc 1 105 0 discriminator 1
+  58 0024 FEE7     		b	.L2
+  59              		.cfi_endproc
+  60              	.LFE129:
+  62 0026 00BF     		.section	.text.SystemClock_Config,"ax",%progbits
+  63              		.align	2
+  64              		.global	SystemClock_Config
+  65              		.thumb
+  66              		.thumb_func
+  68              	SystemClock_Config:
+  69              	.LFB130:
+ARM GAS  /tmp/ccPhsQja.s 			page 4
+
+
+ 106:Src/main.c    ****   /* USER CODE END 3 */
+ 107:Src/main.c    **** 
+ 108:Src/main.c    **** }
+ 109:Src/main.c    **** 
+ 110:Src/main.c    **** /** System Clock Configuration
+ 111:Src/main.c    **** */
+ 112:Src/main.c    **** void SystemClock_Config(void)
+ 113:Src/main.c    **** {
+  70              		.loc 1 113 0
+  71              		.cfi_startproc
+  72              		@ args = 0, pretend = 0, frame = 80
+  73              		@ frame_needed = 1, uses_anonymous_args = 0
+  74 0000 80B5     		push	{r7, lr}
+  75              	.LCFI2:
+  76              		.cfi_def_cfa_offset 8
+  77              		.cfi_offset 7, -8
+  78              		.cfi_offset 14, -4
+  79 0002 94B0     		sub	sp, sp, #80
+  80              	.LCFI3:
+  81              		.cfi_def_cfa_offset 88
+  82 0004 00AF     		add	r7, sp, #0
+  83              	.LCFI4:
+  84              		.cfi_def_cfa_register 7
+  85              	.LBB2:
+ 114:Src/main.c    **** 
+ 115:Src/main.c    ****   RCC_OscInitTypeDef RCC_OscInitStruct;
+ 116:Src/main.c    ****   RCC_ClkInitTypeDef RCC_ClkInitStruct;
+ 117:Src/main.c    **** 
+ 118:Src/main.c    ****   __PWR_CLK_ENABLE();
+  86              		.loc 1 118 0
+  87 0006 0023     		movs	r3, #0
+  88 0008 BB60     		str	r3, [r7, #8]
+  89 000a 2C4A     		ldr	r2, .L4
+  90 000c 2B4B     		ldr	r3, .L4
+  91 000e 1B6C     		ldr	r3, [r3, #64]
+  92 0010 43F08053 		orr	r3, r3, #268435456
+  93 0014 1364     		str	r3, [r2, #64]
+  94 0016 294B     		ldr	r3, .L4
+  95 0018 1B6C     		ldr	r3, [r3, #64]
+  96 001a 03F08053 		and	r3, r3, #268435456
+  97 001e BB60     		str	r3, [r7, #8]
+  98 0020 BB68     		ldr	r3, [r7, #8]
+  99              	.LBE2:
+ 100              	.LBB3:
+ 119:Src/main.c    **** 
+ 120:Src/main.c    ****   __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
+ 101              		.loc 1 120 0
+ 102 0022 0023     		movs	r3, #0
+ 103 0024 7B60     		str	r3, [r7, #4]
+ 104 0026 264A     		ldr	r2, .L4+4
+ 105 0028 254B     		ldr	r3, .L4+4
+ 106 002a 1B68     		ldr	r3, [r3]
+ 107 002c 43F48043 		orr	r3, r3, #16384
+ 108 0030 1360     		str	r3, [r2]
+ 109 0032 234B     		ldr	r3, .L4+4
+ 110 0034 1B68     		ldr	r3, [r3]
+ 111 0036 03F48043 		and	r3, r3, #16384
+ARM GAS  /tmp/ccPhsQja.s 			page 5
+
+
+ 112 003a 7B60     		str	r3, [r7, #4]
+ 113 003c 7B68     		ldr	r3, [r7, #4]
+ 114              	.LBE3:
+ 121:Src/main.c    **** 
+ 122:Src/main.c    ****   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
+ 115              		.loc 1 122 0
+ 116 003e 0123     		movs	r3, #1
+ 117 0040 3B62     		str	r3, [r7, #32]
+ 123:Src/main.c    ****   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
+ 118              		.loc 1 123 0
+ 119 0042 0123     		movs	r3, #1
+ 120 0044 7B62     		str	r3, [r7, #36]
+ 124:Src/main.c    ****   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+ 121              		.loc 1 124 0
+ 122 0046 0223     		movs	r3, #2
+ 123 0048 BB63     		str	r3, [r7, #56]
+ 125:Src/main.c    ****   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
+ 124              		.loc 1 125 0
+ 125 004a 4FF48003 		mov	r3, #4194304
+ 126 004e FB63     		str	r3, [r7, #60]
+ 126:Src/main.c    ****   RCC_OscInitStruct.PLL.PLLM = 8;
+ 127              		.loc 1 126 0
+ 128 0050 0823     		movs	r3, #8
+ 129 0052 3B64     		str	r3, [r7, #64]
+ 127:Src/main.c    ****   RCC_OscInitStruct.PLL.PLLN = 336;
+ 130              		.loc 1 127 0
+ 131 0054 4FF4A873 		mov	r3, #336
+ 132 0058 7B64     		str	r3, [r7, #68]
+ 128:Src/main.c    ****   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
+ 133              		.loc 1 128 0
+ 134 005a 0223     		movs	r3, #2
+ 135 005c BB64     		str	r3, [r7, #72]
+ 129:Src/main.c    ****   RCC_OscInitStruct.PLL.PLLQ = 7;
+ 136              		.loc 1 129 0
+ 137 005e 0723     		movs	r3, #7
+ 138 0060 FB64     		str	r3, [r7, #76]
+ 130:Src/main.c    ****   HAL_RCC_OscConfig(&RCC_OscInitStruct);
+ 139              		.loc 1 130 0
+ 140 0062 07F12003 		add	r3, r7, #32
+ 141 0066 1846     		mov	r0, r3
+ 142 0068 FFF7FEFF 		bl	HAL_RCC_OscConfig
+ 131:Src/main.c    **** 
+ 132:Src/main.c    ****   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_SYSCLK|RCC_CLOCKTYPE_PCLK1
+ 143              		.loc 1 132 0
+ 144 006c 0D23     		movs	r3, #13
+ 145 006e FB60     		str	r3, [r7, #12]
+ 133:Src/main.c    ****                               |RCC_CLOCKTYPE_PCLK2;
+ 134:Src/main.c    ****   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+ 146              		.loc 1 134 0
+ 147 0070 0223     		movs	r3, #2
+ 148 0072 3B61     		str	r3, [r7, #16]
+ 135:Src/main.c    ****   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+ 149              		.loc 1 135 0
+ 150 0074 0023     		movs	r3, #0
+ 151 0076 7B61     		str	r3, [r7, #20]
+ 136:Src/main.c    ****   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
+ 152              		.loc 1 136 0
+ARM GAS  /tmp/ccPhsQja.s 			page 6
+
+
+ 153 0078 4FF4A053 		mov	r3, #5120
+ 154 007c BB61     		str	r3, [r7, #24]
+ 137:Src/main.c    ****   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
+ 155              		.loc 1 137 0
+ 156 007e 4FF48053 		mov	r3, #4096
+ 157 0082 FB61     		str	r3, [r7, #28]
+ 138:Src/main.c    ****   HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_5);
+ 158              		.loc 1 138 0
+ 159 0084 07F10C03 		add	r3, r7, #12
+ 160 0088 1846     		mov	r0, r3
+ 161 008a 0521     		movs	r1, #5
+ 162 008c FFF7FEFF 		bl	HAL_RCC_ClockConfig
+ 139:Src/main.c    **** 
+ 140:Src/main.c    ****   HAL_SYSTICK_Config(HAL_RCC_GetHCLKFreq()/1000);
+ 163              		.loc 1 140 0
+ 164 0090 FFF7FEFF 		bl	HAL_RCC_GetHCLKFreq
+ 165 0094 0246     		mov	r2, r0
+ 166 0096 0B4B     		ldr	r3, .L4+8
+ 167 0098 A3FB0223 		umull	r2, r3, r3, r2
+ 168 009c 9B09     		lsrs	r3, r3, #6
+ 169 009e 1846     		mov	r0, r3
+ 170 00a0 FFF7FEFF 		bl	HAL_SYSTICK_Config
+ 141:Src/main.c    **** 
+ 142:Src/main.c    ****   HAL_SYSTICK_CLKSourceConfig(SYSTICK_CLKSOURCE_HCLK);
+ 171              		.loc 1 142 0
+ 172 00a4 0420     		movs	r0, #4
+ 173 00a6 FFF7FEFF 		bl	HAL_SYSTICK_CLKSourceConfig
+ 143:Src/main.c    **** 
+ 144:Src/main.c    ****   /* SysTick_IRQn interrupt configuration */
+ 145:Src/main.c    ****   HAL_NVIC_SetPriority(SysTick_IRQn, 15, 0);
+ 174              		.loc 1 145 0
+ 175 00aa 4FF0FF30 		mov	r0, #-1
+ 176 00ae 0F21     		movs	r1, #15
+ 177 00b0 0022     		movs	r2, #0
+ 178 00b2 FFF7FEFF 		bl	HAL_NVIC_SetPriority
+ 146:Src/main.c    **** }
+ 179              		.loc 1 146 0
+ 180 00b6 5037     		adds	r7, r7, #80
+ 181              	.LCFI5:
+ 182              		.cfi_def_cfa_offset 8
+ 183 00b8 BD46     		mov	sp, r7
+ 184              	.LCFI6:
+ 185              		.cfi_def_cfa_register 13
+ 186              		@ sp needed
+ 187 00ba 80BD     		pop	{r7, pc}
+ 188              	.L5:
+ 189              		.align	2
+ 190              	.L4:
+ 191 00bc 00380240 		.word	1073887232
+ 192 00c0 00700040 		.word	1073770496
+ 193 00c4 D34D6210 		.word	274877907
+ 194              		.cfi_endproc
+ 195              	.LFE130:
+ 197              		.text
+ 198              	.Letext0:
+ 199              		.file 2 "/usr/include/newlib/machine/_default_types.h"
+ 200              		.file 3 "/usr/include/newlib/stdint.h"
+ARM GAS  /tmp/ccPhsQja.s 			page 7
+
+
+ 201              		.file 4 "/home/vadimstupakov/Data/STM32/STM32Cube/Repository/STM32Cube_FW_F4_V1.10.0/Drivers/CMSIS
+ 202              		.file 5 "/home/vadimstupakov/Data/STM32/STM32Cube/Repository/STM32Cube_FW_F4_V1.10.0/Drivers/STM32
+ 203              		.file 6 "/home/vadimstupakov/Data/STM32/STM32Cube/Repository/STM32Cube_FW_F4_V1.10.0/Drivers/STM32
+ 204              		.file 7 "/home/vadimstupakov/Data/STM32/STM32Cube/Repository/STM32Cube_FW_F4_V1.10.0/Drivers/CMSIS
+ARM GAS  /tmp/ccPhsQja.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 main.c
+     /tmp/ccPhsQja.s:20     .text.main:0000000000000000 $t
+     /tmp/ccPhsQja.s:25     .text.main:0000000000000000 main
+     /tmp/ccPhsQja.s:68     .text.SystemClock_Config:0000000000000000 SystemClock_Config
+     /tmp/ccPhsQja.s:63     .text.SystemClock_Config:0000000000000000 $t
+     /tmp/ccPhsQja.s:191    .text.SystemClock_Config:00000000000000bc $d
+                     .debug_frame:0000000000000010 $d
+
+UNDEFINED SYMBOLS
+HAL_Init
+MX_GPIO_Init
+MX_TIM6_Init
+MX_TIM7_Init
+MX_WWDG_Init
+MX_FREERTOS_Init
+osKernelStart
+HAL_RCC_OscConfig
+HAL_RCC_ClockConfig
+HAL_RCC_GetHCLKFreq
+HAL_SYSTICK_Config
+HAL_SYSTICK_CLKSourceConfig
+HAL_NVIC_SetPriority

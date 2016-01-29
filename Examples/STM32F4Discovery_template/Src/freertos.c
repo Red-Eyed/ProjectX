@@ -37,7 +37,7 @@
 #include "cmsis_os.h"
 
 /* USER CODE BEGIN Includes */     
-
+#include <stm32f4xx_hal.h>
 /* USER CODE END Includes */
 
 /* Variables -----------------------------------------------------------------*/
@@ -53,6 +53,7 @@ void StartDefaultTask(void const * argument);
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
 /* USER CODE BEGIN FunctionPrototypes */
+
 
 /* USER CODE END FunctionPrototypes */
 
@@ -97,9 +98,14 @@ void StartDefaultTask(void const * argument)
 
   /* USER CODE BEGIN StartDefaultTask */
   /* Infinite loop */
+
   for(;;)
   {
-    osDelay(1);
+      osDelay(50);
+      HAL_GPIO_TogglePin(GPIOD, LD3_Pin);
+      HAL_GPIO_TogglePin(GPIOD, LD4_Pin);
+      HAL_GPIO_TogglePin(GPIOD, LD5_Pin);
+      HAL_GPIO_TogglePin(GPIOD, LD6_Pin);
   }
   /* USER CODE END StartDefaultTask */
 }

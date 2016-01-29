@@ -8,6 +8,7 @@ sudo apt-get install automake
 sudo apt-get install make
 sudo apt-get install autoconf pkg-config libusb-1.0 git
 sudo apt-get install libusb-1.0-0 libusb-1.0-0-dbg libusb-1.0-0-dev
+sudo aptget install openocd
 
 # Allow Users Access to USB Devices
 sudo touch /etc/udev/rules/45-usb-stlink-v2.rules

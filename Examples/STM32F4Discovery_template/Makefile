@@ -151,6 +151,6 @@ clean:
 -include $(shell mkdir .dep 2>/dev/null) $(wildcard .dep/*)
 
 flash:
-	st-flash write $(BUILD_DIR)/$(TARGET).hex x8000000
+	openocd -f /usr/share/openocd/scripts/board/stm32f4discovery.cfg -c "program "$(BUILD_DIR)/$(TARGET).elf" verify reset"
 
 # *** EOF ***

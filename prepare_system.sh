@@ -23,6 +23,9 @@ if [ -n "$(lsusb -d 0483:)" ]; then
     done
 fi
 # Building stlink
+git submodule init
+git submodule update
+
 cd ./stlink
 ./autogen.sh
 ./configure

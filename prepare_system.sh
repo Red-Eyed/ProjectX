@@ -11,8 +11,9 @@ sudo apt-get install libusb-1.0-0 libusb-1.0-0-dbg libusb-1.0-0-dev
 sudo aptget install openocd
 
 # Allow Users Access to USB Devices
-sudo touch /etc/udev/rules/45-usb-stlink-v2.rules
-sudo sh -c 'SUBSYSTEM=="usb", ATTR{idVendor}=="0483", ATTR{idProduct}=="3748", MODE="0666"' > /etc/udev/rules/45-usb-stlink-v2.rules
+ST_LINK_FILE_RULES="45-usb-stlink-v2.rules"
+echo 'SUBSYSTEM=="usb", ATTR{idVendor}=="0483", ATTR{idProduct}=="3748", MODE="0666, OWNER=\"$USER\""' > $ST_LINK_FILE_RULES
+sudo sh -c "mv $ST_LINK_FILE_RULES /etc/udev/rules.d/"
 sudo service udev restart
 
 if [ -n "$(lsusb -d 0483:)" ]; then

@@ -12,7 +12,7 @@ sudo aptget install openocd
 
 # Allow Users Access to USB Devices
 ST_LINK_FILE_RULES="45-usb-stlink-v2.rules"
-echo 'SUBSYSTEM=="usb", ATTR{idVendor}=="0483", ATTR{idProduct}=="3748", MODE="0666, OWNER=\"$USER\""' > $ST_LINK_FILE_RULES
+echo "SUBSYSTEM==\"usb\", ATTR{idVendor}==\"0483\", ATTR{idProduct}==\"3748\", MODE=\"0666\", OWNER=\"$USER\"" > $ST_LINK_FILE_RULES
 sudo sh -c "mv $ST_LINK_FILE_RULES /etc/udev/rules.d/"
 sudo service udev restart
 
@@ -27,15 +27,11 @@ fi
 git submodule init
 git submodule update
 
-# Building stlink
+# Building and installing stlink
 cd ./stlink
 ./autogen.sh
 ./configure
 make
+sudo make install
 cd -
-
-cat ~/.bashrc > ~/.bashrc.old
-sed -i '/stlink/d' ~/.bashrc
-echo "export PATH=\$PATH:$PWD/stlink" >> ~/.bashrc
-source ~/.bashrc
 

@@ -22,10 +22,12 @@ if [ -n "$(lsusb -d 0483:)" ]; then
         sleep 1
     done
 fi
-# Building stlink
+
+# initialization and downloading the third party projects
 git submodule init
 git submodule update
 
+# Building stlink
 cd ./stlink
 ./autogen.sh
 ./configure

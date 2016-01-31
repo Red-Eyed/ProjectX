@@ -11,5 +11,5 @@ INCLUDE_PATH=/home/vadimstupakov/Data/STM32/STM32Cube/Repository/STM32Cube_FW_F4
 SOURCES = $$system(find -L $$SRC_PROJECT_PATH -type f -regex ".*\.[csS]$")
 HEADERS = $$system(find -L $$INCLUDE_PROJECT_PATH -type f -regex ".*\.h$")
 OTHER_FILES = $$system(find -L $$PRJ_PATH -type f | grep -v ".*\.[hcsS]$")
-INCLUDEPATH = $$system(find -L $$PRJ_PATH -type f -regex ".*\.h$" | xargs -I{} dirname {} | uniq)
-INCLUDEPATH += $$system(find -L $$INCLUDE_PATH -type f -regex ".*\.h$" | xargs -I{} dirname {} | uniq)
+INCLUDEPATH = $$system(find -L $$PRJ_PATH -type f -regex ".*\.h$" | xargs -I{} dirname {} | sort |uniq)
+INCLUDEPATH += $$system(find -L $$INCLUDE_PATH -type f -regex ".*\.h$" | xargs -I{} dirname {} | sort | uniq)

@@ -3,4 +3,4 @@
 	url = git@github.com:Vadim-Stupakov/stlink.git
 [submodule "CubeMX2Makefile"]
 	path = CubeMX2Makefile
-	url = https://github.com/baoshi/CubeMX2Makefile
+	url = git@github.com:Vadim-Stupakov/CubeMX2Makefile.git

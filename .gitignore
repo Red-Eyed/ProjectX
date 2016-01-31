@@ -8,4 +8,5 @@
 *.map
 *.o
 *.pro.user
+*SW4STM32
 

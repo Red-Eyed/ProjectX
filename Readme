@@ -1,0 +1,8 @@
+1. wget http://www.st.com/st-web-ui/static/active/en/st_prod_software_internet/resource/technical/software/sw_development_suite/stm32cubemx.zip
+2. unzip stm32cubemx.zip
+3. java -jar SetupSTM32CubeMX-4.12.0.exe
+4. Run and install designated libraries for the chip. Go to Help -> Install New Libraries.
+
+
+
+

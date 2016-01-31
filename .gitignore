@@ -1,4 +1,6 @@
-.*\.pro\.user
-.*\.o
-.*\.o\.d
-
+*.pro.user
+*.o
+*.o.d
+*.hex
+*.bin
+*.lst

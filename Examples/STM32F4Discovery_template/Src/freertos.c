@@ -97,15 +97,22 @@ void StartDefaultTask(void const * argument)
 {
 
   /* USER CODE BEGIN StartDefaultTask */
+    const uint16_t delay_ms = 100;
   /* Infinite loop */
 
   for(;;)
   {
-      osDelay(50);
+      osDelay(delay_ms);
       HAL_GPIO_TogglePin(GPIOD, LD3_Pin);
+
+      osDelay(delay_ms);
       HAL_GPIO_TogglePin(GPIOD, LD4_Pin);
-      HAL_GPIO_TogglePin(GPIOD, LD5_Pin);
+
+      osDelay(delay_ms);
       HAL_GPIO_TogglePin(GPIOD, LD6_Pin);
+
+      osDelay(delay_ms);
+      HAL_GPIO_TogglePin(GPIOD, LD5_Pin);
   }
   /* USER CODE END StartDefaultTask */
 }

@@ -33,7 +33,7 @@
 /* Includes ------------------------------------------------------------------*/
 
 /* USER CODE BEGIN Includes */
-
+#include <stm32f407xx.h> // needed for the qt creator parser
 /* USER CODE END Includes */
 
 /* Private define ------------------------------------------------------------*/

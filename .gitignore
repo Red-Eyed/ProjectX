@@ -1,6 +1,10 @@
-*.pro.user
 *.o
 *.o.d
+*.elf
 *.hex
-*.bin
+*.ioc
 *.lst
+*.map
+*.o
+*.pro.user
+

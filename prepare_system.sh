@@ -35,3 +35,6 @@ make
 sudo make install
 cd -
 
+echo "export PATH=\"\$PATH:$PWD/CubeMX2Makefile\"" >> ~/.bashrc
+. ~/.bashrc
+

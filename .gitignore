@@ -9,4 +9,8 @@
 *.o
 *.pro.user
 *SW4STM32
+*.config
+*.creator
+*.files
+*.includes
 

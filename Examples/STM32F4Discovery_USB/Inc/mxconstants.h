@@ -66,8 +66,6 @@
 #define LD6_GPIO_Port GPIOD
 #define VBUS_FS_Pin GPIO_PIN_9
 #define VBUS_FS_GPIO_Port GPIOA
-#define OTG_FS_ID_Pin GPIO_PIN_10
-#define OTG_FS_ID_GPIO_Port GPIOA
 #define OTG_FS_DM_Pin GPIO_PIN_11
 #define OTG_FS_DM_GPIO_Port GPIOA
 #define OTG_FS_DP_Pin GPIO_PIN_12

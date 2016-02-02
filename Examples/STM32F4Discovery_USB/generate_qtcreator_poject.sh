@@ -10,6 +10,12 @@ if [ "$PROJECT_NAME" == "" ]; then
     exit 1
 fi
 
+if [ "$STM32_CUBE_MX_INCLUDE_PATH" == "" ] ||
+   [ "$DEFINES" == "" ] ; then
+   echo "Please, set variables in the users.config.sh!"
+   exit -1
+fi
+
 sudo chown -R $USER:$USER *
 
 PRJ_PATH=$PWD
@@ -20,7 +26,7 @@ FILES=$(find -L $SRC_PROJECT_PATH -type f | grep -E ".*\.(c|cpp|s|S)$";\
         find -L $INCLUDE_PROJECT_PATH -type f | grep -E ".*\.h$")
 
 INCLUDES=$(find -L $PRJ_PATH -type f -regex ".*\.h$" | xargs -I{} dirname {} | sort |uniq; \
-           find -L $INCLUDE_PATH -type f -regex ".*\.h$" | xargs -I{} dirname {} | sort | uniq)
+           find -L $STM32_CUBE_MX_INCLUDE_PATH -type f -regex ".*\.h$" | xargs -I{} dirname {} | sort | uniq)
 
 printf "%s\n" $FILES > $PROJECT_NAME.files
 printf "%s\n" $INCLUDES > $PROJECT_NAME.includes

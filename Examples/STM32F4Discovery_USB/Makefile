@@ -164,6 +164,6 @@ clean:
 -include $(shell mkdir .dep 2>/dev/null) $(wildcard .dep/*)
 
 flash:
-	openocd -f /usr/share/openocd/scripts/board/stm32f4discovery.cfg -c "program "$(BUILD_DIR)/$(TARGET).elf" verify reset halt"
+	openocd -f /usr/share/openocd/scripts/board/stm32f4discovery.cfg -c "program "$(BUILD_DIR)/$(TARGET).elf" verify reset"
 
 # *** EOF ***

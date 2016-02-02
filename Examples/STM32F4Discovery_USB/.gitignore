@@ -13,5 +13,5 @@
 *.creator
 *.files
 *.includes
-users.config.sh
+*users.config.sh
 

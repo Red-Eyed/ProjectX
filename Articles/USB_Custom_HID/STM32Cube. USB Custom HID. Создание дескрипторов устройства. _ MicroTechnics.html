@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<!-- saved from url=(0082)http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/ -->
+<html lang="ru-RU"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="cypr-verification" content="028f9168cad39ba92620c2e9f042c19e">
+<!-- mgMt7vKM1ZqAxsK5mYmEwULVc9g -->
+<title>STM32Cube. USB Custom HID. Создание дескрипторов устройства. | MicroTechnics</title>
+<link rel="shortcut icon" type="image/ico" href="http://microtechnics.ru/wp-content/themes/favicon.ico">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="stylesheet" type="text/css" media="all" href="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/style.css">
+<link rel="pingback" href="http://microtechnics.ru/xmlrpc.php">
+<!--[if lt IE 9]>
+<script src="http://microtechnics.ru/wp-content/themes/twentyeleven/js/html5.js" type="text/javascript"></script>
+<![endif]-->
+	<script src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/cb=gapi.loaded_0" async=""></script><script id="facebook-jssdk" async="" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/sdk.js"></script><script type="text/javascript" async="" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/client-platform.js" gapi_processed="true"></script><script async="" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/analytics.js"></script><script type="text/javascript" async="" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/watch.js"></script><script>function theChampLoadEvent(e){var t=window.onload;if(typeof window.onload!="function"){window.onload=e}else{window.onload=function(){t();e()}}}</script><style type="text/css"></style>
+		<script> var theChampSiteUrl = 'http://microtechnics.ru', theChampVerified = 0, theChampEmailPopup = 0; </script>
+			<script> var theChampLoadingImgPath = 'http://microtechnics.ru/wp-content/plugins/super-socializer/images/ajax_loader.gif'; var theChampAjaxUrl = 'http://microtechnics.ru/wp-admin/admin-ajax.php'; var theChampRedirectionUrl = 'http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/'; var theChampRegRedirectionUrl = 'http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/'; </script>
+				<script> var theChampFacebookScope = 'public_profile,email', theChampFBKey = '', theChampVerified = 0; var theChampAjaxUrl = 'http://microtechnics.ru/wp-admin/admin-ajax.php'; var theChampPopupTitle = ''; var theChampEmailPopup = 0; var theChampEmailAjaxUrl = 'http://microtechnics.ru/wp-admin/admin-ajax.php'; var theChampEmailPopupTitle = ''; var theChampEmailPopupErrorMsg = ''; var theChampEmailPopupUniqueId = ''; var theChampEmailPopupVerifyMessage = ''; var theChampTwitterRedirect = 'http%3A%2F%2Fmicrotechnics.ru%2Fstm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva%2F';  </script>
+				<script>var theChampGoogleKey = '514462730413-sfbtpmq2idg6b8ee9abk9hfaln7ojlmv.apps.googleusercontent.com'; var theChampGoogleErrorMessage = 'Выполните шаги 11 и 12 на странице конфигурации приложения GooglePlus, чтобы открыть' </script>
+				<script> var theChampVkKey = '5235418' </script>
+				<script> var theChampFBKey = '', theChampFBLang = 'ru_RU', theChampFbLikeMycred = 0, theChampSsga = 0, theChampCommentNotification = 0, theChampFbIosLogin = 0; </script>
+			<style type="text/css">
+	.the_champ_horizontal_sharing .theChampSharing{
+					color: #fff;
+				border-width: 0px;
+		border-style: solid;
+		border-color: transparent;
+	}
+		.the_champ_horizontal_sharing .theChampTCBackground{
+		color:#666;
+	}
+		.the_champ_horizontal_sharing .theChampSharing:hover{
+				border-color: transparent;
+	}
+	.the_champ_vertical_sharing .theChampSharing{
+					color: #fff;
+				border-width: 0px;
+		border-style: solid;
+		border-color: transparent;
+	}
+		.the_champ_vertical_sharing .theChampTCBackground{
+		color:#666;
+	}
+		.the_champ_vertical_sharing .theChampSharing:hover{
+				border-color: transparent;
+	}
+	@media screen and (max-width:783px){.the_champ_vertical_sharing{display:none!important}}@media screen and (max-width:783px){.the_champ_bottom_sharing{left:0px!important;right:auto!important;display:block!important;width: auto!important;bottom: -10px!important;top: auto!important;}.the_champ_bottom_sharing .the_champ_square_count{line-height: inherit;}.the_champ_bottom_sharing .theChampSharingArrow{display:none;}.the_champ_bottom_sharing .theChampTCBackground{margin-right: 1.1em !important}}	</style>
+	<link rel="alternate" type="application/rss+xml" title="MicroTechnics » Лента" href="http://microtechnics.ru/feed/">
+<link rel="alternate" type="application/rss+xml" title="MicroTechnics » Лента комментариев" href="http://microtechnics.ru/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="MicroTechnics » Лента комментариев к «STM32Cube. USB Custom HID. Создание дескрипторов устройства.»" href="http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/feed/">
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"http:\/\/microtechnics.ru\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.4.2"}};
+			!function(a,b,c){function d(a){var c,d=b.createElement("canvas"),e=d.getContext&&d.getContext("2d"),f=String.fromCharCode;return e&&e.fillText?(e.textBaseline="top",e.font="600 32px Arial","flag"===a?(e.fillText(f(55356,56806,55356,56826),0,0),d.toDataURL().length>3e3):"diversity"===a?(e.fillText(f(55356,57221),0,0),c=e.getImageData(16,16,1,1).data.toString(),e.fillText(f(55356,57221,55356,57343),0,0),c!==e.getImageData(16,16,1,1).data.toString()):("simple"===a?e.fillText(f(55357,56835),0,0):e.fillText(f(55356,57135),0,0),0!==e.getImageData(16,16,1,1).data[0])):!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g;c.supports={simple:d("simple"),flag:d("flag"),unicode8:d("unicode8"),diversity:d("diversity")},c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.simple&&c.supports.flag&&c.supports.unicode8&&c.supports.diversity||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/wp-emoji-release.min.js" type="text/javascript"></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="wp-quicklatex-format-css" href="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/quicklatex-format.css" type="text/css" media="all">
+<link rel="stylesheet" id="bbp-default-css" href="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/bbpress.css" type="text/css" media="screen">
+<link rel="stylesheet" id="dashicons-css" href="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/dashicons.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="thickbox-css" href="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/thickbox.css" type="text/css" media="all">
+<link rel="stylesheet" id="the_champ_frontend_css-css" href="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/front.css" type="text/css" media="all">
+<link rel="stylesheet" id="the_champ_sharing_default_svg-css" href="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/share-svg.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-syntax-css-css" href="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/wp-syntax.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-pagenavi-css" href="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/pagenavi-css.css" type="text/css" media="all">
+<script type="text/javascript" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/jquery.js"></script>
+<script type="text/javascript" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/jquery-migrate.min.js"></script>
+<script type="text/javascript" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/wp-quicklatex-frontend.js"></script>
+<link rel="https://api.w.org/" href="http://microtechnics.ru/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://microtechnics.ru/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://microtechnics.ru/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="Самоорганизующиеся карты Кохонена. Часть 2." href="http://microtechnics.ru/samoorganizuyushhiesya-karty-koxonena-chast-2/">
+<link rel="next" title="STM32Cube. USB Custom HID. Прием и передача данных." href="http://microtechnics.ru/stm32cube-usb-custom-hid-priem-i-peredacha-dannyx/">
+<meta name="generator" content="WordPress 4.4.2">
+<link rel="shortlink" href="http://microtechnics.ru/?p=2935">
+<link rel="alternate" type="application/json+oembed" href="http://microtechnics.ru/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fmicrotechnics.ru%2Fstm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva%2F">
+<link rel="alternate" type="text/xml+oembed" href="http://microtechnics.ru/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fmicrotechnics.ru%2Fstm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva%2F&format=xml">
+
+<!-- All in One SEO Pack 1.6.15.2 by Michael Torbert of Semper Fi Web Design[-1,-1] -->
+<meta name="description" content="Реализация USB Custom HID на микроконтроллере STM32 с использованием STM32Cube.">
+<meta name="keywords" content="usb, hid, stm32cube, stm32, дескриптор,stm32cube">
+<link rel="canonical" href="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics.html">
+<!-- /all in one seo pack -->
+		<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+			<style type="text/css">
+			#site-title,
+		#site-description {
+			position: absolute !important;
+			clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+			clip: rect(1px, 1px, 1px, 1px);
+		}
+		</style>
+	<style type="text/css" id="custom-background-css">
+body.custom-background { background-color: #ffffff; background-image: url('http://microtechnics.ru/wp-content/uploads/2012/12/Font3.jpg'); background-repeat: repeat; background-position: top center; background-attachment: scroll; }
+</style>
+	<link type="text/css" rel="stylesheet" href="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/shCore.css">
+	<link type="text/css" rel="stylesheet" href="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/shThemeDefault.css">
+<script type="text/javascript" async="" src="http://s1.rotaban.ru/rotaban.js?v=1454796000000"></script><link href="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/pluso.css" type="text/css" rel="stylesheet"><script charset="UTF-8" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/pluso.js"></script><script type="text/javascript" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/openapi.js" async=""></script><script charset="UTF-8" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/counter.php"></script><script charset="UTF-8" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/ping.php"></script><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow-x:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}.fb_dialog_close_icon:active{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}.fb_dialog_loader{background-color:#f6f7f8;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100%}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100%;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3a5795;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{width:auto;height:auto;min-height:initial;min-width:initial;background:none}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{color:#fff;display:block;padding-top:20px;clear:both;font-size:18px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100%;min-height:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #2f477a;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f6f7f8;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/yD/r/t-wz8gw1xG1.png);background-repeat:no-repeat;background-position:50% 50%;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}</style><script async="" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/kb.js" type="text/javascript"></script><script async="" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/dct.js" type="text/javascript"></script><script async="" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/s.js" type="text/javascript"></script></head>
+
+<body class="single single-post postid-2935 single-format-standard custom-background single-author singular two-column right-sidebar"><script async="" src="http://front.facetz.net/collect_pluso.js"></script><div id="vk_api_transport" style="position: absolute; top: -10000px;"></div>
+<!-- RotaBan.ru Ad Code -->
+<script type="text/javascript">
+(function(){
+    var rb = document.createElement('script');
+        d = new Date();
+    d.setHours(0);
+    d.setMinutes(0);
+    d.setSeconds(0);
+    d.setMilliseconds(0);
+    rb.type = 'text/javascript';
+    rb.async = true;
+    rb.src = '//s1.rotaban.ru/rotaban.js?v=' + d.getTime();
+    (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(rb);
+})();
+</script>
+<!-- END RotaBan.ru Ad Code -->
+<div id="page" class="hfeed">
+	<header id="branding" role="banner">
+			<hgroup>
+				<div id="site-title"><span><a href="http://microtechnics.ru/" title="MicroTechnics" rel="home">MicroTechnics</a></span></div>
+				<div id="site-description">Микроконтроллеры, электроника и программирование</div>
+			</hgroup>
+
+						<a href="http://microtechnics.ru/">
+									<img src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/cropped-Header2.jpg" width="1000" height="288" alt="">
+							</a>
+			
+							<div class="only-search with-image">
+					<form method="get" id="searchform" action="http://microtechnics.ru/">
+		<label for="s" class="assistive-text">Поиск</label>
+		<input type="text" class="field" name="s" id="s" placeholder="Поиск">
+		<input type="submit" class="submit" name="submit" id="searchsubmit" value="Поиск">
+	</form>
+				</div>
+			
+			<nav id="access" role="navigation">
+				<h3 class="assistive-text">Главное меню</h3>
+								<div class="skip-link"><a class="assistive-text" href="http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/#content" title="Перейти к основному содержимому">Перейти к основному содержимому</a></div>
+				<div class="skip-link"><a class="assistive-text" href="http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/#secondary" title="Перейти к дополнительному содержимому">Перейти к дополнительному содержимому</a></div>
+								<div class="menu-osnovnoe-menyu-container"><ul id="menu-osnovnoe-menyu" class="menu"><li id="menu-item-2074" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-2074"><a href="http://microtechnics.ru/">Главная</a></li>
+<li id="menu-item-3167" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3167"><a title="Форум" href="http://microtechnics.ru/forums/">Форум</a></li>
+<li id="menu-item-2077" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2077"><a title="Разработка электроники на заказ   " href="http://microtechnics.ru/razrabotka-elektroniki/">Разработка электроники на заказ</a></li>
+<li id="menu-item-74" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74"><a href="http://microtechnics.ru/kontakty/">Контакты</a></li>
+</ul></div>			</nav><!-- #access -->
+	</header><!-- #branding -->
+
+
+	<div id="main">
+
+		<div id="primary">
+			<div id="content" role="main">
+
+							
+					<div id="breadcrumbs">
+						   							  <a href="http://microtechnics.ru/">Главная</a> »
+							  <a href="http://microtechnics.ru/category/mikrokontrollery/">Микроконтроллеры</a> » <a href="http://microtechnics.ru/category/mikrokontrollery/stm32cube/">STM32Cube</a> » STM32Cube. USB Custom HID. Создание дескрипторов устройства.						 
+							 					</div>
+		
+					<nav id="nav-single">
+						<h3 class="assistive-text">Навигация по записям</h3>
+						<span class="nav-previous"><a href="http://microtechnics.ru/samoorganizuyushhiesya-karty-koxonena-chast-2/" rel="prev"><span class="meta-nav">←</span> Предыдущая</a></span>
+						<span class="nav-next"><a href="http://microtechnics.ru/stm32cube-usb-custom-hid-priem-i-peredacha-dannyx/" rel="next">Следующая <span class="meta-nav">→</span></a></span>
+					</nav><!-- #nav-single -->
+
+					
+<article id="post-2935" class="post-2935 post type-post status-publish format-standard hentry category-stm32cube">
+	<header class="entry-header">
+		<h1 class="entry-title">STM32Cube. USB Custom HID. Создание дескрипторов устройства.</h1>
+
+				<div class="entry-meta">
+			<span class="sep">Опубликовано </span><a href="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics.html" title="21:45" rel="bookmark"><time class="entry-date" datetime="2015-10-10T21:45:28+00:00" pubdate="">10.10.2015</time></a><span class="by-author"> <span class="sep"> автором </span> <span class="author vcard"><a class="url fn n" href="http://microtechnics.ru/author/aveal/" title="Посмотреть все записи автора Aveal" rel="author">Aveal</a></span></span>		</div><!-- .entry-meta -->
+			</header><!-- .entry-header -->
+
+	<div class="entry-content">
+		<p><!-- RotaBan.ru Zone Code -->
+</p><div id="rotaban_243687" class="rbrocks rotaban_4eaa809a5a844324b884d37884dc64b2"></div>
+<!-- END RotaBan.ru Zone Code --><p></p><p style="text-align: justify;">Доброго дня всем посетителям и читателям нашего сайта! Наконец-то, после длительного летнего перерыва, возобновляется работа над новыми статьями ) Тем накопилось очень много, темы абсолютно разные, так что в ближайшее время, надеюсь каждый найдет что-то интересное для себя среди новых статей. И сегодня мы начнем обсуждать реализацию класса <strong>USB HID</strong> для наших любимых микроконтроллеров <strong>STM32</strong>. Почему начнем? Просто я решил, что для одной статьи тут будет многовато всего, поэтому их будет две или три, так что давайте приступать <img draggable="false" class="emoji" alt="😉" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/1f609.png"></p>
+<p><a href="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/USB-HID.jpg"><img class="alignnone  wp-image-2936" title="USB HID" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/USB-HID.jpg" alt="STM32Cube USB" width="736" height="442"></a></p>
+<p><span id="more-2935"></span></p>
+<p style="text-align: justify;">Итак, по старой доброй традиции разберемся с инструментарием… Я буду использовать отладочную плату с микроконтроллером <em>STM32F103VET6</em>, а для создания проекта мы задействуем набирающий все большую популярность <strong>STM32Cube</strong>.</p>
+<p style="text-align: justify;">Запускаем <em>Cube</em>, создаем новый проект (на этих шагах я не останавливаюсь, все уже разобрано в мини-цикле статей, посвященных этой теме на нашем сайте — их можно найти в рубрике <em>STM32Cube</em>). Включаем только то, что нам понадобится для решения непосредственно сегодняшней задачи, ничего лишнего =)</p>
+<p><a href="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/STM32Cube-USB-HID.jpg"><img class="alignnone  wp-image-2941" title="STM32Cube USB HID" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/STM32Cube-USB-HID.jpg" alt="Работа с USB HID" width="401" height="420" srcset="http://microtechnics.ru/wp-content/uploads/2015/09/STM32Cube-USB-HID-286x300.jpg 286w, http://microtechnics.ru/wp-content/uploads/2015/09/STM32Cube-USB-HID.jpg 693w" sizes="(max-width: 401px) 100vw, 401px"></a></p>
+<p style="text-align: justify;">Кроме того, на моей плате есть вот такая фишка:</p>
+<p><a href="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/HY-STM32.png"><img class="alignnone  wp-image-2942" title="HY-STM32" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/HY-STM32.png" alt="Подключение отладочной платы по USB" width="278" height="153"></a></p>
+<p style="text-align: justify;">Поэтому для того, чтобы подключение по <em>USB</em> в принципе могло работать мне надо подать на <em>PC13</em> напряжение низкого уровня, чтобы открыть транзистор.</p>
+<p style="text-align: justify;">В настройках тактирования нам необходимо обеспечить 48 МГц для работы <em>USB</em>. Тут ничего сложного, просто подбираем нужные значения умножителей и делителей частоты и не забываем активировать внешний кварц, который мы уже подключили в предыдущем окне:</p>
+<p><a href="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/Nastroyki-taktirovaniya1.png"><img class="alignnone size-full wp-image-2944" title="Настройки тактирования" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/Nastroyki-taktirovaniya1.png" alt="" width="1105" height="791" srcset="http://microtechnics.ru/wp-content/uploads/2015/09/Nastroyki-taktirovaniya1-1024x733.png 1024w, http://microtechnics.ru/wp-content/uploads/2015/09/Nastroyki-taktirovaniya1-419x300.png 419w, http://microtechnics.ru/wp-content/uploads/2015/09/Nastroyki-taktirovaniya1.png 1105w" sizes="(max-width: 1105px) 100vw, 1105px"></a></p>
+<p style="text-align: justify;">Переходим на вкладку <em>Configuration</em>, но там все оставляем в первозданном виде. Разве что можно зайти в настройки<em> USB_Device</em> и посмотреть значения <em>PID</em> и <em>VID</em>, они могут нам пригодиться впоследствии для того, чтобы проверить, действительно ли наше устройство успешно подключилось к компьютеру. Но не будем забегать вперед, а просто запомним или запишем эти значения. По умолчанию они такие:</p>
+<ul>
+<li>PID — 22352 (0x5750)</li>
+<li>VID — 1155 (0x483)</li>
+</ul>
+<p style="text-align: justify;">Работу в <strong>Cube</strong> на этом заканчиваем, генерируем файлы проекта и переходим в <em>IAR</em> (ну или <em>Keil</em>, у каждого своя <em>IDE</em> <img draggable="false" class="emoji" alt="😉" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/1f609.png"> ). Мы можем прошить полученную программу в микроконтроллер, но, к сожалению, это нам ничего не даст — устройство определится в системе, но работать не будет, в диспетчере устройств мы увидим ошибку — Сбой запроса дескриптора устройства. И эта ситуация как ни парадоксально абсолютно правильна и логична. Дело в том, что дескриптор для нашего <strong>Custom HID</strong> устройства мы должны создать самостоятельно и добавить в наш сгенерированный проект. Этим мы сейчас и займемся.</p>
+<p style="text-align: justify;">Всего есть три дескриптора, которые отвечают за подключение к ПК:</p>
+<ul>
+<li style="text-align: justify;">&nbsp;дескриптор устройства</li>
+<li style="text-align: justify;">&nbsp;дескриптор конфигурации</li>
+<li style="text-align: justify;">дескриптор репорта</li>
+</ul>
+<p style="text-align: justify;">Дескриптор устройства описан в файле <em>usbd_desc.c</em> и выглядит следующим образом:</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="c" style="font-family:monospace;"><span style="color: #808080; font-style: italic;">/* USB Standard Device Descriptor */</span>
+__ALIGN_BEGIN <span style="color: #993333;">uint8_t</span> USBD_FS_DeviceDesc<span style="color: #009900;">[</span>USB_LEN_DEV_DESC<span style="color: #009900;">]</span> __ALIGN_END <span style="color: #339933;">=</span>
+  <span style="color: #009900;">{</span>
+    <span style="color: #208080;">0x12</span><span style="color: #339933;">,</span>                       <span style="color: #808080; font-style: italic;">/*bLength */</span>
+    USB_DESC_TYPE_DEVICE<span style="color: #339933;">,</span>       <span style="color: #808080; font-style: italic;">/*bDescriptorType*/</span>
+    <span style="color: #208080;">0x00</span><span style="color: #339933;">,</span>                       <span style="color: #808080; font-style: italic;">/*bcdUSB */</span>
+    <span style="color: #208080;">0x02</span><span style="color: #339933;">,</span>
+    <span style="color: #208080;">0x00</span><span style="color: #339933;">,</span>                       <span style="color: #808080; font-style: italic;">/*bDeviceClass*/</span>
+    <span style="color: #208080;">0x00</span><span style="color: #339933;">,</span>                       <span style="color: #808080; font-style: italic;">/*bDeviceSubClass*/</span>
+    <span style="color: #208080;">0x00</span><span style="color: #339933;">,</span>                       <span style="color: #808080; font-style: italic;">/*bDeviceProtocol*/</span>
+    USB_MAX_EP0_SIZE<span style="color: #339933;">,</span>          <span style="color: #808080; font-style: italic;">/*bMaxPacketSize*/</span>
+    LOBYTE<span style="color: #009900;">(</span>USBD_VID<span style="color: #009900;">)</span><span style="color: #339933;">,</span>           <span style="color: #808080; font-style: italic;">/*idVendor*/</span>
+    HIBYTE<span style="color: #009900;">(</span>USBD_VID<span style="color: #009900;">)</span><span style="color: #339933;">,</span>           <span style="color: #808080; font-style: italic;">/*idVendor*/</span>
+    LOBYTE<span style="color: #009900;">(</span>USBD_PID_FS<span style="color: #009900;">)</span><span style="color: #339933;">,</span>           <span style="color: #808080; font-style: italic;">/*idVendor*/</span>
+    HIBYTE<span style="color: #009900;">(</span>USBD_PID_FS<span style="color: #009900;">)</span><span style="color: #339933;">,</span>           <span style="color: #808080; font-style: italic;">/*idVendor*/</span>
+    <span style="color: #208080;">0x00</span><span style="color: #339933;">,</span>                       <span style="color: #808080; font-style: italic;">/*bcdDevice rel. 2.00*/</span>
+    <span style="color: #208080;">0x02</span><span style="color: #339933;">,</span>
+    USBD_IDX_MFC_STR<span style="color: #339933;">,</span>           <span style="color: #808080; font-style: italic;">/*Index of manufacturer  string*/</span>
+    USBD_IDX_PRODUCT_STR<span style="color: #339933;">,</span>       <span style="color: #808080; font-style: italic;">/*Index of product string*/</span>
+    USBD_IDX_SERIAL_STR<span style="color: #339933;">,</span>        <span style="color: #808080; font-style: italic;">/*Index of serial number string*/</span>
+    USBD_MAX_NUM_CONFIGURATION  <span style="color: #808080; font-style: italic;">/*bNumConfigurations*/</span>
+  <span style="color: #009900;">}</span> <span style="color: #339933;">;</span> <span style="color: #808080; font-style: italic;">/* USB_DeviceDescriptor */</span></pre></td></tr></tbody></table></div>
+
+<p style="text-align: justify;">В принципе здесь все снабжено комментариями, все значения стандартные, ну и мы собственно, здесь ничего трогать сейчас не будем, а двинемся дальше.<br>
+Дескриптор конфигурации мы можем найти в файле <em>usbd_hustomhid.c</em>:</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="c" style="font-family:monospace;"><span style="color: #808080; font-style: italic;">/* USB CUSTOM_HID device Configuration Descriptor */</span>
+__ALIGN_BEGIN <span style="color: #993333;">static</span> <span style="color: #993333;">uint8_t</span> USBD_CUSTOM_HID_CfgDesc<span style="color: #009900;">[</span>USB_CUSTOM_HID_CONFIG_DESC_SIZ<span style="color: #009900;">]</span> __ALIGN_END <span style="color: #339933;">=</span>
+<span style="color: #009900;">{</span>
+  <span style="color: #208080;">0x09</span><span style="color: #339933;">,</span> <span style="color: #808080; font-style: italic;">/* bLength: Configuration Descriptor size */</span>
+  USB_DESC_TYPE_CONFIGURATION<span style="color: #339933;">,</span> <span style="color: #808080; font-style: italic;">/* bDescriptorType: Configuration */</span>
+  USB_CUSTOM_HID_CONFIG_DESC_SIZ<span style="color: #339933;">,</span>
+  <span style="color: #808080; font-style: italic;">/* wTotalLength: Bytes returned */</span>
+  <span style="color: #208080;">0x00</span><span style="color: #339933;">,</span>
+  <span style="color: #208080;">0x01</span><span style="color: #339933;">,</span>         <span style="color: #808080; font-style: italic;">/*bNumInterfaces: 1 interface*/</span>
+  <span style="color: #208080;">0x01</span><span style="color: #339933;">,</span>         <span style="color: #808080; font-style: italic;">/*bConfigurationValue: Configuration value*/</span>
+  <span style="color: #208080;">0x00</span><span style="color: #339933;">,</span>         <span style="color: #808080; font-style: italic;">/*iConfiguration: Index of string descriptor describing
+  the configuration*/</span>
+  <span style="color: #208080;">0xC0</span><span style="color: #339933;">,</span>         <span style="color: #808080; font-style: italic;">/*bmAttributes: bus powered */</span>
+  <span style="color: #208080;">0x32</span><span style="color: #339933;">,</span>         <span style="color: #808080; font-style: italic;">/*MaxPower 100 mA: this current is used for detecting Vbus*/</span>
+&nbsp;
+  <span style="color: #808080; font-style: italic;">/************** Descriptor of CUSTOM HID interface ****************/</span>
+  <span style="color: #808080; font-style: italic;">/* 09 */</span>
+  <span style="color: #208080;">0x09</span><span style="color: #339933;">,</span>         <span style="color: #808080; font-style: italic;">/*bLength: Interface Descriptor size*/</span>
+  USB_DESC_TYPE_INTERFACE<span style="color: #339933;">,</span><span style="color: #808080; font-style: italic;">/*bDescriptorType: Interface descriptor type*/</span>
+  <span style="color: #208080;">0x00</span><span style="color: #339933;">,</span>         <span style="color: #808080; font-style: italic;">/*bInterfaceNumber: Number of Interface*/</span>
+  <span style="color: #208080;">0x00</span><span style="color: #339933;">,</span>         <span style="color: #808080; font-style: italic;">/*bAlternateSetting: Alternate setting*/</span>
+  <span style="color: #208080;">0x02</span><span style="color: #339933;">,</span>         <span style="color: #808080; font-style: italic;">/*bNumEndpoints*/</span>
+  <span style="color: #208080;">0x03</span><span style="color: #339933;">,</span>         <span style="color: #808080; font-style: italic;">/*bInterfaceClass: CUSTOM_HID*/</span>
+  <span style="color: #208080;">0x00</span><span style="color: #339933;">,</span>         <span style="color: #808080; font-style: italic;">/*bInterfaceSubClass : 1=BOOT, 0=no boot*/</span>
+  <span style="color: #208080;">0x00</span><span style="color: #339933;">,</span>         <span style="color: #808080; font-style: italic;">/*nInterfaceProtocol : 0=none, 1=keyboard, 2=mouse*/</span>
+  <span style="color: #0000dd;">0</span><span style="color: #339933;">,</span>            <span style="color: #808080; font-style: italic;">/*iInterface: Index of string descriptor*/</span>
+  <span style="color: #808080; font-style: italic;">/******************** Descriptor of CUSTOM_HID *************************/</span>
+  <span style="color: #808080; font-style: italic;">/* 18 */</span>
+  <span style="color: #208080;">0x09</span><span style="color: #339933;">,</span>         <span style="color: #808080; font-style: italic;">/*bLength: CUSTOM_HID Descriptor size*/</span>
+  CUSTOM_HID_DESCRIPTOR_TYPE<span style="color: #339933;">,</span> <span style="color: #808080; font-style: italic;">/*bDescriptorType: CUSTOM_HID*/</span>
+  <span style="color: #208080;">0x11</span><span style="color: #339933;">,</span>         <span style="color: #808080; font-style: italic;">/*bCUSTOM_HIDUSTOM_HID: CUSTOM_HID Class Spec release number*/</span>
+  <span style="color: #208080;">0x01</span><span style="color: #339933;">,</span>
+  <span style="color: #208080;">0x00</span><span style="color: #339933;">,</span>         <span style="color: #808080; font-style: italic;">/*bCountryCode: Hardware target country*/</span>
+  <span style="color: #208080;">0x01</span><span style="color: #339933;">,</span>         <span style="color: #808080; font-style: italic;">/*bNumDescriptors: Number of CUSTOM_HID class descriptors to follow*/</span>
+  <span style="color: #208080;">0x22</span><span style="color: #339933;">,</span>         <span style="color: #808080; font-style: italic;">/*bDescriptorType*/</span>
+  USBD_CUSTOM_HID_REPORT_DESC_SIZE<span style="color: #339933;">,</span><span style="color: #808080; font-style: italic;">/*wItemLength: Total length of Report descriptor*/</span>
+  <span style="color: #208080;">0x00</span><span style="color: #339933;">,</span>
+  <span style="color: #808080; font-style: italic;">/******************** Descriptor of Custom HID endpoints ********************/</span>
+  <span style="color: #808080; font-style: italic;">/* 27 */</span>
+  <span style="color: #208080;">0x07</span><span style="color: #339933;">,</span>          <span style="color: #808080; font-style: italic;">/*bLength: Endpoint Descriptor size*/</span>
+  USB_DESC_TYPE_ENDPOINT<span style="color: #339933;">,</span> <span style="color: #808080; font-style: italic;">/*bDescriptorType:*/</span>
+&nbsp;
+  CUSTOM_HID_EPIN_ADDR<span style="color: #339933;">,</span>     <span style="color: #808080; font-style: italic;">/*bEndpointAddress: Endpoint Address (IN)*/</span>
+  <span style="color: #208080;">0x03</span><span style="color: #339933;">,</span>          <span style="color: #808080; font-style: italic;">/*bmAttributes: Interrupt endpoint*/</span>
+  CUSTOM_HID_EPIN_SIZE<span style="color: #339933;">,</span> <span style="color: #808080; font-style: italic;">/*wMaxPacketSize: 2 Byte max */</span>
+  <span style="color: #208080;">0x00</span><span style="color: #339933;">,</span>
+  <span style="color: #208080;">0x20</span><span style="color: #339933;">,</span>          <span style="color: #808080; font-style: italic;">/*bInterval: Polling Interval (20 ms)*/</span>
+  <span style="color: #808080; font-style: italic;">/* 34 */</span>
+&nbsp;
+  <span style="color: #208080;">0x07</span><span style="color: #339933;">,</span>	         <span style="color: #808080; font-style: italic;">/* bLength: Endpoint Descriptor size */</span>
+  USB_DESC_TYPE_ENDPOINT<span style="color: #339933;">,</span>	<span style="color: #808080; font-style: italic;">/* bDescriptorType: */</span>
+  CUSTOM_HID_EPOUT_ADDR<span style="color: #339933;">,</span>  <span style="color: #808080; font-style: italic;">/*bEndpointAddress: Endpoint Address (OUT)*/</span>
+  <span style="color: #208080;">0x03</span><span style="color: #339933;">,</span>	<span style="color: #808080; font-style: italic;">/* bmAttributes: Interrupt endpoint */</span>
+  CUSTOM_HID_EPOUT_SIZE<span style="color: #339933;">,</span>	<span style="color: #808080; font-style: italic;">/* wMaxPacketSize: 2 Bytes max  */</span>
+  <span style="color: #208080;">0x00</span><span style="color: #339933;">,</span>
+  <span style="color: #208080;">0x20</span><span style="color: #339933;">,</span>	<span style="color: #808080; font-style: italic;">/* bInterval: Polling Interval (20 ms) */</span>
+  <span style="color: #808080; font-style: italic;">/* 41 */</span>
+<span style="color: #009900;">}</span> <span style="color: #339933;">;</span></pre></td></tr></tbody></table></div>
+
+<p style="text-align: justify;">В общем-то здесь тоже инженеры и программисты <em>ST</em> позаботились о том, чтобы хорошенько все прокомментировать, поэтому я не буду останавливаться на каждом поле (если возникнут вопросы или что-то не будет работать, пишите в комментариях, постараюсь помочь =) ). Отдельно стоит обратить внимание на <em>CUSTOM_HID_EPOUT_SIZE</em>. В файле <em>usbd_customhid.h</em> находим:</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="c" style="font-family:monospace;"><span style="color: #339933;">#define CUSTOM_HID_EPOUT_SIZE                0x02</span></pre></td></tr></tbody></table></div>
+
+<p style="text-align: justify;">Эта константа определяет максимальный размер пакетов, которые будут использоваться при обмене данными с ПК. Давайте поставим 4 байта. Но не забывайте, что по стандарту максимальный размер пакета составляет 64 байта (0x40), больше ставить не рекомендую <img draggable="false" class="emoji" alt="😉" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/1f609.png"></p>
+<p style="text-align: justify;">С двумя из упомянутых дескрипторов разобрались, теперь настала очередь третьего. Он определен в файле <em>usbd_custom_hid_if.c</em>:</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="c" style="font-family:monospace;">__ALIGN_BEGIN <span style="color: #993333;">static</span> <span style="color: #993333;">uint8_t</span> CUSTOM_HID_ReportDesc_FS<span style="color: #009900;">[</span>USBD_CUSTOM_HID_REPORT_DESC_SIZE<span style="color: #009900;">]</span> __ALIGN_END <span style="color: #339933;">=</span>
+<span style="color: #009900;">{</span>
+  <span style="color: #808080; font-style: italic;">/* USER CODE BEGIN 0 */</span> 
+  <span style="color: #208080;">0x00</span><span style="color: #339933;">,</span> 
+  <span style="color: #808080; font-style: italic;">/* USER CODE END 0 */</span> 
+  <span style="color: #208080;">0xC0</span>    <span style="color: #808080; font-style: italic;">/*     END_COLLECTION	             */</span>
+&nbsp;
+<span style="color: #009900;">}</span><span style="color: #339933;">;</span></pre></td></tr></tbody></table></div>
+
+<p style="text-align: justify;">Как видите он абсолютно пуст, поэтому наше устройство и не смогло определиться в системе как положено. Так что давайте разберемся и реализуем дескриптор репорта.</p>
+<p style="text-align: justify;">Что такое в принципе репорт?</p>
+<p style="text-align: justify;">Все дело в том, что ПК и наше устройство не просто кидают друг другу байты данных, а обмениваются пакетами, имеющими четко определенную структуру. Идентификация пакета происходит по первому байту, который представляет из себя ID репорта. Перед нами стоит задача отправлять данные хосту, а также принимать данные, передающиеся в обратном направлении. Поэтому мы определим два репорта — на прием и на передачу. Пусть на передачу у нас будет репорт с ID = 1, а на прием репорт с ID = 2:</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="c" style="font-family:monospace;">__ALIGN_BEGIN <span style="color: #993333;">static</span> <span style="color: #993333;">uint8_t</span> CUSTOM_HID_ReportDesc_FS<span style="color: #009900;">[</span>USBD_CUSTOM_HID_REPORT_DESC_SIZE<span style="color: #009900;">]</span> __ALIGN_END <span style="color: #339933;">=</span>
+<span style="color: #009900;">{</span>
+  <span style="color: #808080; font-style: italic;">/* USER CODE BEGIN 0 */</span> 
+    <span style="color: #208080;">0x06</span><span style="color: #339933;">,</span> <span style="color: #208080;">0x00</span><span style="color: #339933;">,</span> <span style="color: #208080;">0xff</span><span style="color: #339933;">,</span>              <span style="color: #666666; font-style: italic;">// 	USAGE_PAGE (Generic Desktop)</span>
+    <span style="color: #208080;">0x09</span><span style="color: #339933;">,</span> <span style="color: #208080;">0x01</span><span style="color: #339933;">,</span>                    <span style="color: #666666; font-style: italic;">// 	USAGE (Vendor Usage 1)</span>
+    <span style="color: #666666; font-style: italic;">// System Parameters</span>
+    <span style="color: #208080;">0xa1</span><span style="color: #339933;">,</span> <span style="color: #208080;">0x01</span><span style="color: #339933;">,</span>                    <span style="color: #666666; font-style: italic;">// 	COLLECTION (Application)</span>
+    <span style="color: #208080;">0x85</span><span style="color: #339933;">,</span> <span style="color: #208080;">0x01</span><span style="color: #339933;">,</span>                    <span style="color: #666666; font-style: italic;">//   REPORT_ID (1)</span>
+    <span style="color: #208080;">0x09</span><span style="color: #339933;">,</span> <span style="color: #208080;">0x01</span><span style="color: #339933;">,</span>                    <span style="color: #666666; font-style: italic;">//   USAGE (Vendor Usage 1)</span>
+    <span style="color: #208080;">0x15</span><span style="color: #339933;">,</span> <span style="color: #208080;">0x00</span><span style="color: #339933;">,</span>                    <span style="color: #666666; font-style: italic;">//   LOGICAL_MINIMUM (0)</span>
+    <span style="color: #208080;">0x25</span><span style="color: #339933;">,</span> <span style="color: #208080;">0x01</span><span style="color: #339933;">,</span>                    <span style="color: #666666; font-style: italic;">//   LOGICAL_MAXIMUM (1)</span>
+    <span style="color: #208080;">0x75</span><span style="color: #339933;">,</span> <span style="color: #208080;">0x08</span><span style="color: #339933;">,</span>                    <span style="color: #666666; font-style: italic;">//   REPORT_SIZE (8)</span>
+    <span style="color: #208080;">0x95</span><span style="color: #339933;">,</span> <span style="color: #0000dd;">4</span><span style="color: #339933;">,</span> 	                   <span style="color: #666666; font-style: italic;">//   REPORT_COUNT (4)</span>
+    <span style="color: #208080;">0xb1</span><span style="color: #339933;">,</span> <span style="color: #208080;">0x82</span><span style="color: #339933;">,</span>                    <span style="color: #666666; font-style: italic;">//   FEATURE (Data,Var,Abs,Vol)</span>
+    <span style="color: #208080;">0x85</span><span style="color: #339933;">,</span> <span style="color: #208080;">0x01</span><span style="color: #339933;">,</span>                    <span style="color: #666666; font-style: italic;">//   REPORT_ID (1)</span>
+    <span style="color: #208080;">0x09</span><span style="color: #339933;">,</span> <span style="color: #208080;">0x01</span><span style="color: #339933;">,</span>                    <span style="color: #666666; font-style: italic;">//   USAGE (Vendor Usage 1)</span>
+    <span style="color: #208080;">0x91</span><span style="color: #339933;">,</span> <span style="color: #208080;">0x82</span><span style="color: #339933;">,</span>                    <span style="color: #666666; font-style: italic;">//   OUTPUT (Data,Var,Abs,Vol)</span>
+&nbsp;
+    <span style="color: #208080;">0x85</span><span style="color: #339933;">,</span> <span style="color: #208080;">0x02</span><span style="color: #339933;">,</span>                    <span style="color: #666666; font-style: italic;">//   REPORT_ID (4)</span>
+    <span style="color: #208080;">0x09</span><span style="color: #339933;">,</span> <span style="color: #208080;">0x02</span><span style="color: #339933;">,</span>                    <span style="color: #666666; font-style: italic;">//   USAGE (Vendor Usage 4)</span>
+    <span style="color: #208080;">0x75</span><span style="color: #339933;">,</span> <span style="color: #208080;">0x08</span><span style="color: #339933;">,</span>                    <span style="color: #666666; font-style: italic;">//   REPORT_SIZE (8)</span>
+    <span style="color: #208080;">0x95</span><span style="color: #339933;">,</span> <span style="color: #0000dd;">4</span><span style="color: #339933;">,</span> 	                   <span style="color: #666666; font-style: italic;">//   REPORT_COUNT (4)</span>
+    <span style="color: #208080;">0x81</span><span style="color: #339933;">,</span> <span style="color: #208080;">0x82</span><span style="color: #339933;">,</span>                    <span style="color: #666666; font-style: italic;">//   INPUT (Data,Var,Abs,Vol)</span>
+  <span style="color: #808080; font-style: italic;">/* USER CODE END 0 */</span> 
+  <span style="color: #208080;">0xC0</span>    <span style="color: #808080; font-style: italic;">/*     END_COLLECTION	             */</span>
+&nbsp;
+<span style="color: #009900;">}</span><span style="color: #339933;">;</span></pre></td></tr></tbody></table></div>
+
+<p style="text-align: justify;">Не забываем изменить размер массива дескриптора — <em>USBD_CUSTOM_HID_REPORT_DESC_SIZE</em>, а заодно и <em>USBD_CUSTOMHID_OUTREPORT_BUF_SIZE</em>.</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="c" style="font-family:monospace;"><span style="color: #339933;">#define USBD_CUSTOMHID_OUTREPORT_BUF_SIZE     4</span>
+<span style="color: #339933;">#define USBD_CUSTOM_HID_REPORT_DESC_SIZE     38</span></pre></td></tr></tbody></table></div>
+
+<p style="text-align: justify;">Ну и в файле <em>usbd_customhid.h</em> также устанавливаем значения, соответствующие нашему режиму передачи и приема (а именно передача и прием по 4 байта):</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="c" style="font-family:monospace;"><span style="color: #339933;">#define CUSTOM_HID_EPIN_ADDR                 0x81</span>
+<span style="color: #339933;">#define CUSTOM_HID_EPIN_SIZE                 4</span>
+&nbsp;
+<span style="color: #339933;">#define CUSTOM_HID_EPOUT_ADDR                0x01</span>
+<span style="color: #339933;">#define CUSTOM_HID_EPOUT_SIZE                4</span></pre></td></tr></tbody></table></div>
+
+<p style="text-align: justify;">И вот теперь уже мы можем попробовать собрать проект и запрограммировать микроконтроллер. В результате устройство должно успешно определиться в диспетчере устройств:</p>
+<p><a href="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/USBCustomHID.png"><img class="alignnone size-full wp-image-2945" title="USBCustomHID" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/USBCustomHID.png" alt="" width="1263" height="859" srcset="http://microtechnics.ru/wp-content/uploads/2015/09/USBCustomHID-300x204.png 300w, http://microtechnics.ru/wp-content/uploads/2015/09/USBCustomHID-1024x696.png 1024w, http://microtechnics.ru/wp-content/uploads/2015/09/USBCustomHID-441x300.png 441w, http://microtechnics.ru/wp-content/uploads/2015/09/USBCustomHID.png 1263w" sizes="(max-width: 1263px) 100vw, 1263px"></a></p>
+<p style="text-align: justify;">Соответственно, значения <em>PID</em> и VID у этого устройства соответствуют тем, которые мы задали в <strong>STM32Cube</strong> при создании и настройке проекта.</p>
+<p style="text-align: justify;">Таким образом, на сегодня мы на этом заканчиваем. Сразу расскажу, чем мы будем заниматься в следующей статье =) Во второй части, посвященной <strong>USB</strong> <strong>Custom HID</strong> мы разберемся как принимать и передавать данные, а в третьей части мы напишем программку для ПК, которая собственно и будет осуществлять подключение и обмен данными с нашим устройством. До скорой встречи!</p>
+			</div><!-- .entry-content -->
+
+	<footer class="entry-meta">
+		Запись опубликована автором <a href="http://microtechnics.ru/author/aveal/">Aveal</a> в рубрике <a href="http://microtechnics.ru/category/mikrokontrollery/stm32cube/" rel="category tag">STM32Cube</a>. Добавьте в закладки <a href="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics.html" title="Постоянная ссылка: STM32Cube. USB Custom HID. Создание дескрипторов устройства." rel="bookmark">постоянную ссылку</a>.		
+			</footer><!-- .entry-meta -->
+</article><!-- #post-2935 -->
+					
+					<div class="sample-posts">
+					<h3>Похожие статьи:</h3>
+					<ul>					<li><a href="http://microtechnics.ru/stm32cube-tajmer-i-preryvaniya/" rel="bookmark" title="STM32Cube. Таймер и прерывания.">STM32Cube. Таймер и прерывания.</a></li>
+										<li><a href="http://microtechnics.ru/stm32cube-ispolzovanie-spi-i-dma/" rel="bookmark" title="STM32Cube. Использование SPI и DMA.">STM32Cube. Использование SPI и DMA.</a></li>
+										<li><a href="http://microtechnics.ru/stm32cube-cap-ispolzovanie-dac/" rel="bookmark" title="STM32Cube. ЦАП. Использование DAC.">STM32Cube. ЦАП. Использование DAC.</a></li>
+										<li><a href="http://microtechnics.ru/stm32cube-nastrojka-i-ispolzovanie-fatfs/" rel="bookmark" title="STM32Cube. Настройка и использование FatFS.">STM32Cube. Настройка и использование FatFS.</a></li>
+										<li><a href="http://microtechnics.ru/stm32cube-ispolzovanie-acp-adc/" rel="bookmark" title="STM32Cube. Использование АЦП (ADC).">STM32Cube. Использование АЦП (ADC).</a></li>
+					</ul></div>
+					
+					<h4 style="text-align: left;"><span style="color: #CD0000; font-size: 14pt;">Понравилась статья? Поделись с друзьями!</span></h4>
+					<div class="pluso pluso-theme-bewel"><div class="pluso-more-container"><a class="pluso-more" href="http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/#"></a><ul class="pluso-counter-container"><li></li><li class="pluso-counter">0</li><li></li></ul></div><a class="pluso-vkontakte" href="http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/#" title="ВКонтакте"></a><a class="pluso-facebook" href="http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/#" title="Facebook"></a><a class="pluso-twitter" href="http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/#" title="Twitter"></a><a class="pluso-google" href="http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/#" title="Google+"></a><a class="pluso-moimir" href="http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/#" title="Мой Мир@Mail.Ru"></a><a class="pluso-odnoklassniki" href="http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/#" title="Одноклассники"></a><a class="pluso-livejournal" href="http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/#" title="LiveJournal"></a><a class="pluso-liveinternet" href="http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/#" title="LiveInternet"></a><a class="pluso-bookmark" href="http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/#" title="В закладки"></a></div>
+<script type="text/javascript">if(!window.pluso){pluso={version:'0.9.2',url:'http://share.pluso.ru/'};h=document.getElementsByTagName('head')[0];l=document.createElement('link');l.href=pluso.url+'pluso.css';l.type='text/css';l.rel='stylesheet';s=document.createElement('script');s.charset='UTF-8';s.src=pluso.url+'pluso.js';h.appendChild(l);h.appendChild(s)}</script>
+						<div id="comments">
+	
+	
+			<div id="comments-title">
+			<span>STM32Cube. USB Custom HID. Создание дескрипторов устройства.</span>: 16 комментариев		</div>
+
+		
+		<ol class="commentlist">
+				<li class="comment even thread-even depth-1" id="li-comment-9205">
+		<article id="comment-9205" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/a5db0ecbe46e751fe82a9a051dc6e3e1" srcset="http://1.gravatar.com/avatar/a5db0ecbe46e751fe82a9a051dc6e3e1?s=136&amp;d=mm&amp;r=g 2x" class="avatar avatar-68 photo" height="68" width="68"><span class="fn">Николай</span> <span class="says">говорит</span> <a href="http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/#comment-9205"><time pubdate="" datetime="2015-10-11T01:14:07+00:00">11.10.2015 в 01:14</time></a>:
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Спасибо большое! Отличная статья!</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/?replytocom=9205#respond" onclick="return addComment.moveForm( &quot;comment-9205&quot;, &quot;9205&quot;, &quot;respond&quot;, &quot;2935&quot; )" aria-label="Комментарий к записи Николай">Ответить <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	<ul class="children">
+	<li class="comment byuser comment-author-aveal bypostauthor odd alt depth-2" id="li-comment-9206">
+		<article id="comment-9206" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="Aveal" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/Aveal_avatar-39x39.jpg" class="avatar avatar-39 photo" height="39" width="39"><span class="fn"><a href="http://microtechnics.ru/" rel="external nofollow" class="url">Aveal</a></span> <span class="says">говорит</span> <a href="http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/#comment-9206"><time pubdate="" datetime="2015-10-11T12:04:24+00:00">11.10.2015 в 12:04</time></a>:
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Рад что понравилось!</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/?replytocom=9206#respond" onclick="return addComment.moveForm( &quot;comment-9206&quot;, &quot;9206&quot;, &quot;respond&quot;, &quot;2935&quot; )" aria-label="Комментарий к записи Aveal">Ответить <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-9207">
+		<article id="comment-9207" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/912fc5f51c4837ba37c92f95aac05cad" srcset="http://0.gravatar.com/avatar/912fc5f51c4837ba37c92f95aac05cad?s=136&amp;d=mm&amp;r=g 2x" class="avatar avatar-68 photo" height="68" width="68"><span class="fn">Alexey</span> <span class="says">говорит</span> <a href="http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/#comment-9207"><time pubdate="" datetime="2015-10-11T16:03:18+00:00">11.10.2015 в 16:03</time></a>:
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Спасибо, будем ждать! Программа для ПК будет на QT?</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/?replytocom=9207#respond" onclick="return addComment.moveForm( &quot;comment-9207&quot;, &quot;9207&quot;, &quot;respond&quot;, &quot;2935&quot; )" aria-label="Комментарий к записи Alexey">Ответить <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	<ul class="children">
+	<li class="comment byuser comment-author-aveal bypostauthor odd alt depth-2" id="li-comment-9208">
+		<article id="comment-9208" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="Aveal" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/Aveal_avatar-39x39.jpg" class="avatar avatar-39 photo" height="39" width="39"><span class="fn"><a href="http://microtechnics.ru/" rel="external nofollow" class="url">Aveal</a></span> <span class="says">говорит</span> <a href="http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/#comment-9208"><time pubdate="" datetime="2015-10-12T09:23:37+00:00">12.10.2015 в 09:23</time></a>:
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Да, как обычно =)</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/?replytocom=9208#respond" onclick="return addComment.moveForm( &quot;comment-9208&quot;, &quot;9208&quot;, &quot;respond&quot;, &quot;2935&quot; )" aria-label="Комментарий к записи Aveal">Ответить <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment even thread-even depth-1" id="li-comment-9209">
+		<article id="comment-9209" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/72d50243ab9f8d404a54f75a06ccfd2c" srcset="http://1.gravatar.com/avatar/72d50243ab9f8d404a54f75a06ccfd2c?s=136&amp;d=mm&amp;r=g 2x" class="avatar avatar-68 photo" height="68" width="68"><span class="fn">Haamu</span> <span class="says">говорит</span> <a href="http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/#comment-9209"><time pubdate="" datetime="2015-10-13T10:17:43+00:00">13.10.2015 в 10:17</time></a>:
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Еще б не помешало поподробнее рассказать про дескриптор репорта, как его формировать и какие поля за что отвечают.</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/?replytocom=9209#respond" onclick="return addComment.moveForm( &quot;comment-9209&quot;, &quot;9209&quot;, &quot;respond&quot;, &quot;2935&quot; )" aria-label="Комментарий к записи Haamu">Ответить <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-9248">
+		<article id="comment-9248" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/faa62b421fb9f3a73439ba6a73321396" srcset="http://0.gravatar.com/avatar/faa62b421fb9f3a73439ba6a73321396?s=136&amp;d=mm&amp;r=g 2x" class="avatar avatar-68 photo" height="68" width="68"><span class="fn">Паша</span> <span class="says">говорит</span> <a href="http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/#comment-9248"><time pubdate="" datetime="2015-10-29T15:00:12+00:00">29.10.2015 в 15:00</time></a>:
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>USBD_CUSTOM_HID_REPORT_DESC_SIZE, USBD_CUSTOMHID_OUTREPORT_BUF_SIZE я нашел только в файле usbd_conf.h, т.к. в статье не указывалось в каком файле они именно. И после компиляции vid pid почему то поменялись хотя размещение STM32 Custom Human interface<br>
+За статью большое спасибо!</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/?replytocom=9248#respond" onclick="return addComment.moveForm( &quot;comment-9248&quot;, &quot;9248&quot;, &quot;respond&quot;, &quot;2935&quot; )" aria-label="Комментарий к записи Паша">Ответить <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+	<li class="comment even thread-even depth-1" id="li-comment-9256">
+		<article id="comment-9256" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/7bceecc69c52c483c87958f3604cff60" srcset="http://1.gravatar.com/avatar/7bceecc69c52c483c87958f3604cff60?s=136&amp;d=mm&amp;r=g 2x" class="avatar avatar-68 photo" height="68" width="68"><span class="fn">Сергей</span> <span class="says">говорит</span> <a href="http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/#comment-9256"><time pubdate="" datetime="2015-10-30T15:57:31+00:00">30.10.2015 в 15:57</time></a>:
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>А где продолжение?</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/?replytocom=9256#respond" onclick="return addComment.moveForm( &quot;comment-9256&quot;, &quot;9256&quot;, &quot;respond&quot;, &quot;2935&quot; )" aria-label="Комментарий к записи Сергей">Ответить <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	<ul class="children">
+	<li class="comment byuser comment-author-aveal bypostauthor odd alt depth-2" id="li-comment-9261">
+		<article id="comment-9261" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="Aveal" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/Aveal_avatar-39x39.jpg" class="avatar avatar-39 photo" height="39" width="39"><span class="fn"><a href="http://microtechnics.ru/" rel="external nofollow" class="url">Aveal</a></span> <span class="says">говорит</span> <a href="http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/#comment-9261"><time pubdate="" datetime="2015-10-30T22:17:55+00:00">30.10.2015 в 22:17</time></a>:
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Вот часть 2 и часть 3 — <a href="http://microtechnics.ru/stm32cube-usb-custom-hid-priem-i-peredacha-dannyx/" rel="nofollow">http://microtechnics.ru/stm32cube-usb-custom-hid-priem-i-peredacha-dannyx/</a><br>
+<a href="http://microtechnics.ru/qt-usb-custom-hid-biblioteka-libusb/" rel="nofollow">http://microtechnics.ru/qt-usb-custom-hid-biblioteka-libusb/</a></p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/?replytocom=9261#respond" onclick="return addComment.moveForm( &quot;comment-9261&quot;, &quot;9261&quot;, &quot;respond&quot;, &quot;2935&quot; )" aria-label="Комментарий к записи Aveal">Ответить <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-9285">
+		<article id="comment-9285" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/bbbc6d75e6b7152f227ef0eaf5a3f86f" srcset="http://2.gravatar.com/avatar/bbbc6d75e6b7152f227ef0eaf5a3f86f?s=136&amp;d=mm&amp;r=g 2x" class="avatar avatar-68 photo" height="68" width="68"><span class="fn">Sasha95</span> <span class="says">говорит</span> <a href="http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/#comment-9285"><time pubdate="" datetime="2015-11-10T21:15:49+00:00">10.11.2015 в 21:15</time></a>:
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Вы  неправильно написали , у вас написано<br>
+» ubd_desc.c » , а нужно «usbd_desc.c»</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/?replytocom=9285#respond" onclick="return addComment.moveForm( &quot;comment-9285&quot;, &quot;9285&quot;, &quot;respond&quot;, &quot;2935&quot; )" aria-label="Комментарий к записи Sasha95">Ответить <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	<ul class="children">
+	<li class="comment byuser comment-author-aveal bypostauthor odd alt depth-2" id="li-comment-9289">
+		<article id="comment-9289" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="Aveal" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/Aveal_avatar-39x39.jpg" class="avatar avatar-39 photo" height="39" width="39"><span class="fn"><a href="http://microtechnics.ru/" rel="external nofollow" class="url">Aveal</a></span> <span class="says">говорит</span> <a href="http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/#comment-9289"><time pubdate="" datetime="2015-11-11T23:41:40+00:00">11.11.2015 в 23:41</time></a>:
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Спасибо, исправлю</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/?replytocom=9289#respond" onclick="return addComment.moveForm( &quot;comment-9289&quot;, &quot;9289&quot;, &quot;respond&quot;, &quot;2935&quot; )" aria-label="Комментарий к записи Aveal">Ответить <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment even thread-even depth-1" id="li-comment-9317">
+		<article id="comment-9317" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/667c4073bcdb9503ea1b673634023246" srcset="http://0.gravatar.com/avatar/667c4073bcdb9503ea1b673634023246?s=136&amp;d=mm&amp;r=g 2x" class="avatar avatar-68 photo" height="68" width="68"><span class="fn">Sergey</span> <span class="says">говорит</span> <a href="http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/#comment-9317"><time pubdate="" datetime="2015-11-21T10:00:07+00:00">21.11.2015 в 10:00</time></a>:
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>С удовольствием прочитал и повторил все манипуляции с файлами для для платы STM32F4291-DISCO, запрограммировал контроллер, результат нулевой. Устройство совсем не определяется. Может быть на плате тоже есть какая-либо фишка. Подскажите.<br>
+Буду очень благодарен.<br>
+Сергей</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/?replytocom=9317#respond" onclick="return addComment.moveForm( &quot;comment-9317&quot;, &quot;9317&quot;, &quot;respond&quot;, &quot;2935&quot; )" aria-label="Комментарий к записи Sergey">Ответить <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	<ul class="children">
+	<li class="comment byuser comment-author-aveal bypostauthor odd alt depth-2" id="li-comment-9318">
+		<article id="comment-9318" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="Aveal" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/Aveal_avatar-39x39.jpg" class="avatar avatar-39 photo" height="39" width="39"><span class="fn"><a href="http://microtechnics.ru/" rel="external nofollow" class="url">Aveal</a></span> <span class="says">говорит</span> <a href="http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/#comment-9318"><time pubdate="" datetime="2015-11-22T14:47:55+00:00">22.11.2015 в 14:47</time></a>:
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Если совсем никак не определяется, значит что-то с «железными» настройками не то. Правильные выводы USB используются? На F429 не так как в статье подключено.</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/?replytocom=9318#respond" onclick="return addComment.moveForm( &quot;comment-9318&quot;, &quot;9318&quot;, &quot;respond&quot;, &quot;2935&quot; )" aria-label="Комментарий к записи Aveal">Ответить <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-9319">
+		<article id="comment-9319" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/667c4073bcdb9503ea1b673634023246" srcset="http://0.gravatar.com/avatar/667c4073bcdb9503ea1b673634023246?s=136&amp;d=mm&amp;r=g 2x" class="avatar avatar-68 photo" height="68" width="68"><span class="fn">Sergey</span> <span class="says">говорит</span> <a href="http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/#comment-9319"><time pubdate="" datetime="2015-11-22T18:04:56+00:00">22.11.2015 в 18:04</time></a>:
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Вы оказались правы. На плате свободен только USB_OTG_HS, а я пытался задействовать USB_OTG_FS, потому ничего и не получалось.<br>
+Спасибо.</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/?replytocom=9319#respond" onclick="return addComment.moveForm( &quot;comment-9319&quot;, &quot;9319&quot;, &quot;respond&quot;, &quot;2935&quot; )" aria-label="Комментарий к записи Sergey">Ответить <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	<ul class="children">
+	<li class="comment byuser comment-author-aveal bypostauthor odd alt depth-2" id="li-comment-9320">
+		<article id="comment-9320" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="Aveal" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/Aveal_avatar-39x39.jpg" class="avatar avatar-39 photo" height="39" width="39"><span class="fn"><a href="http://microtechnics.ru/" rel="external nofollow" class="url">Aveal</a></span> <span class="says">говорит</span> <a href="http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/#comment-9320"><time pubdate="" datetime="2015-11-22T18:11:27+00:00">22.11.2015 в 18:11</time></a>:
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Не за что, рад что заработало!</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/?replytocom=9320#respond" onclick="return addComment.moveForm( &quot;comment-9320&quot;, &quot;9320&quot;, &quot;respond&quot;, &quot;2935&quot; )" aria-label="Комментарий к записи Aveal">Ответить <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment even thread-even depth-1" id="li-comment-9347">
+		<article id="comment-9347" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/a5d0984bd1937daef2045b4d079acb52" srcset="http://1.gravatar.com/avatar/a5d0984bd1937daef2045b4d079acb52?s=136&amp;d=mm&amp;r=g 2x" class="avatar avatar-68 photo" height="68" width="68"><span class="fn">Egor</span> <span class="says">говорит</span> <a href="http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/#comment-9347"><time pubdate="" datetime="2015-12-13T10:37:50+00:00">13.12.2015 в 10:37</time></a>:
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Использую stm32f4discovery. У Вас написано, что для Вашей платы необходимо подать небольшое напряжение на PC13. Вопрос как его подать? И второй вопрос, для моей платы куда надо подать напряжение. Я поискал в интернете, нашел вот такую схему вроде как моей платы: <noindex><a target="_blank" rel="nofollow" href="http://microtechnics.ru/goto/http://www.micromouseonline.com/wp/wp-content/uploads/2013/05/stm32f4discovery-usb-schematic.png">http://www.micromouseonline.com/wp/wp-content/uploads/2013/05/stm32f4discovery-usb-schematic.png</a></noindex> , получается мне на PD5 надо будет подавать напряжение? Так же при компиляции полученного проекта в IAR ругается на добавленный в дискриптор репорта код вот такими обидными словами  «Error[Pe146]: too many initializer values»</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/?replytocom=9347#respond" onclick="return addComment.moveForm( &quot;comment-9347&quot;, &quot;9347&quot;, &quot;respond&quot;, &quot;2935&quot; )" aria-label="Комментарий к записи Egor">Ответить <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	<ul class="children">
+	<li class="comment byuser comment-author-aveal bypostauthor odd alt depth-2" id="li-comment-9349">
+		<article id="comment-9349" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="Aveal" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/Aveal_avatar-39x39.jpg" class="avatar avatar-39 photo" height="39" width="39"><span class="fn"><a href="http://microtechnics.ru/" rel="external nofollow" class="url">Aveal</a></span> <span class="says">говорит</span> <a href="http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/#comment-9349"><time pubdate="" datetime="2015-12-13T22:51:50+00:00">13.12.2015 в 22:51</time></a>:
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>У меня на плате просто линия данных подключена «нестандартным» способом, как на схеме изображено. Поэтому необходимо открыть транзистор и подать напряжение низкого уровня (не «небольшое» (!) ). Это напряжение составляет 0 В. Для Discovery этого делать не требуется.</p>
+<p>Ругается компилятор видимо потому что размер массива меньше, чем количество элементов в массиве.</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/?replytocom=9349#respond" onclick="return addComment.moveForm( &quot;comment-9349&quot;, &quot;9349&quot;, &quot;respond&quot;, &quot;2935&quot; )" aria-label="Комментарий к записи Aveal">Ответить <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		</ol>
+
+		
+	
+			<div style="display:none;">
+<br>
+<br>
+<br>
+<form action="http://microtechnics.ru/wp-comments-post.php" method="post" id="commentform1" style="display:none;">
+<p><input name="author" id="author" value="" size="22" aria-required="true" type="text">
+<label for="author"><small>Name (required)</small></label></p>
+
+<p><input name="email" id="email" value="" size="22" aria-required="true" type="text">
+<label for="email"><small>Mail (will not be published) (required)</small></label></p>
+
+<p><input name="url" id="url" value="" size="22" type="text">
+<label for="url"><small>Website</small></label></p>
+<p><textarea name="comment" id="comment" cols="58" rows="10"></textarea></p>
+<p><input name="submit" id="submit" value="Submit Comment" type="submit">
+<input name="comment_post_ID" value="2935" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+</p>
+<p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="a115f574ca" type="hidden"></p>
+</form>
+</div>
+		<div id="respond" class="comment-respond">
+			<h3 id="reply-title" class="comment-reply-title">Добавить комментарий <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/#respond" style="display:none;">Отменить ответ</a></small></h3>				<form action="http://microtechnics.ru/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+					<div class="the_champ_outer_login_container"><div class="the_champ_social_login_title">Вы можете войти через Twitter/Google+/ВКонтакте или воспользоваться стандартной формой.</div><div class="the_champ_login_container"><ul class="the_champ_login_ul"><li><i class="theChampLogin theChampTwitterBackground theChampTwitterLogin" alt="Login with Twitter" title="Login with Twitter" onclick="theChampCommentFormLogin = true; theChampInitiateLogin(this)"><ss style="display:block" class="theChampLoginSvg theChampTwitterLoginSvg"></ss></i></li><li><i id="theChampGoogleButton" class="theChampLogin theChampGoogleBackground theChampGoogleLogin" alt="Login with Google" title="Login with Google" onclick="theChampCommentFormLogin = true; theChampInitiateLogin(this)" style="display: block;"><ss style="display:block" class="theChampLoginSvg theChampGoogleLoginSvg"></ss></i></li><li><i class="theChampLogin theChampVkontakteBackground theChampVkontakteLogin" alt="Login with Vkontakte" title="Login with Vkontakte" onclick="theChampCommentFormLogin = true; theChampInitiateLogin(this)" style="display: block;"><ss style="display:block" class="theChampLoginSvg theChampVkontakteLoginSvg"></ss></i></li></ul></div></div><div style="clear:both; margin-bottom: 6px"></div><p class="comment-notes"><span id="email-notes">Ваш e-mail не будет опубликован.</span> Обязательные поля помечены <span class="required">*</span></p><p class="comment-form-comment"><label for="comment">Комментарий</label> <textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" required="required"></textarea></p><p class="comment-form-author"><label for="author">Имя <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" aria-required="true" required="required" style="background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVQ4EaVTO26DQBD1ohQWaS2lg9JybZ+AK7hNwx2oIoVf4UPQ0Lj1FdKktevIpel8AKNUkDcWMxpgSaIEaTVv3sx7uztiTdu2s/98DywOw3Dued4Who/M2aIx5lZV1aEsy0+qiwHELyi+Ytl0PQ69SxAxkWIA4RMRTdNsKE59juMcuZd6xIAFeZ6fGCdJ8kY4y7KAuTRNGd7jyEBXsdOPE3a0QGPsniOnnYMO67LgSQN9T41F2QGrQRRFCwyzoIF2qyBuKKbcOgPXdVeY9rMWgNsjf9ccYesJhk3f5dYT1HX9gR0LLQR30TnjkUEcx2uIuS4RnI+aj6sJR0AM8AaumPaM/rRehyWhXqbFAA9kh3/8/NvHxAYGAsZ/il8IalkCLBfNVAAAAABJRU5ErkJggg==); background-attachment: scroll; background-position: 100% 50%; background-repeat: no-repeat;"></p>
+<p class="comment-form-email"><label for="email">E-mail <span class="required">*</span></label> <input id="email" name="email" type="text" value="" size="30" aria-describedby="email-notes" aria-required="true" required="required"></p>
+<p class="comment-form-url"><label for="url">Сайт</label> <input id="url" name="url" type="text" value="" size="30"></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Отправить комментарий"> <input type="hidden" name="comment_post_ID" value="2935" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="27b117bd49"></p>				</form>
+					</div><!-- #respond -->
+		
+</div><!-- #comments -->
+
+				
+			</div><!-- #content -->
+		</div><!-- #primary -->
+
+
+
+		<div id="secondary" class="widget-area" role="complementary">
+			<aside id="bbpresswptweaks_login_links_widget-4" class="widget bbpresswptweaks_login_links_widget"><div class="widget-title">Авторизация/Регистрация</div><div class="bbp-template-notice">
+					<a href="http://microtechnics.ru/wp-login.php?redirect_to=/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/" rel="nofollow">Log in</a>
+					- or - 
+					<a href="http://microtechnics.ru/wp-login.php?action=register" rel="nofollow">Зарегистрироваться</a>
+				</div></aside><aside id="text-5" class="widget widget_text">			<div class="textwidget"><p align="center"><font style="color:#1E90FF;font-family:Arial;letter-spacing:-1px;font-size:11pt;"><strong>MicroTechnics  в соц. сетях, присоединяйтесь!</strong></font></p>
+<noindex><a href="http://vk.com/microtechnics" rel="nofollow"><img src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/vkontakte.png" style="margin-left:15px"></a></noindex>
+<noindex><a href="https://twitter.com/MicroTechnics" rel="nofollow"><img src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/twitter.png"></a></noindex>
+<noindex><a href="http://feeds.feedburner.com/Microtechnics" rel="nofollow"><img src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/feed.png"></a></noindex></div>
+		</aside><aside id="text-12" class="widget widget_text">			<div class="textwidget"><noindex><a href="http://microtechnics.ru/forums" rel="nofollow"><img src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/forum0.png" style="margin-left:0px"></a></noindex></div>
+		</aside><aside id="text-9" class="widget widget_text">			<div class="textwidget"><!-- RotaBan.ru Zone Code -->
+<div id="rotaban_243689" class="rbrocks rotaban_4eaa809a5a844324b884d37884dc64b2"></div>
+<!-- END RotaBan.ru Zone Code --></div>
+		</aside><aside id="categories-2" class="widget widget_categories"><div class="widget-title">Рубрики</div>		<ul>
+	<li class="cat-item cat-item-37"><a href="http://microtechnics.ru/category/3d-pechat/">3D-печать</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://microtechnics.ru/category/bez-rubriki/">Без рубрики</a>
+</li>
+	<li class="cat-item cat-item-36"><a href="http://microtechnics.ru/category/mikrokontrollery/">Микроконтроллеры</a>
+<ul class="children">
+	<li class="cat-item cat-item-22"><a href="http://microtechnics.ru/category/mikrokontrollery/avr/">AVR</a>
+</li>
+	<li class="cat-item cat-item-19"><a href="http://microtechnics.ru/category/mikrokontrollery/msp430/">MSP430</a>
+</li>
+	<li class="cat-item cat-item-11"><a href="http://microtechnics.ru/category/mikrokontrollery/stm32-s-nulya/">STM32 с нуля</a>
+</li>
+	<li class="cat-item cat-item-40"><a href="http://microtechnics.ru/category/mikrokontrollery/stm32cube/">STM32Cube</a>
+</li>
+	<li class="cat-item cat-item-28"><a href="http://microtechnics.ru/category/mikrokontrollery/stm23f3/">STM32F3</a>
+</li>
+	<li class="cat-item cat-item-18"><a href="http://microtechnics.ru/category/mikrokontrollery/programmirovanie-stm32f4/">Программирование STM32F4</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-39"><a href="http://microtechnics.ru/category/nejronnye-seti/">Нейронные сети</a>
+</li>
+	<li class="cat-item cat-item-17"><a href="http://microtechnics.ru/category/osnovy-elektroniki/">Основы электроники</a>
+<ul class="children">
+	<li class="cat-item cat-item-30"><a href="http://microtechnics.ru/category/osnovy-elektroniki/bipolyarnyj-tranzistor/">Биполярный транзистор</a>
+</li>
+	<li class="cat-item cat-item-34"><a href="http://microtechnics.ru/category/osnovy-elektroniki/zapominayushhie-ustrojstva/">Запоминающие устройства</a>
+</li>
+	<li class="cat-item cat-item-33"><a href="http://microtechnics.ru/category/osnovy-elektroniki/operacionnyj-usilitel/">Операционный усилитель</a>
+</li>
+	<li class="cat-item cat-item-31"><a href="http://microtechnics.ru/category/osnovy-elektroniki/polevoj-tranzistor/">Полевой транзистор</a>
+</li>
+	<li class="cat-item cat-item-32"><a href="http://microtechnics.ru/category/osnovy-elektroniki/prochee/">Прочее</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-13"><a href="http://microtechnics.ru/category/otladochnye-platy/">Отладочные платы</a>
+<ul class="children">
+	<li class="cat-item cat-item-16"><a href="http://microtechnics.ru/category/otladochnye-platy/mini-stm32/">Mini STM32</a>
+</li>
+	<li class="cat-item cat-item-27"><a href="http://microtechnics.ru/category/otladochnye-platy/msp430-launchpad/">MSP430 LaunchPad</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="http://microtechnics.ru/category/otladochnye-platy/stm32-discovery/">STM32 Discovery</a>
+</li>
+	<li class="cat-item cat-item-26"><a href="http://microtechnics.ru/category/otladochnye-platy/stm32f3-discovery/">STM32F3 Discovery</a>
+</li>
+	<li class="cat-item cat-item-24"><a href="http://microtechnics.ru/category/otladochnye-platy/stm32f4-discovery/">STM32F4 Discovery</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-38"><a href="http://microtechnics.ru/category/programmirovanie/">Программирование</a>
+<ul class="children">
+	<li class="cat-item cat-item-35"><a href="http://microtechnics.ru/category/programmirovanie/opengl/">OpenGL</a>
+</li>
+	<li class="cat-item cat-item-12"><a href="http://microtechnics.ru/category/programmirovanie/prilozheniya-qt/">Приложения QT</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-20"><a href="http://microtechnics.ru/category/razrabotka-elektroniki/">Разработка электроники</a>
+<ul class="children">
+	<li class="cat-item cat-item-21"><a href="http://microtechnics.ru/category/razrabotka-elektroniki/altium-designer/">Altium Designer</a>
+</li>
+	<li class="cat-item cat-item-25"><a href="http://microtechnics.ru/category/razrabotka-elektroniki/poleznye-algoritmy/">Полезные алгоритмы</a>
+</li>
+</ul>
+</li>
+		</ul>
+</aside>		<aside id="recent-posts-2" class="widget widget_recent_entries">		<div class="widget-title">Свежие записи</div>		<ul>
+					<li>
+				<a href="http://microtechnics.ru/avtorizaciya-na-forume-i-sajte/">Авторизация на форуме и сайте.</a>
+						</li>
+					<li>
+				<a href="http://microtechnics.ru/otkrytie-foruma-microtechnics/">Открытие форума MicroTechnics!</a>
+						</li>
+					<li>
+				<a href="http://microtechnics.ru/stm32cube-ispolzovanie-spi-i-dma/">STM32Cube. Использование SPI и DMA.</a>
+						</li>
+					<li>
+				<a href="http://microtechnics.ru/stm32cube-watchdog-ispolzovanie-iwdg/">STM32Cube. Watchdog. Использование IWDG.</a>
+						</li>
+					<li>
+				<a href="http://microtechnics.ru/podklyuchenie-dinamika-k-mikrokontrolleru/">Подключение динамика к микроконтроллеру.</a>
+						</li>
+				</ul>
+		</aside>		<aside id="calendar-2" class="widget widget_calendar"><div id="calendar_wrap" class="calendar_wrap"><table id="wp-calendar">
+	<caption>Февраль 2016</caption>
+	<thead>
+	<tr>
+		<th scope="col" title="Понедельник">Пн</th>
+		<th scope="col" title="Вторник">Вт</th>
+		<th scope="col" title="Среда">Ср</th>
+		<th scope="col" title="Четверг">Чт</th>
+		<th scope="col" title="Пятница">Пт</th>
+		<th scope="col" title="Суббота">Сб</th>
+		<th scope="col" title="Воскресенье">Вс</th>
+	</tr>
+	</thead>
+
+	<tfoot>
+	<tr>
+		<td colspan="3" id="prev"><a href="http://microtechnics.ru/2016/01/">« Янв</a></td>
+		<td class="pad">&nbsp;</td>
+		<td colspan="3" id="next" class="pad">&nbsp;</td>
+	</tr>
+	</tfoot>
+
+	<tbody>
+	<tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td id="today">7</td>
+	</tr>
+	<tr>
+		<td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td>
+	</tr>
+	<tr>
+		<td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td>
+	</tr>
+	<tr>
+		<td>22</td><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td><td>28</td>
+	</tr>
+	<tr>
+		<td>29</td>
+		<td class="pad" colspan="6">&nbsp;</td>
+	</tr>
+	</tbody>
+	</table></div></aside><aside id="archives-2" class="widget widget_archive"><div class="widget-title">Архивы</div>		<ul>
+			<li><a href="http://microtechnics.ru/2016/01/">Январь 2016</a></li>
+	<li><a href="http://microtechnics.ru/2015/12/">Декабрь 2015</a></li>
+	<li><a href="http://microtechnics.ru/2015/11/">Ноябрь 2015</a></li>
+	<li><a href="http://microtechnics.ru/2015/10/">Октябрь 2015</a></li>
+	<li><a href="http://microtechnics.ru/2015/04/">Апрель 2015</a></li>
+	<li><a href="http://microtechnics.ru/2015/03/">Март 2015</a></li>
+	<li><a href="http://microtechnics.ru/2015/02/">Февраль 2015</a></li>
+	<li><a href="http://microtechnics.ru/2015/01/">Январь 2015</a></li>
+	<li><a href="http://microtechnics.ru/2014/12/">Декабрь 2014</a></li>
+	<li><a href="http://microtechnics.ru/2014/11/">Ноябрь 2014</a></li>
+	<li><a href="http://microtechnics.ru/2014/10/">Октябрь 2014</a></li>
+	<li><a href="http://microtechnics.ru/2014/08/">Август 2014</a></li>
+	<li><a href="http://microtechnics.ru/2014/02/">Февраль 2014</a></li>
+	<li><a href="http://microtechnics.ru/2013/12/">Декабрь 2013</a></li>
+	<li><a href="http://microtechnics.ru/2013/11/">Ноябрь 2013</a></li>
+	<li><a href="http://microtechnics.ru/2013/10/">Октябрь 2013</a></li>
+	<li><a href="http://microtechnics.ru/2013/09/">Сентябрь 2013</a></li>
+	<li><a href="http://microtechnics.ru/2013/08/">Август 2013</a></li>
+	<li><a href="http://microtechnics.ru/2013/07/">Июль 2013</a></li>
+	<li><a href="http://microtechnics.ru/2013/06/">Июнь 2013</a></li>
+	<li><a href="http://microtechnics.ru/2013/05/">Май 2013</a></li>
+	<li><a href="http://microtechnics.ru/2013/04/">Апрель 2013</a></li>
+	<li><a href="http://microtechnics.ru/2013/03/">Март 2013</a></li>
+	<li><a href="http://microtechnics.ru/2013/02/">Февраль 2013</a></li>
+	<li><a href="http://microtechnics.ru/2013/01/">Январь 2013</a></li>
+		</ul>
+		</aside><aside id="recent-comments-2" class="widget widget_recent_comments"><div class="widget-title">Свежие комментарии</div><ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link"><a href="http://microtechnics.ru/" rel="external nofollow" class="url">Aveal</a></span> к записи <a href="http://microtechnics.ru/obuchenie-nejronnoj-seti-algoritm-obratnogo-rasprostraneniya-oshibok/#comment-9463">Обучение нейронной сети. Алгоритм обратного распространения ошибок.</a></li><li class="recentcomments"><span class="comment-author-link"><a href="http://microtechnics.ru/" rel="external nofollow" class="url">Aveal</a></span> к записи <a href="http://microtechnics.ru/stm32cube-i-usb-mass-storage-sd-card/#comment-9462">STM32Cube и USB. Mass Storage + SD Card.</a></li><li class="recentcomments"><span class="comment-author-link">Roman</span> к записи <a href="http://microtechnics.ru/stm32cube-i-usb-mass-storage-sd-card/#comment-9461">STM32Cube и USB. Mass Storage + SD Card.</a></li><li class="recentcomments"><span class="comment-author-link">Koss</span> к записи <a href="http://microtechnics.ru/obuchenie-nejronnoj-seti-algoritm-obratnogo-rasprostraneniya-oshibok/#comment-9460">Обучение нейронной сети. Алгоритм обратного распространения ошибок.</a></li><li class="recentcomments"><span class="comment-author-link"><a href="http://microtechnics.ru/" rel="external nofollow" class="url">Aveal</a></span> к записи <a href="http://microtechnics.ru/stm32cube-ispolzovanie-acp-adc/#comment-9458">STM32Cube. Использование АЦП (ADC).</a></li></ul></aside><aside id="meta-2" class="widget widget_meta"><div class="widget-title">Мета</div>			<ul>
+			<li><a href="http://microtechnics.ru/wp-login.php?action=register">Регистрация</a></li>			<li><a href="http://microtechnics.ru/wp-login.php">Войти</a></li>
+			<li><a href="http://microtechnics.ru/feed/"><abbr title="Really Simple Syndication">RSS</abbr> записей</a></li>
+			<li><a href="http://microtechnics.ru/comments/feed/"><abbr title="Really Simple Syndication">RSS</abbr> комментариев</a></li>
+			<li><a href="https://ru.wordpress.org/" title="Сайт работает на WordPress — современной персональной платформе для публикаций.">WordPress.org</a></li>			</ul>
+			</aside><aside id="text-2" class="widget widget_text">			<div class="textwidget"><!-- begin of Top100 code -->
+<noindex>
+<script id="top100Counter" type="text/javascript" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/top100.jcn"></script><a href="http://top100.rambler.ru/home?id=2836010" target="_blank"><img src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/top100.scn" title="Rambler&#39;s Top100" alt="Rambler&#39;s Top100" border="0"></a>
+<noscript>
+&lt;a href="http://top100.rambler.ru/navi/2836010/" rel="nofollow"&gt;
+&lt;img src="http://counter.rambler.ru/top100.cnt?2836010" alt="Rambler's Top100" border="0" /&gt;
+&lt;/a&gt;
+
+</noscript>
+</noindex>
+<!-- end of Top100 code --></div>
+		</aside><aside id="text-3" class="widget widget_text">			<div class="textwidget"><!-- Rating@Mail.ru counter -->
+<noindex>
+<script type="text/javascript">//<![CDATA[
+(function(w,n,d,r,s){d.write('<p><a href="http://top.mail.ru/jump?from=2295139"  rel="nofollow">'+
+'<img src="http://d5.c0.b3.a2.top.mail.ru/counter?id=2295139;t=210;js=13'+
+((r=d.referrer)?';r='+escape(r):'')+((s=w.screen)?';s='+s.width+'*'+s.height:'')+';_='+Math.random()+
+'" style="border:0;" height="31" width="88" alt="Рейтинг@Mail.ru" /><\/a><\/p>');})(window,navigator,document);//]]>
+</script><p><a href="http://top.mail.ru/jump?from=2295139" rel="nofollow"><img src="http://d5.c0.b3.a2.top.mail.ru/counter?id=2295139;t=210;js=13;r=http%3A//microtechnics.ru/stm32cube-usb-custom-hid-priem-i-peredacha-dannyx/;s=1600*900;_=0.9700226653367281" style="border:0;" height="31" width="88" alt="Рейтинг@Mail.ru"></a></p><noscript>&lt;p&gt;&lt;a href="http://top.mail.ru/jump?from=2295139" rel="nofollow"&gt;
+&lt;img src="http://d5.c0.b3.a2.top.mail.ru/counter?id=2295139;t=210;js=na"
+style="border:0;" height="31" width="88" alt="Рейтинг@Mail.ru" /&gt;&lt;/a&gt;&lt;/p&gt;</noscript>
+</noindex>
+<!-- //Rating@Mail.ru counter --></div>
+		</aside><aside id="text-6" class="widget widget_text">			<div class="textwidget"><a href="http://www.alexa.com/siteinfo/www.microtechnics.ru"><a href="http://www.alexa.com/data/details/main?url=http://www.microtechnics.ru" class="AlexaSiteStatsWidget"><img src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/s.gif" border="0" alt="Alexa Certified Traffic Ranking for www.microtechnics.ru"></a><script type="text/javascript" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/a"></script></a></div>
+		</aside><aside id="text-7" class="widget widget_text">			<div class="textwidget"><!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter26964546 = new Ya.Metrika({id:26964546,
+                    webvisor:true,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript>&lt;div&gt;&lt;img src="//mc.yandex.ru/watch/26964546" style="position:absolute; left:-9999px;" alt="" /&gt;&lt;/div&gt;</noscript>
+<!-- /Yandex.Metrika counter --></div>
+		</aside><aside id="text-8" class="widget widget_text">			<div class="textwidget"><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-56536578-1', 'auto');
+  ga('send', 'pageview');
+
+</script></div>
+		</aside>		</div><!-- #secondary .widget-area -->
+ 
+
+	</div><!-- #main -->
+
+	<footer id="colophon" role="contentinfo">
+
+			
+
+			<div id="site-generator">
+							</div>
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+<div style="text-align: center;clear: both"><a onclick="document.cookie=&quot;fdx_switcher=mobile;path=/;expires=&quot;;" href="http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/?fdx_switcher=mobile" title="Switch to Mobile Version" rel="nofollow"><img src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/switch.png" width="50" height="20" alt=""></a></div>	<div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="fb_xdm_frame_http" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" title="Facebook Cross Domain Communication Frame" aria-hidden="true" tabindex="-1" id="fb_xdm_frame_http" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/xd_arbiter.html" style="border: none;"></iframe><iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" title="Facebook Cross Domain Communication Frame" aria-hidden="true" tabindex="-1" id="fb_xdm_frame_https" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/xd_arbiter(1).html" style="border: none;"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></div>
+	<script type="text/javascript" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/comment-reply.min.js"></script>
+<script type="text/javascript" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/editor.js"></script>
+<script type="text/javascript" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/general.js"></script>
+<script type="text/javascript" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/common.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var thickboxL10n = {"next":"\u0414\u0430\u043b\u0435\u0435 \u2192","prev":"\u2190 \u041d\u0430\u0437\u0430\u0434","image":"\u0418\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u0435","of":"\u0438\u0437","close":"\u0417\u0430\u043a\u0440\u044b\u0442\u044c","noiframes":"\u042d\u0442\u0430 \u0444\u0443\u043d\u043a\u0446\u0438\u044f \u0442\u0440\u0435\u0431\u0443\u0435\u0442 \u043f\u043e\u0434\u0434\u0435\u0440\u0436\u043a\u0438 \u043f\u043b\u0430\u0432\u0430\u044e\u0449\u0438\u0445 \u0444\u0440\u0435\u0439\u043c\u043e\u0432. \u0423 \u0432\u0430\u0441 \u043e\u0442\u043a\u043b\u044e\u0447\u0435\u043d\u044b \u0442\u0435\u0433\u0438 iframe, \u043b\u0438\u0431\u043e \u0432\u0430\u0448 \u0431\u0440\u0430\u0443\u0437\u0435\u0440 \u0438\u0445 \u043d\u0435 \u043f\u043e\u0434\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u0435\u0442.","loadingAnimation":"http:\/\/microtechnics.ru\/wp-includes\/js\/thickbox\/loadingAnimation.gif"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/thickbox.js"></script>
+<script type="text/javascript" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/google.js"></script>
+<script type="text/javascript" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/vkontakte.js"></script>
+<script type="text/javascript" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/sdk(1).js"></script>
+<script type="text/javascript" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/wp-embed.min.js"></script>
+
+<!-- SyntaxHighlighter Stuff -->
+<script type="text/javascript" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/shCore.js"></script>
+<script type="text/javascript">
+	SyntaxHighlighter.all();
+</script>
+
+
+
+
+
+<iframe name="oauth2relay406638412" id="oauth2relay406638412" src="./STM32Cube. USB Custom HID. Создание дескрипторов устройства. _ MicroTechnics_files/postmessageRelay.html" tabindex="-1" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe><script id="hiddenlpsubmitdiv" style="display: none;"></script><script>try{(function() { for(var lastpass_iter=0; lastpass_iter < document.forms.length; lastpass_iter++){ var lastpass_f = document.forms[lastpass_iter]; if(typeof(lastpass_f.lpsubmitorig2)=="undefined"){ lastpass_f.lpsubmitorig2 = lastpass_f.submit; if (typeof(lastpass_f.lpsubmitorig2)=='object'){ continue;}lastpass_f.submit = function(){ var form=this; var customEvent = document.createEvent("Event"); customEvent.initEvent("lpCustomEvent", true, true); var d = document.getElementById("hiddenlpsubmitdiv"); if (d) {for(var i = 0; i < document.forms.length; i++){ if(document.forms[i]==form){ if (typeof(d.innerText) != 'undefined') { d.innerText=i.toString(); } else { d.textContent=i.toString(); } } } d.dispatchEvent(customEvent); }form.lpsubmitorig2(); } } }})()}catch(e){}</script></body></html>

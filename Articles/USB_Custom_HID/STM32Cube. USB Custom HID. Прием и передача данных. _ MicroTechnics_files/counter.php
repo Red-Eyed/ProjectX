@@ -1,0 +1,1 @@
+if (typeof pluso != "undefined") pluso.setCounter("2", "http://microtechnics.ru/stm32cube-usb-custom-hid-priem-i-peredacha-dannyx/", undefined, undefined, undefined);

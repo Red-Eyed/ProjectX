@@ -1,0 +1,920 @@
+.pluso li,
+.pluso ul{ margin:0!important; padding:0!important; list-style:none!important; }
+img{ border:0; }
+
+.pluso-box{ position:absolute; z-index:500; left:800px; top:450px; width:auto; overflow:hidden; border:4px #eaeaea solid; background:#fff; font-family:Tahoma, Geneva, sans-serif; box-shadow:0 4px 10px rgba(0, 0, 0, 0.4); text-align:left;	
+    -webkit-border-radius:14px;
+    -moz-border-radius:14px;
+    border-radius:14px;
+}
+.pluso-box .pluso-title{ height:14px; padding:5px 7px 6px 13px; background:#f2f2f2;
+    -webkit-border-radius:10px 10px 0 0;
+    -moz-border-radius:10px 10px 0 0;
+    border-radius:10px 10px 0 0;
+}
+.pluso-box .pluso-title img{ vertical-align:top; }
+.pluso-box .pluso-title a:visited,
+.pluso-box .pluso-title a:hover,
+.pluso-box .pluso-title a{ vertical-align:top; }
+.pluso-box .pluso-title a.pluso-box-close:visited,
+.pluso-box .pluso-title a.pluso-box-close:hover,
+.pluso-box .pluso-title a.pluso-box-close{ float:right; font-size:12px; line-height:1em; font-weight:bold; vertical-align:top; color:#4c4c4c; text-decoration:none; }
+.pluso-box .pluso-title a.pluso-box-go:visited,
+.pluso-box .pluso-title a.pluso-box-go:hover,
+.pluso-box .pluso-title a.pluso-box-go{ margin-left:8px; line-height:12px; text-decoration:underline; color:#4C4C4C; }
+.pluso-box .pluso-title a.pluso-box-go:hover{ text-decoration:none; }
+.pluso-box a:visited,
+.pluso-box a:hover,
+.pluso-box a{ font-size:12px; color:#7f7f7f; text-decoration:none; white-space:nowrap; vertical-align:middle; }
+.pluso-box .pluso-scroll{ float:left; height:180px; padding:5px 0 5px 10px; overflow-y:scroll; }
+.pluso-box tbody,
+.pluso-box table{ margin:0; padding:0; border:none!important; }
+.pluso-box table tr{ border:none!important; }
+.pluso-box table td{ height:30px; padding:0 10px 0 0; margin:0; border:none!important; vertical-align:middle; text-align:left; }
+
+.pluso{ display:inline-block; *display:inline; *zoom:1; position:relative; z-index:1; padding:5px 20px 0 5px; background:transparent; font-size:0; line-height:0; text-align:left; 
+    -webkit-border-radius:6px;
+    -moz-border-radius:6px;
+    border-radius:6px;
+}
+.pluso a{ display:inline-block; width:40px; height:40px; margin:0 5px 5px 0; background:url('/img/pluso-like/sprite.png') 0 0 transparent no-repeat; }
+.pluso a:active{ opacity:.6; }
+
+.pluso-round{ 
+    -webkit-border-radius:22px;
+    -moz-border-radius:22px;
+    border-radius:22px;
+}
+.pluso-round.pluso-small{
+    -webkit-border-radius:12px;
+    -moz-border-radius:12px;
+    border-radius:12px;
+}
+
+.pluso-small{ padding-bottom:1px; padding-right:10px; }
+.pluso-small a{ width:20px; height:20px; margin:0 2px 4px 0; background:url('/img/pluso-like/sprite_small.png') 0 0 transparent no-repeat; }
+
+.pluso .pluso-more-container{ position:absolute; right:-21px; width:41px; height:41px; }
+.pluso-vertical .pluso-more-container .pluso-more,
+.pluso-vertical.pluso-multiline .pluso-more-container .pluso-more,
+.pluso .pluso-more-container .pluso-more{ display:block; width:41px; height:41px; background:url(/img/pluso-like/plus.png) 0 -100px transparent no-repeat; }
+.pluso-theme-bewel.pluso-vertical.pluso-multiline .pluso-more-container .pluso-more,
+.pluso-theme-bewel.pluso-vertical .pluso-more-container .pluso-more,
+.pluso-theme-black-bewel.pluso-vertical.pluso-multiline .pluso-more-container .pluso-more,
+.pluso-theme-black-bewel.pluso-vertical .pluso-more-container .pluso-more,
+.pluso-theme-bewel .pluso-more-container .pluso-more,
+.pluso-theme-black-bewel .pluso-more-container .pluso-more{ background-position:-41px -100px; }
+.pluso-theme-light.pluso-vertical.pluso-multiline .pluso-more-container .pluso-more,
+.pluso-theme-light.pluso-vertical .pluso-more-container .pluso-more,
+.pluso-theme-dark.pluso-vertical.pluso-multiline .pluso-more-container .pluso-more,
+.pluso-theme-dark.pluso-vertical .pluso-more-container .pluso-more,
+.pluso-theme-light .pluso-more-container .pluso-more,
+.pluso-theme-dark .pluso-more-container .pluso-more{ background-position:-82px -100px; }
+
+.pluso-small .pluso-more-container{ right:-10px; width:21px; height:20px; }
+.pluso-small.pluso-vertical.pluso-multiline .pluso-more-container .pluso-more,
+.pluso-small.pluso-vertical .pluso-more-container .pluso-more,
+.pluso-small .pluso-more-container .pluso-more{ width:21px; height:20px; background-position:0 -141px; }
+.pluso-small.pluso-theme-bewel.pluso-vertical.pluso-multiline .pluso-more-container .pluso-more,
+.pluso-small.pluso-theme-bewel.pluso-vertical .pluso-more-container .pluso-more,
+.pluso-small.pluso-theme-black-bewel.pluso-vertical.pluso-multiline .pluso-more-container .pluso-more,
+.pluso-small.pluso-theme-black-bewel.pluso-vertical .pluso-more-container .pluso-more,
+.pluso-small.pluso-theme-bewel .pluso-more-container .pluso-more,
+.pluso-small.pluso-theme-black-bewel .pluso-more-container .pluso-more{ background-position:-21px -141px; }
+.pluso-small.pluso-theme-light.pluso-vertical.pluso-multiline .pluso-more-container .pluso-more,
+.pluso-small.pluso-theme-light.pluso-vertical .pluso-more-container .pluso-more,
+.pluso-small.pluso-theme-dark.pluso-vertical.pluso-multiline .pluso-more-container .pluso-more,
+.pluso-small.pluso-theme-dark.pluso-vertical .pluso-more-container .pluso-more,
+.pluso-small.pluso-theme-light .pluso-more-container .pluso-more,
+.pluso-small.pluso-theme-dark .pluso-more-container .pluso-more{ background-position:-42px -141px; }
+
+.pluso br{ display:none; }
+.pluso-multiline br{ display:block; }
+
+.pluso-multiline .pluso-more-container{ top:26px; }
+.pluso-small.pluso-multiline .pluso-more-container{ top:17px; }
+
+.pluso .pluso-counter-container{ position:absolute; left:46px; top:-2px; float:left; height:45px; padding-left:30px!important; overflow:hidden; background:url(/img/pluso-like/cloud_h.png) no-repeat; white-space:nowrap; }
+.pluso .pluso-counter-container li{ display:none; }
+.pluso .pluso-counter-container li.pluso-counter{ display:block; float:left; height:45px; padding-right:22px!important; background:url(/img/pluso-like/cloud_h.png) no-repeat 100% -46px; font:16px/45px Tahoma, Geneva, sans-serif!important; color:#707070; text-align:center; }
+
+.pluso-small .pluso-counter-container{ left:24px; top:0; height:19px; padding-left:11px!important; background:url(/img/pluso-like/cloud_hs.png) no-repeat; }
+.pluso-small .pluso-counter-container li.pluso-counter{ padding-right:9px!important; background:url(/img/pluso-like/cloud_hs.png) no-repeat 100% -20px; font-size:11px!important; line-height:19px!important; }
+
+.pluso-vertical{ width:45px; padding:5px 0 5px 5px; text-align:center; }
+.pluso-vertical br{ display:none; }
+.pluso-vertical .pluso-more-container{ position:relative; left:0!important; top:0!important; float:none; width:41px; height:41px; padding-right:5px; margin:0 auto -25px; }
+.pluso-vertical .pluso-counter-container{ left:0; top:52px; height:48px; padding:0!important; background:none; }
+.pluso-vertical .pluso-counter-container :last-child,
+.pluso-vertical .pluso-counter-container :first-child{ display:none!important; }
+.pluso-vertical.pluso-multiline .pluso-counter-container .pluso-counter,
+.pluso-vertical .pluso-counter-container li.pluso-counter{ background:url(/img/pluso-like/cloud_vertical.png) 0 0 transparent no-repeat; height:41px; width:41px; padding:7px 0 0 0!important; }
+.pluso-vertical .pluso-counter-container :first-child{}
+.pluso-vertical .pluso-counter-container :first-child{}
+.pluso-vertical .pluso-counter-container{}
+.pluso-small.pluso-vertical{ width:22px; padding-right:3px!important; }
+.pluso-small.pluso-vertical .pluso-more-container{ width:21px; height:20px; padding-right:2px!important; margin:0 auto -15px!important; }
+.pluso-small.pluso-vertical .pluso-counter-container{ left:0; top:25px; }
+.pluso-small.pluso-vertical .pluso-counter-container .pluso-counter{ width:21px; height:21px; padding-top:4px!important; background:url(/img/pluso-like/cloud_vertical.png) 0 -48px transparent no-repeat; font-size:9px!important; line-height:21px!important; }
+
+
+.pluso-vertical.pluso-multiline{ width:90px; }
+.pluso-vertical.pluso-small.pluso-multiline{ width:44px; }
+.pluso-numbers a{ display:block; width:auto; height:auto; }
+
+
+
+
+
+
+
+
+
+/* buttons */
+
+.pluso .pluso-facebook{ background-position:0 0; }
+.pluso .pluso-twitter{ background-position:-40px 0; }
+.pluso .pluso-tumblr{ background-position:-80px 0; }
+.pluso .pluso-odnoklassniki{ background-position:-120px 0; }
+.pluso .pluso-vkontakte{ background-position:-160px 0; }
+.pluso .pluso-pinterest{ background-position:-200px 0; }
+.pluso .pluso-google{ background-position:-240px 0; }
+.pluso .pluso-moimir{ background-position:-280px 0; }
+.pluso .pluso-livejournal{ background-position:-320px 0; }
+.pluso .pluso-liveinternet{ background-position:-360px 0; }
+.pluso .pluso-springpad{ background-position:-400px 0; }
+.pluso .pluso-stumbleupon{ background-position:-440px 0; }
+.pluso .pluso-myspace{ background-position:-480px 0; }
+.pluso .pluso-formspring{ background-position:-520px 0; }
+.pluso .pluso-blogger{ background-position:-560px 0; }
+.pluso .pluso-digg{ background-position:-600px 0; }
+.pluso .pluso-surfingbird{ background-position:-640px 0; }
+.pluso .pluso-bobrdobr{ background-position:-680px 0; }
+.pluso .pluso-readability{ background-position:-720px 0; }
+.pluso .pluso-instapaper{ background-position:-760px 0; }
+.pluso .pluso-evernote{ background-position:-800px 0; }
+.pluso .pluso-bookmark{ background-position:-840px 0; }
+.pluso .pluso-email{ background-position:-880px 0; }
+.pluso .pluso-print{ background-position:-920px 0; }
+.pluso .pluso-vkrugu{ background-position:-960px 0; }
+.pluso .pluso-delicious{ background-position:-1000px 0; }
+.pluso .pluso-pinme{ background-position:-1040px 0; }
+.pluso .pluso-yandex{ background-position:-1080px 0; }
+
+.pluso-theme-light .pluso-facebook{ background-position:0 -240px; }
+.pluso-theme-light .pluso-twitter{ background-position:-40px -240px; }
+.pluso-theme-light .pluso-tumblr{ background-position:-80px -240px; }
+.pluso-theme-light .pluso-odnoklassniki{ background-position:-120px -240px; }
+.pluso-theme-light .pluso-vkontakte{ background-position:-160px -240px; }
+.pluso-theme-light .pluso-pinterest{ background-position:-200px -240px; }
+.pluso-theme-light .pluso-google{ background-position:-240px -240px; }
+.pluso-theme-light .pluso-moimir{ background-position:-280px -240px; }
+.pluso-theme-light .pluso-livejournal{ background-position:-320px -240px; }
+.pluso-theme-light .pluso-liveinternet{ background-position:-360px -240px; }
+.pluso-theme-light .pluso-springpad{ background-position:-400px -240px; }
+.pluso-theme-light .pluso-stumbleupon{ background-position:-440px -240px; }
+.pluso-theme-light .pluso-myspace{ background-position:-480px -240px; }
+.pluso-theme-light .pluso-formspring{ background-position:-520px -240px; }
+.pluso-theme-light .pluso-blogger{ background-position:-560px -240px; }
+.pluso-theme-light .pluso-digg{ background-position:-600px -240px; }
+.pluso-theme-light .pluso-surfingbird{ background-position:-640px -240px; }
+.pluso-theme-light .pluso-bobrdobr{ background-position:-680px -240px; }
+.pluso-theme-light .pluso-readability{ background-position:-720px -240px; }
+.pluso-theme-light .pluso-instapaper{ background-position:-760px -240px; }
+.pluso-theme-light .pluso-evernote{ background-position:-800px -240px; }
+.pluso-theme-light .pluso-bookmark{ background-position:-840px -240px; }
+.pluso-theme-light .pluso-email{ background-position:-880px -240px; }
+.pluso-theme-light .pluso-print{ background-position:-920px -240px; }
+.pluso-theme-light .pluso-vkrugu{ background-position:-960px -240px }
+.pluso-theme-light .pluso-delicious{ background-position:-1000px -240px }
+.pluso-theme-light .pluso-pinme{ background-position:-1040px -240px }
+.pluso-theme-light .pluso-yandex{ background-position:-1080px -240px }
+
+.pluso-theme-dark .pluso-facebook{ background-position:0 -280px; }
+.pluso-theme-dark .pluso-twitter{ background-position:-40px -280px; }
+.pluso-theme-dark .pluso-tumblr{ background-position:-80px -280px; }
+.pluso-theme-dark .pluso-odnoklassniki{ background-position:-120px -280px; }
+.pluso-theme-dark .pluso-vkontakte{ background-position:-160px -280px; }
+.pluso-theme-dark .pluso-pinterest{ background-position:-200px -280px; }
+.pluso-theme-dark .pluso-google{ background-position:-240px -280px; }
+.pluso-theme-dark .pluso-moimir{ background-position:-280px -280px; }
+.pluso-theme-dark .pluso-livejournal{ background-position:-320px -280px; }
+.pluso-theme-dark .pluso-liveinternet{ background-position:-360px -280px; }
+.pluso-theme-dark .pluso-springpad{ background-position:-400px -280px; }
+.pluso-theme-dark .pluso-stumbleupon{ background-position:-440px -280px; }
+.pluso-theme-dark .pluso-myspace{ background-position:-480px -280px; }
+.pluso-theme-dark .pluso-formspring{ background-position:-520px -280px; }
+.pluso-theme-dark .pluso-blogger{ background-position:-560px -280px; }
+.pluso-theme-dark .pluso-digg{ background-position:-600px -280px; }
+.pluso-theme-dark .pluso-surfingbird{ background-position:-640px -280px; }
+.pluso-theme-dark .pluso-bobrdobr{ background-position:-680px -280px; }
+.pluso-theme-dark .pluso-readability{ background-position:-720px -280px; }
+.pluso-theme-dark .pluso-instapaper{ background-position:-760px -280px; }
+.pluso-theme-dark .pluso-evernote{ background-position:-800px -280px; }
+.pluso-theme-dark .pluso-bookmark{ background-position:-840px -280px; }
+.pluso-theme-dark .pluso-email{ background-position:-880px -280px; }
+.pluso-theme-dark .pluso-print{ background-position:-920px -280px; }
+.pluso-theme-dark .pluso-vkrugu{ background-position:-960px -280px }
+.pluso-theme-dark .pluso-delicious{ background-position:-1000px -280px }
+.pluso-theme-dark .pluso-pinme{ background-position:-1040px -280px }
+.pluso-theme-dark .pluso-yandex{ background-position:-1080px -280px }
+
+.pluso-theme-black .pluso-facebook{ background-position:0 -320px; }
+.pluso-theme-black .pluso-twitter{ background-position:-40px -320px; }
+.pluso-theme-black .pluso-tumblr{ background-position:-80px -320px; }
+.pluso-theme-black .pluso-odnoklassniki{ background-position:-120px -320px; }
+.pluso-theme-black .pluso-vkontakte{ background-position:-160px -320px; }
+.pluso-theme-black .pluso-pinterest{ background-position:-200px -320px; }
+.pluso-theme-black .pluso-google{ background-position:-240px -320px; }
+.pluso-theme-black .pluso-moimir{ background-position:-280px -320px; }
+.pluso-theme-black .pluso-livejournal{ background-position:-320px -320px; }
+.pluso-theme-black .pluso-liveinternet{ background-position:-360px -320px; }
+.pluso-theme-black .pluso-springpad{ background-position:-400px -320px; }
+.pluso-theme-black .pluso-stumbleupon{ background-position:-440px -320px; }
+.pluso-theme-black .pluso-myspace{ background-position:-480px -320px; }
+.pluso-theme-black .pluso-formspring{ background-position:-520px -320px; }
+.pluso-theme-black .pluso-blogger{ background-position:-560px -320px; }
+.pluso-theme-black .pluso-digg{ background-position:-600px -320px; }
+.pluso-theme-black .pluso-surfingbird{ background-position:-640px -320px; }
+.pluso-theme-black .pluso-bobrdobr{ background-position:-680px -320px; }
+.pluso-theme-black .pluso-readability{ background-position:-720px -320px; }
+.pluso-theme-black .pluso-instapaper{ background-position:-760px -320px; }
+.pluso-theme-black .pluso-evernote{ background-position:-800px -320px; }
+.pluso-theme-black .pluso-bookmark{ background-position:-840px -320px; }
+.pluso-theme-black .pluso-email{ background-position:-880px -320px; }
+.pluso-theme-black .pluso-print{ background-position:-920px -320px; }
+.pluso-theme-black .pluso-vkrugu{ background-position:-960px -320px }
+.pluso-theme-black .pluso-delicious{ background-position:-1000px -320px }
+.pluso-theme-black .pluso-pinme{ background-position:-1040px -320px }
+.pluso-theme-black .pluso-yandex{ background-position:-1080px -320px }
+
+.pluso-theme-black-bewel .pluso-facebook{ background-position:0 -440px; }
+.pluso-theme-black-bewel .pluso-twitter{ background-position:-40px -440px; }
+.pluso-theme-black-bewel .pluso-tumblr{ background-position:-80px -440px; }
+.pluso-theme-black-bewel .pluso-odnoklassniki{ background-position:-120px -440px; }
+.pluso-theme-black-bewel .pluso-vkontakte{ background-position:-160px -440px; }
+.pluso-theme-black-bewel .pluso-pinterest{ background-position:-200px -440px; }
+.pluso-theme-black-bewel .pluso-google{ background-position:-240px -440px; }
+.pluso-theme-black-bewel .pluso-moimir{ background-position:-280px -440px; }
+.pluso-theme-black-bewel .pluso-livejournal{ background-position:-320px -440px; }
+.pluso-theme-black-bewel .pluso-liveinternet{ background-position:-360px -440px; }
+.pluso-theme-black-bewel .pluso-springpad{ background-position:-400px -440px; }
+.pluso-theme-black-bewel .pluso-stumbleupon{ background-position:-440px -440px; }
+.pluso-theme-black-bewel .pluso-myspace{ background-position:-480px -440px; }
+.pluso-theme-black-bewel .pluso-formspring{ background-position:-520px -440px; }
+.pluso-theme-black-bewel .pluso-blogger{ background-position:-560px -440px; }
+.pluso-theme-black-bewel .pluso-digg{ background-position:-600px -440px; }
+.pluso-theme-black-bewel .pluso-surfingbird{ background-position:-640px -440px; }
+.pluso-theme-black-bewel .pluso-bobrdobr{ background-position:-680px -440px; }
+.pluso-theme-black-bewel .pluso-readability{ background-position:-720px -440px; }
+.pluso-theme-black-bewel .pluso-instapaper{ background-position:-760px -440px; }
+.pluso-theme-black-bewel .pluso-evernote{ background-position:-800px -440px; }
+.pluso-theme-black-bewel .pluso-bookmark{ background-position:-840px -440px; }
+.pluso-theme-black-bewel .pluso-email{ background-position:-880px -440px; }
+.pluso-theme-black-bewel .pluso-print{ background-position:-920px -440px; }
+.pluso-theme-black-bewel .pluso-vkrugu{ background-position:-960px -440px }
+.pluso-theme-black-bewel .pluso-delicious{ background-position:-1000px -440px }
+.pluso-theme-black-bewel .pluso-pinme{ background-position:-1040px -440px }
+.pluso-theme-black-bewel .pluso-yandex{ background-position:-1080px -440px }
+
+.pluso-theme-bewel .pluso-facebook{ background-position:0 -400px; }
+.pluso-theme-bewel .pluso-twitter{ background-position:-40px -400px; }
+.pluso-theme-bewel .pluso-tumblr{ background-position:-80px -400px; }
+.pluso-theme-bewel .pluso-odnoklassniki{ background-position:-120px -400px; }
+.pluso-theme-bewel .pluso-vkontakte{ background-position:-160px -400px; }
+.pluso-theme-bewel .pluso-pinterest{ background-position:-200px -400px; }
+.pluso-theme-bewel .pluso-google{ background-position:-240px -400px; }
+.pluso-theme-bewel .pluso-moimir{ background-position:-280px -400px; }
+.pluso-theme-bewel .pluso-livejournal{ background-position:-320px -400px; }
+.pluso-theme-bewel .pluso-liveinternet{ background-position:-360px -400px; }
+.pluso-theme-bewel .pluso-springpad{ background-position:-400px -400px; }
+.pluso-theme-bewel .pluso-stumbleupon{ background-position:-440px -400px; }
+.pluso-theme-bewel .pluso-myspace{ background-position:-480px -400px; }
+.pluso-theme-bewel .pluso-formspring{ background-position:-520px -400px; }
+.pluso-theme-bewel .pluso-blogger{ background-position:-560px -400px; }
+.pluso-theme-bewel .pluso-digg{ background-position:-600px -400px; }
+.pluso-theme-bewel .pluso-surfingbird{ background-position:-640px -400px; }
+.pluso-theme-bewel .pluso-bobrdobr{ background-position:-680px -400px; }
+.pluso-theme-bewel .pluso-readability{ background-position:-720px -400px; }
+.pluso-theme-bewel .pluso-instapaper{ background-position:-760px -400px; }
+.pluso-theme-bewel .pluso-evernote{ background-position:-800px -400px; }
+.pluso-theme-bewel .pluso-bookmark{ background-position:-840px -400px; }
+.pluso-theme-bewel .pluso-email{ background-position:-880px -400px; }
+.pluso-theme-bewel .pluso-print{ background-position:-920px -400px; }
+.pluso-theme-bewel .pluso-vkrugu{ background-position:-960px -400px }
+.pluso-theme-bewel .pluso-delicious{ background-position:-1000px -400px }
+.pluso-theme-bewel .pluso-pinme{ background-position:-1040px -400px }
+.pluso-theme-bewel .pluso-yandex{ background-position:-1080px -400px }
+
+.pluso-theme-color .pluso-facebook{ background-position:0 -360px; }
+.pluso-theme-color .pluso-twitter{ background-position:-40px -360px; }
+.pluso-theme-color .pluso-tumblr{ background-position:-80px -360px; }
+.pluso-theme-color .pluso-odnoklassniki{ background-position:-120px -360px; }
+.pluso-theme-color .pluso-vkontakte{ background-position:-160px -360px; }
+.pluso-theme-color .pluso-pinterest{ background-position:-200px -360px; }
+.pluso-theme-color .pluso-google{ background-position:-240px -360px; }
+.pluso-theme-color .pluso-moimir{ background-position:-280px -360px; }
+.pluso-theme-color .pluso-livejournal{ background-position:-320px -360px; }
+.pluso-theme-color .pluso-liveinternet{ background-position:-360px -360px; }
+.pluso-theme-color .pluso-springpad{ background-position:-400px -360px; }
+.pluso-theme-color .pluso-stumbleupon{ background-position:-440px -360px; }
+.pluso-theme-color .pluso-myspace{ background-position:-480px -360px; }
+.pluso-theme-color .pluso-formspring{ background-position:-520px -360px; }
+.pluso-theme-color .pluso-blogger{ background-position:-560px -360px; }
+.pluso-theme-color .pluso-digg{ background-position:-600px -360px; }
+.pluso-theme-color .pluso-surfingbird{ background-position:-640px -360px; }
+.pluso-theme-color .pluso-bobrdobr{ background-position:-680px -360px; }
+.pluso-theme-color .pluso-readability{ background-position:-720px -360px; }
+.pluso-theme-color .pluso-instapaper{ background-position:-760px -360px; }
+.pluso-theme-color .pluso-evernote{ background-position:-800px -360px; }
+.pluso-theme-color .pluso-bookmark{ background-position:-840px -360px; }
+.pluso-theme-color .pluso-email{ background-position:-880px -360px; }
+.pluso-theme-color .pluso-print{ background-position:-920px -360px; }
+.pluso-theme-color .pluso-vkrugu{ background-position:-960px -360px }
+.pluso-theme-color .pluso-delicious{ background-position:-1000px -360px }
+.pluso-theme-color .pluso-pinme{ background-position:-1040px -360px }
+.pluso-theme-color .pluso-yandex{ background-position:-1080px -360px }
+
+.pluso-theme-light.pluso-round .pluso-facebook{ background-position:0 0; }
+.pluso-theme-light.pluso-round .pluso-twitter{ background-position:-40px 0; }
+.pluso-theme-light.pluso-round .pluso-tumblr{ background-position:-80px 0; }
+.pluso-theme-light.pluso-round .pluso-odnoklassniki{ background-position:-120px 0; }
+.pluso-theme-light.pluso-round .pluso-vkontakte{ background-position:-160px 0; }
+.pluso-theme-light.pluso-round .pluso-pinterest{ background-position:-200px 0; }
+.pluso-theme-light.pluso-round .pluso-google{ background-position:-240px 0; }
+.pluso-theme-light.pluso-round .pluso-moimir{ background-position:-280px 0; }
+.pluso-theme-light.pluso-round .pluso-livejournal{ background-position:-320px 0; }
+.pluso-theme-light.pluso-round .pluso-liveinternet{ background-position:-360px 0; }
+.pluso-theme-light.pluso-round .pluso-springpad{ background-position:-400px 0; }
+.pluso-theme-light.pluso-round .pluso-stumbleupon{ background-position:-440px 0; }
+.pluso-theme-light.pluso-round .pluso-myspace{ background-position:-480px 0; }
+.pluso-theme-light.pluso-round .pluso-formspring{ background-position:-520px 0; }
+.pluso-theme-light.pluso-round .pluso-blogger{ background-position:-560px 0; }
+.pluso-theme-light.pluso-round .pluso-digg{ background-position:-600px 0; }
+.pluso-theme-light.pluso-round .pluso-surfingbird{ background-position:-640px 0; }
+.pluso-theme-light.pluso-round .pluso-bobrdobr{ background-position:-680px 0; }
+.pluso-theme-light.pluso-round .pluso-readability{ background-position:-720px 0; }
+.pluso-theme-light.pluso-round .pluso-instapaper{ background-position:-760px 0; }
+.pluso-theme-light.pluso-round .pluso-evernote{ background-position:-800px 0; }
+.pluso-theme-light.pluso-round .pluso-bookmark{ background-position:-840px 0; }
+.pluso-theme-light.pluso-round .pluso-email{ background-position:-880px 0; }
+.pluso-theme-light.pluso-round .pluso-print{ background-position:-920px 0; }
+.pluso-theme-light.pluso-round .pluso-vkrugu{ background-position:-960px 0; }
+.pluso-theme-light.pluso-round .pluso-delicious{ background-position:-1000px 0; }
+.pluso-theme-light.pluso-round .pluso-pinme{ background-position:-1040px 0; }
+.pluso-theme-light.pluso-round .pluso-yandex{ background-position:-1080px 0; }
+
+.pluso-theme-dark.pluso-round .pluso-facebook{ background-position:0 -40px; }
+.pluso-theme-dark.pluso-round .pluso-twitter{ background-position:-40px -40px; }
+.pluso-theme-dark.pluso-round .pluso-tumblr{ background-position:-80px -40px; }
+.pluso-theme-dark.pluso-round .pluso-odnoklassniki{ background-position:-120px -40px; }
+.pluso-theme-dark.pluso-round .pluso-vkontakte{ background-position:-160px -40px; }
+.pluso-theme-dark.pluso-round .pluso-pinterest{ background-position:-200px -40px; }
+.pluso-theme-dark.pluso-round .pluso-google{ background-position:-240px -40px; }
+.pluso-theme-dark.pluso-round .pluso-moimir{ background-position:-280px -40px; }
+.pluso-theme-dark.pluso-round .pluso-livejournal{ background-position:-320px -40px; }
+.pluso-theme-dark.pluso-round .pluso-liveinternet{ background-position:-360px -40px; }
+.pluso-theme-dark.pluso-round .pluso-springpad{ background-position:-400px -40px; }
+.pluso-theme-dark.pluso-round .pluso-stumbleupon{ background-position:-440px -40px; }
+.pluso-theme-dark.pluso-round .pluso-myspace{ background-position:-480px -40px; }
+.pluso-theme-dark.pluso-round .pluso-formspring{ background-position:-520px -40px; }
+.pluso-theme-dark.pluso-round .pluso-blogger{ background-position:-560px -40px; }
+.pluso-theme-dark.pluso-round .pluso-digg{ background-position:-600px -40px; }
+.pluso-theme-dark.pluso-round .pluso-surfingbird{ background-position:-640px -40px; }
+.pluso-theme-dark.pluso-round .pluso-bobrdobr{ background-position:-680px -40px; }
+.pluso-theme-dark.pluso-round .pluso-readability{ background-position:-720px -40px; }
+.pluso-theme-dark.pluso-round .pluso-instapaper{ background-position:-760px -40px; }
+.pluso-theme-dark.pluso-round .pluso-evernote{ background-position:-800px -40px; }
+.pluso-theme-dark.pluso-round .pluso-bookmark{ background-position:-840px -40px; }
+.pluso-theme-dark.pluso-round .pluso-email{ background-position:-880px -40px; }
+.pluso-theme-dark.pluso-round .pluso-print{ background-position:-920px -40px; }
+.pluso-theme-dark.pluso-round .pluso-vkrugu{ background-position:-960px -40px }
+.pluso-theme-dark.pluso-round .pluso-delicious{ background-position:-1000px -40px }
+.pluso-theme-dark.pluso-round .pluso-pinme{ background-position:-1040px -40px }
+.pluso-theme-dark.pluso-round .pluso-yandex{ background-position:-1080px -40px }
+
+.pluso-theme-black.pluso-round .pluso-facebook{ background-position:0 -120px; }
+.pluso-theme-black.pluso-round .pluso-twitter{ background-position:-40px -120px; }
+.pluso-theme-black.pluso-round .pluso-tumblr{ background-position:-80px -120px; }
+.pluso-theme-black.pluso-round .pluso-odnoklassniki{ background-position:-120px -120px; }
+.pluso-theme-black.pluso-round .pluso-vkontakte{ background-position:-160px -120px; }
+.pluso-theme-black.pluso-round .pluso-pinterest{ background-position:-200px -120px; }
+.pluso-theme-black.pluso-round .pluso-google{ background-position:-240px -120px; }
+.pluso-theme-black.pluso-round .pluso-moimir{ background-position:-280px -120px; }
+.pluso-theme-black.pluso-round .pluso-livejournal{ background-position:-320px -120px; }
+.pluso-theme-black.pluso-round .pluso-liveinternet{ background-position:-360px -120px; }
+.pluso-theme-black.pluso-round .pluso-springpad{ background-position:-400px -120px; }
+.pluso-theme-black.pluso-round .pluso-stumbleupon{ background-position:-440px -120px; }
+.pluso-theme-black.pluso-round .pluso-myspace{ background-position:-480px -120px; }
+.pluso-theme-black.pluso-round .pluso-formspring{ background-position:-520px -120px; }
+.pluso-theme-black.pluso-round .pluso-blogger{ background-position:-560px -120px; }
+.pluso-theme-black.pluso-round .pluso-digg{ background-position:-600px -120px; }
+.pluso-theme-black.pluso-round .pluso-surfingbird{ background-position:-640px -120px; }
+.pluso-theme-black.pluso-round .pluso-bobrdobr{ background-position:-680px -120px; }
+.pluso-theme-black.pluso-round .pluso-readability{ background-position:-720px -120px; }
+.pluso-theme-black.pluso-round .pluso-instapaper{ background-position:-760px -120px; }
+.pluso-theme-black.pluso-round .pluso-evernote{ background-position:-800px -120px; }
+.pluso-theme-black.pluso-round .pluso-bookmark{ background-position:-840px -120px; }
+.pluso-theme-black.pluso-round .pluso-email{ background-position:-880px -120px; }
+.pluso-theme-black.pluso-round .pluso-print{ background-position:-920px -120px; }
+.pluso-theme-black.pluso-round .pluso-vkrugu{ background-position:-960px -120px }
+.pluso-theme-black.pluso-round .pluso-delicious{ background-position:-1000px -120px }
+.pluso-theme-black.pluso-round .pluso-pinme{ background-position:-1040px -120px }
+.pluso-theme-black.pluso-round .pluso-yandex{ background-position:-1080px -120px }
+
+.pluso-theme-black-bewel.pluso-round .pluso-facebook{ background-position:0 -80px; }
+.pluso-theme-black-bewel.pluso-round .pluso-twitter{ background-position:-40px -80px; }
+.pluso-theme-black-bewel.pluso-round .pluso-tumblr{ background-position:-80px -80px; }
+.pluso-theme-black-bewel.pluso-round .pluso-odnoklassniki{ background-position:-120px -80px; }
+.pluso-theme-black-bewel.pluso-round .pluso-vkontakte{ background-position:-160px -80px; }
+.pluso-theme-black-bewel.pluso-round .pluso-pinterest{ background-position:-200px -80px; }
+.pluso-theme-black-bewel.pluso-round .pluso-google{ background-position:-240px -80px; }
+.pluso-theme-black-bewel.pluso-round .pluso-moimir{ background-position:-280px -80px; }
+.pluso-theme-black-bewel.pluso-round .pluso-livejournal{ background-position:-320px -80px; }
+.pluso-theme-black-bewel.pluso-round .pluso-liveinternet{ background-position:-360px -80px; }
+.pluso-theme-black-bewel.pluso-round .pluso-springpad{ background-position:-400px -80px; }
+.pluso-theme-black-bewel.pluso-round .pluso-stumbleupon{ background-position:-440px -80px; }
+.pluso-theme-black-bewel.pluso-round .pluso-myspace{ background-position:-480px -80px; }
+.pluso-theme-black-bewel.pluso-round .pluso-formspring{ background-position:-520px -80px; }
+.pluso-theme-black-bewel.pluso-round .pluso-blogger{ background-position:-560px -80px; }
+.pluso-theme-black-bewel.pluso-round .pluso-digg{ background-position:-600px -80px; }
+.pluso-theme-black-bewel.pluso-round .pluso-surfingbird{ background-position:-640px -80px; }
+.pluso-theme-black-bewel.pluso-round .pluso-bobrdobr{ background-position:-680px -80px; }
+.pluso-theme-black-bewel.pluso-round .pluso-readability{ background-position:-720px -80px; }
+.pluso-theme-black-bewel.pluso-round .pluso-instapaper{ background-position:-760px -80px; }
+.pluso-theme-black-bewel.pluso-round .pluso-evernote{ background-position:-800px -80px; }
+.pluso-theme-black-bewel.pluso-round .pluso-bookmark{ background-position:-840px -80px; }
+.pluso-theme-black-bewel.pluso-round .pluso-email{ background-position:-880px -80px; }
+.pluso-theme-black-bewel.pluso-round .pluso-print{ background-position:-920px -80px; }
+.pluso-theme-black-bewel.pluso-round .pluso-vkrugu{ background-position:-960px -80px }
+.pluso-theme-black-bewel.pluso-round .pluso-delicious{ background-position:-1000px -80px }
+.pluso-theme-black-bewel.pluso-round .pluso-pinme{ background-position:-1040px -80px }
+.pluso-theme-black-bewel.pluso-round .pluso-yandex{ background-position:-1080px -80px }
+
+.pluso-theme-bewel.pluso-round .pluso-facebook{ background-position:0 -160px; }
+.pluso-theme-bewel.pluso-round .pluso-twitter{ background-position:-40px -160px; }
+.pluso-theme-bewel.pluso-round .pluso-tumblr{ background-position:-80px -160px; }
+.pluso-theme-bewel.pluso-round .pluso-odnoklassniki{ background-position:-120px -160px; }
+.pluso-theme-bewel.pluso-round .pluso-vkontakte{ background-position:-160px -160px; }
+.pluso-theme-bewel.pluso-round .pluso-pinterest{ background-position:-200px -160px; }
+.pluso-theme-bewel.pluso-round .pluso-google{ background-position:-240px -160px; }
+.pluso-theme-bewel.pluso-round .pluso-moimir{ background-position:-280px -160px; }
+.pluso-theme-bewel.pluso-round .pluso-livejournal{ background-position:-320px -160px; }
+.pluso-theme-bewel.pluso-round .pluso-liveinternet{ background-position:-360px -160px; }
+.pluso-theme-bewel.pluso-round .pluso-springpad{ background-position:-400px -160px; }
+.pluso-theme-bewel.pluso-round .pluso-stumbleupon{ background-position:-440px -160px; }
+.pluso-theme-bewel.pluso-round .pluso-myspace{ background-position:-480px -160px; }
+.pluso-theme-bewel.pluso-round .pluso-formspring{ background-position:-520px -160px; }
+.pluso-theme-bewel.pluso-round .pluso-blogger{ background-position:-560px -160px; }
+.pluso-theme-bewel.pluso-round .pluso-digg{ background-position:-600px -160px; }
+.pluso-theme-bewel.pluso-round .pluso-surfingbird{ background-position:-640px -160px; }
+.pluso-theme-bewel.pluso-round .pluso-bobrdobr{ background-position:-680px -160px; }
+.pluso-theme-bewel.pluso-round .pluso-readability{ background-position:-720px -160px; }
+.pluso-theme-bewel.pluso-round .pluso-instapaper{ background-position:-760px -160px; }
+.pluso-theme-bewel.pluso-round .pluso-evernote{ background-position:-800px -160px; }
+.pluso-theme-bewel.pluso-round .pluso-bookmark{ background-position:-840px -160px; }
+.pluso-theme-bewel.pluso-round .pluso-email{ background-position:-880px -160px; }
+.pluso-theme-bewel.pluso-round .pluso-print{ background-position:-920px -160px; }
+.pluso-theme-bewel.pluso-round .pluso-vkrugu{ background-position:-960px -160px }
+.pluso-theme-bewel.pluso-round .pluso-delicious{ background-position:-1000px -160px }
+.pluso-theme-bewel.pluso-round .pluso-pinme{ background-position:-1040px -160px }
+.pluso-theme-bewel.pluso-round .pluso-yandex{ background-position:-1080px -160px }
+
+.pluso-theme-color.pluso-round .pluso-facebook{ background-position:0 -200px; }
+.pluso-theme-color.pluso-round .pluso-twitter{ background-position:-40px -200px; }
+.pluso-theme-color.pluso-round .pluso-tumblr{ background-position:-80px -200px; }
+.pluso-theme-color.pluso-round .pluso-odnoklassniki{ background-position:-120px -200px; }
+.pluso-theme-color.pluso-round .pluso-vkontakte{ background-position:-160px -200px; }
+.pluso-theme-color.pluso-round .pluso-pinterest{ background-position:-200px -200px; }
+.pluso-theme-color.pluso-round .pluso-google{ background-position:-240px -200px; }
+.pluso-theme-color.pluso-round .pluso-moimir{ background-position:-280px -200px; }
+.pluso-theme-color.pluso-round .pluso-livejournal{ background-position:-320px -200px; }
+.pluso-theme-color.pluso-round .pluso-liveinternet{ background-position:-360px -200px; }
+.pluso-theme-color.pluso-round .pluso-springpad{ background-position:-400px -200px; }
+.pluso-theme-color.pluso-round .pluso-stumbleupon{ background-position:-440px -200px; }
+.pluso-theme-color.pluso-round .pluso-myspace{ background-position:-480px -200px; }
+.pluso-theme-color.pluso-round .pluso-formspring{ background-position:-520px -200px; }
+.pluso-theme-color.pluso-round .pluso-blogger{ background-position:-560px -200px; }
+.pluso-theme-color.pluso-round .pluso-digg{ background-position:-600px -200px; }
+.pluso-theme-color.pluso-round .pluso-surfingbird{ background-position:-640px -200px; }
+.pluso-theme-color.pluso-round .pluso-bobrdobr{ background-position:-680px -200px; }
+.pluso-theme-color.pluso-round .pluso-readability{ background-position:-720px -200px; }
+.pluso-theme-color.pluso-round .pluso-instapaper{ background-position:-760px -200px; }
+.pluso-theme-color.pluso-round .pluso-evernote{ background-position:-800px -200px; }
+.pluso-theme-color.pluso-round .pluso-bookmark{ background-position:-840px -200px; }
+.pluso-theme-color.pluso-round .pluso-email{ background-position:-880px -200px; }
+.pluso-theme-color.pluso-round .pluso-print{ background-position:-920px -200px; }
+.pluso-theme-color.pluso-round .pluso-vkrugu{ background-position:-960px -200px }
+.pluso-theme-color.pluso-round .pluso-delicious{ background-position:-1000px -200px }
+.pluso-theme-color.pluso-round .pluso-pinme{ background-position:-1040px -200px }
+.pluso-theme-color.pluso-round .pluso-yandex{ background-position:-1080px -200px }
+
+.pluso-small .pluso-facebook{ background-position:0 0; }
+.pluso-small .pluso-twitter{ background-position:-20px 0; }
+.pluso-small .pluso-tumblr{ background-position:-40px 0; }
+.pluso-small .pluso-odnoklassniki{ background-position:-60px 0; }
+.pluso-small .pluso-vkontakte{ background-position:-80px 0; }
+.pluso-small .pluso-pinterest{ background-position:-100px 0; }
+.pluso-small .pluso-google{ background-position:-120px 0; }
+.pluso-small .pluso-moimir{ background-position:-140px 0; }
+.pluso-small .pluso-livejournal{ background-position:-160px 0; }
+.pluso-small .pluso-liveinternet{ background-position:-180px 0; }
+.pluso-small .pluso-springpad{ background-position:-200px 0; }
+.pluso-small .pluso-stumbleupon{ background-position:-220px 0; }
+.pluso-small .pluso-myspace{ background-position:-240px 0; }
+.pluso-small .pluso-formspring{ background-position:-260px 0; }
+.pluso-small .pluso-blogger{ background-position:-280px 0; }
+.pluso-small .pluso-digg{ background-position:-300px 0; }
+.pluso-small .pluso-surfingbird{ background-position:-320px 0; }
+.pluso-small .pluso-bobrdobr{ background-position:-340px 0; }
+.pluso-small .pluso-readability{ background-position:-360px 0; }
+.pluso-small .pluso-instapaper{ background-position:-380px 0; }
+.pluso-small .pluso-evernote{ background-position:-400px 0; }
+.pluso-small .pluso-bookmark{ background-position:-420px 0; }
+.pluso-small .pluso-email{ background-position:-440px 0; }
+.pluso-small .pluso-print{ background-position:-460px 0; }
+.pluso-small .pluso-vkrugu{ background-position:-480px 0; }
+.pluso-small .pluso-delicious{ background-position:-500px 0; }
+.pluso-small .pluso-pinme{ background-position:-520px 0; }
+.pluso-small .pluso-yandex{ background-position:-540px 0; }
+
+.pluso-theme-light.pluso-small .pluso-facebook{ background-position:0 -20px; }
+.pluso-theme-light.pluso-small .pluso-twitter{ background-position:-20px -20px; }
+.pluso-theme-light.pluso-small .pluso-tumblr{ background-position:-40px -20px; }
+.pluso-theme-light.pluso-small .pluso-odnoklassniki{ background-position:-60px -20px; }
+.pluso-theme-light.pluso-small .pluso-vkontakte{ background-position:-80px -20px; }
+.pluso-theme-light.pluso-small .pluso-pinterest{ background-position:-100px -20px; }
+.pluso-theme-light.pluso-small .pluso-google{ background-position:-120px -20px; }
+.pluso-theme-light.pluso-small .pluso-moimir{ background-position:-140px -20px; }
+.pluso-theme-light.pluso-small .pluso-livejournal{ background-position:-160px -20px; }
+.pluso-theme-light.pluso-small .pluso-liveinternet{ background-position:-180px -20px; }
+.pluso-theme-light.pluso-small .pluso-springpad{ background-position:-200px -20px; }
+.pluso-theme-light.pluso-small .pluso-stumbleupon{ background-position:-220px -20px; }
+.pluso-theme-light.pluso-small .pluso-myspace{ background-position:-240px -20px; }
+.pluso-theme-light.pluso-small .pluso-formspring{ background-position:-260px -20px; }
+.pluso-theme-light.pluso-small .pluso-blogger{ background-position:-280px -20px; }
+.pluso-theme-light.pluso-small .pluso-digg{ background-position:-300px -20px; }
+.pluso-theme-light.pluso-small .pluso-surfingbird{ background-position:-320px -20px; }
+.pluso-theme-light.pluso-small .pluso-bobrdobr{ background-position:-340px -20px; }
+.pluso-theme-light.pluso-small .pluso-readability{ background-position:-360px -20px; }
+.pluso-theme-light.pluso-small .pluso-instapaper{ background-position:-380px -20px; }
+.pluso-theme-light.pluso-small .pluso-evernote{ background-position:-400px -20px; }
+.pluso-theme-light.pluso-small .pluso-bookmark{ background-position:-420px -20px; }
+.pluso-theme-light.pluso-small .pluso-email{ background-position:-440px -20px; }
+.pluso-theme-light.pluso-small .pluso-print{ background-position:-460px -20px; }
+.pluso-theme-light.pluso-small .pluso-vkrugu{ background-position:-480px -20px; }
+.pluso-theme-light.pluso-small .pluso-delicious{ background-position:-500px -20px; }
+.pluso-theme-light.pluso-small .pluso-pinme{ background-position:-520px -20px; }
+.pluso-theme-light.pluso-small .pluso-yandex{ background-position:-540px -20px; }
+
+.pluso-theme-dark.pluso-small .pluso-facebook{ background-position:0 -40px; }
+.pluso-theme-dark.pluso-small .pluso-twitter{ background-position:-20px -40px; }
+.pluso-theme-dark.pluso-small .pluso-tumblr{ background-position:-40px -40px; }
+.pluso-theme-dark.pluso-small .pluso-odnoklassniki{ background-position:-60px -40px; }
+.pluso-theme-dark.pluso-small .pluso-vkontakte{ background-position:-80px -40px; }
+.pluso-theme-dark.pluso-small .pluso-pinterest{ background-position:-100px -40px; }
+.pluso-theme-dark.pluso-small .pluso-google{ background-position:-120px -40px; }
+.pluso-theme-dark.pluso-small .pluso-moimir{ background-position:-140px -40px; }
+.pluso-theme-dark.pluso-small .pluso-livejournal{ background-position:-160px -40px; }
+.pluso-theme-dark.pluso-small .pluso-liveinternet{ background-position:-180px -40px; }
+.pluso-theme-dark.pluso-small .pluso-springpad{ background-position:-200px -40px; }
+.pluso-theme-dark.pluso-small .pluso-stumbleupon{ background-position:-220px -40px; }
+.pluso-theme-dark.pluso-small .pluso-myspace{ background-position:-240px -40px; }
+.pluso-theme-dark.pluso-small .pluso-formspring{ background-position:-260px -40px; }
+.pluso-theme-dark.pluso-small .pluso-blogger{ background-position:-280px -40px; }
+.pluso-theme-dark.pluso-small .pluso-digg{ background-position:-300px -40px; }
+.pluso-theme-dark.pluso-small .pluso-surfingbird{ background-position:-320px -40px; }
+.pluso-theme-dark.pluso-small .pluso-bobrdobr{ background-position:-340px -40px; }
+.pluso-theme-dark.pluso-small .pluso-readability{ background-position:-360px -40px; }
+.pluso-theme-dark.pluso-small .pluso-instapaper{ background-position:-380px -40px; }
+.pluso-theme-dark.pluso-small .pluso-evernote{ background-position:-400px -40px; }
+.pluso-theme-dark.pluso-small .pluso-bookmark{ background-position:-420px -40px; }
+.pluso-theme-dark.pluso-small .pluso-email{ background-position:-440px -40px; }
+.pluso-theme-dark.pluso-small .pluso-print{ background-position:-460px -40px; }
+.pluso-theme-dark.pluso-small .pluso-vkrugu{ background-position:-480px -40px; }
+.pluso-theme-dark.pluso-small .pluso-delicious{ background-position:-500px -40px; }
+.pluso-theme-dark.pluso-small .pluso-pinme{ background-position:-520px -40px; }
+.pluso-theme-dark.pluso-small .pluso-yandex{ background-position:-540px -40px; }
+
+.pluso-theme-black.pluso-small .pluso-facebook{ background-position:0 -100px; }
+.pluso-theme-black.pluso-small .pluso-twitter{ background-position:-20px -100px; }
+.pluso-theme-black.pluso-small .pluso-tumblr{ background-position:-40px -100px; }
+.pluso-theme-black.pluso-small .pluso-odnoklassniki{ background-position:-60px -100px; }
+.pluso-theme-black.pluso-small .pluso-vkontakte{ background-position:-80px -100px; }
+.pluso-theme-black.pluso-small .pluso-pinterest{ background-position:-100px -100px; }
+.pluso-theme-black.pluso-small .pluso-google{ background-position:-120px -100px; }
+.pluso-theme-black.pluso-small .pluso-moimir{ background-position:-140px -100px; }
+.pluso-theme-black.pluso-small .pluso-livejournal{ background-position:-160px -100px; }
+.pluso-theme-black.pluso-small .pluso-liveinternet{ background-position:-180px -100px; }
+.pluso-theme-black.pluso-small .pluso-springpad{ background-position:-200px -100px; }
+.pluso-theme-black.pluso-small .pluso-stumbleupon{ background-position:-220px -100px; }
+.pluso-theme-black.pluso-small .pluso-myspace{ background-position:-240px -100px; }
+.pluso-theme-black.pluso-small .pluso-formspring{ background-position:-260px -100px; }
+.pluso-theme-black.pluso-small .pluso-blogger{ background-position:-280px -100px; }
+.pluso-theme-black.pluso-small .pluso-digg{ background-position:-300px -100px; }
+.pluso-theme-black.pluso-small .pluso-surfingbird{ background-position:-320px -100px; }
+.pluso-theme-black.pluso-small .pluso-bobrdobr{ background-position:-340px -100px; }
+.pluso-theme-black.pluso-small .pluso-readability{ background-position:-360px -100px; }
+.pluso-theme-black.pluso-small .pluso-instapaper{ background-position:-380px -100px; }
+.pluso-theme-black.pluso-small .pluso-evernote{ background-position:-400px -100px; }
+.pluso-theme-black.pluso-small .pluso-bookmark{ background-position:-420px -100px; }
+.pluso-theme-black.pluso-small .pluso-email{ background-position:-440px -100px; }
+.pluso-theme-black.pluso-small .pluso-print{ background-position:-460px -100px; }
+.pluso-theme-black.pluso-small .pluso-vkrugu{ background-position:-480px -100px; }
+.pluso-theme-black.pluso-small .pluso-delicious{ background-position:-500px -100px; }
+.pluso-theme-black.pluso-small .pluso-pinme{ background-position:-520px -100px; }
+.pluso-theme-black.pluso-small .pluso-yandex{ background-position:-540px -100px; }
+
+.pluso-theme-black-bewel.pluso-small .pluso-facebook{ background-position:0 0; }
+.pluso-theme-black-bewel.pluso-small .pluso-twitter{ background-position:-20px 0; }
+.pluso-theme-black-bewel.pluso-small .pluso-tumblr{ background-position:-40px 0; }
+.pluso-theme-black-bewel.pluso-small .pluso-odnoklassniki{ background-position:-60px 0; }
+.pluso-theme-black-bewel.pluso-small .pluso-vkontakte{ background-position:-80px 0; }
+.pluso-theme-black-bewel.pluso-small .pluso-pinterest{ background-position:-100px 0; }
+.pluso-theme-black-bewel.pluso-small .pluso-google{ background-position:-120px 0; }
+.pluso-theme-black-bewel.pluso-small .pluso-moimir{ background-position:-140px 0; }
+.pluso-theme-black-bewel.pluso-small .pluso-livejournal{ background-position:-160px 0; }
+.pluso-theme-black-bewel.pluso-small .pluso-liveinternet{ background-position:-180px 0; }
+.pluso-theme-black-bewel.pluso-small .pluso-springpad{ background-position:-200px 0; }
+.pluso-theme-black-bewel.pluso-small .pluso-stumbleupon{ background-position:-220px 0; }
+.pluso-theme-black-bewel.pluso-small .pluso-myspace{ background-position:-240px 0; }
+.pluso-theme-black-bewel.pluso-small .pluso-formspring{ background-position:-260px 0; }
+.pluso-theme-black-bewel.pluso-small .pluso-blogger{ background-position:-280px 0; }
+.pluso-theme-black-bewel.pluso-small .pluso-digg{ background-position:-300px 0; }
+.pluso-theme-black-bewel.pluso-small .pluso-surfingbird{ background-position:-320px 0; }
+.pluso-theme-black-bewel.pluso-small .pluso-bobrdobr{ background-position:-340px 0; }
+.pluso-theme-black-bewel.pluso-small .pluso-readability{ background-position:-360px 0; }
+.pluso-theme-black-bewel.pluso-small .pluso-instapaper{ background-position:-380px 0; }
+.pluso-theme-black-bewel.pluso-small .pluso-evernote{ background-position:-400px 0; }
+.pluso-theme-black-bewel.pluso-small .pluso-bookmark{ background-position:-420px 0; }
+.pluso-theme-black-bewel.pluso-small .pluso-email{ background-position:-440px 0; }
+.pluso-theme-black-bewel.pluso-small .pluso-print{ background-position:-460px 0; }
+.pluso-theme-black-bewel.pluso-small .pluso-vkrugu{ background-position:-480px 0; }
+.pluso-theme-black-bewel.pluso-small .pluso-delicious{ background-position:-500px 0; }
+.pluso-theme-black-bewel.pluso-small .pluso-pinme{ background-position:-520px 0; }
+.pluso-theme-black-bewel.pluso-small .pluso-yandex{ background-position:-540px 0; }
+
+.pluso-theme-bewel.pluso-small .pluso-facebook{ background-position:0 -60px; }
+.pluso-theme-bewel.pluso-small .pluso-twitter{ background-position:-20px -60px; }
+.pluso-theme-bewel.pluso-small .pluso-tumblr{ background-position:-40px -60px; }
+.pluso-theme-bewel.pluso-small .pluso-odnoklassniki{ background-position:-60px -60px; }
+.pluso-theme-bewel.pluso-small .pluso-vkontakte{ background-position:-80px -60px; }
+.pluso-theme-bewel.pluso-small .pluso-pinterest{ background-position:-100px -60px; }
+.pluso-theme-bewel.pluso-small .pluso-google{ background-position:-120px -60px; }
+.pluso-theme-bewel.pluso-small .pluso-moimir{ background-position:-140px -60px; }
+.pluso-theme-bewel.pluso-small .pluso-livejournal{ background-position:-160px -60px; }
+.pluso-theme-bewel.pluso-small .pluso-liveinternet{ background-position:-180px -60px; }
+.pluso-theme-bewel.pluso-small .pluso-springpad{ background-position:-200px -60px; }
+.pluso-theme-bewel.pluso-small .pluso-stumbleupon{ background-position:-220px -60px; }
+.pluso-theme-bewel.pluso-small .pluso-myspace{ background-position:-240px -60px; }
+.pluso-theme-bewel.pluso-small .pluso-formspring{ background-position:-260px -60px; }
+.pluso-theme-bewel.pluso-small .pluso-blogger{ background-position:-280px -60px; }
+.pluso-theme-bewel.pluso-small .pluso-digg{ background-position:-300px -60px; }
+.pluso-theme-bewel.pluso-small .pluso-surfingbird{ background-position:-320px -60px; }
+.pluso-theme-bewel.pluso-small .pluso-bobrdobr{ background-position:-340px -60px; }
+.pluso-theme-bewel.pluso-small .pluso-readability{ background-position:-360px -60px; }
+.pluso-theme-bewel.pluso-small .pluso-instapaper{ background-position:-380px -60px; }
+.pluso-theme-bewel.pluso-small .pluso-evernote{ background-position:-400px -60px; }
+.pluso-theme-bewel.pluso-small .pluso-bookmark{ background-position:-420px -60px; }
+.pluso-theme-bewel.pluso-small .pluso-email{ background-position:-440px -60px; }
+.pluso-theme-bewel.pluso-small .pluso-print{ background-position:-460px -60px; }
+.pluso-theme-bewel.pluso-small .pluso-vkrugu{ background-position:-480px -60px; }
+.pluso-theme-bewel.pluso-small .pluso-delicious{ background-position:-500px -60px; }
+.pluso-theme-bewel.pluso-small .pluso-pinme{ background-position:-520px -60px; }
+.pluso-theme-bewel.pluso-small .pluso-yandex{ background-position:-540px -60px; }
+
+.pluso-theme-color.pluso-small .pluso-facebook{ background-position:0 -80px; }
+.pluso-theme-color.pluso-small .pluso-twitter{ background-position:-20px -80px; }
+.pluso-theme-color.pluso-small .pluso-tumblr{ background-position:-40px -80px; }
+.pluso-theme-color.pluso-small .pluso-odnoklassniki{ background-position:-60px -80px; }
+.pluso-theme-color.pluso-small .pluso-vkontakte{ background-position:-80px -80px; }
+.pluso-theme-color.pluso-small .pluso-pinterest{ background-position:-100px -80px; }
+.pluso-theme-color.pluso-small .pluso-google{ background-position:-120px -80px; }
+.pluso-theme-color.pluso-small .pluso-moimir{ background-position:-140px -80px; }
+.pluso-theme-color.pluso-small .pluso-livejournal{ background-position:-160px -80px; }
+.pluso-theme-color.pluso-small .pluso-liveinternet{ background-position:-180px -80px; }
+.pluso-theme-color.pluso-small .pluso-springpad{ background-position:-200px -80px; }
+.pluso-theme-color.pluso-small .pluso-stumbleupon{ background-position:-220px -80px; }
+.pluso-theme-color.pluso-small .pluso-myspace{ background-position:-240px -80px; }
+.pluso-theme-color.pluso-small .pluso-formspring{ background-position:-260px -80px; }
+.pluso-theme-color.pluso-small .pluso-blogger{ background-position:-280px -80px; }
+.pluso-theme-color.pluso-small .pluso-digg{ background-position:-300px -80px; }
+.pluso-theme-color.pluso-small .pluso-surfingbird{ background-position:-320px -80px; }
+.pluso-theme-color.pluso-small .pluso-bobrdobr{ background-position:-340px -80px; }
+.pluso-theme-color.pluso-small .pluso-readability{ background-position:-360px -80px; }
+.pluso-theme-color.pluso-small .pluso-instapaper{ background-position:-380px -80px; }
+.pluso-theme-color.pluso-small .pluso-evernote{ background-position:-400px -80px; }
+.pluso-theme-color.pluso-small .pluso-bookmark{ background-position:-420px -80px; }
+.pluso-theme-color.pluso-small .pluso-email{ background-position:-440px -80px; }
+.pluso-theme-color.pluso-small .pluso-print{ background-position:-460px -80px; }
+.pluso-theme-color.pluso-small .pluso-vkrugu{ background-position:-480px -80px; }
+.pluso-theme-color.pluso-small .pluso-delicious{ background-position:-500px -80px; }
+.pluso-theme-color.pluso-small .pluso-pinme{ background-position:-520px -80px; }
+.pluso-theme-color.pluso-small .pluso-yandex{ background-position:-540px -80px; }
+
+
+
+.pluso-theme-light.pluso-small.pluso-round .pluso-facebook{ background-position:0 -140px;}
+.pluso-theme-light.pluso-small.pluso-round .pluso-twitter{ background-position:-20px -140px;}
+.pluso-theme-light.pluso-small.pluso-round .pluso-tumblr{ background-position:-40px -140px;}
+.pluso-theme-light.pluso-small.pluso-round .pluso-odnoklassniki{ background-position:-60px -140px;}
+.pluso-theme-light.pluso-small.pluso-round .pluso-vkontakte{ background-position:-80px -140px;}
+.pluso-theme-light.pluso-small.pluso-round .pluso-pinterest{ background-position:-100px -140px;}
+.pluso-theme-light.pluso-small.pluso-round .pluso-google{ background-position:-120px -140px;}
+.pluso-theme-light.pluso-small.pluso-round .pluso-moimir{ background-position:-140px -140px;}
+.pluso-theme-light.pluso-small.pluso-round .pluso-livejournal{ background-position:-160px -140px;}
+.pluso-theme-light.pluso-small.pluso-round .pluso-liveinternet{ background-position:-180px -140px;}
+.pluso-theme-light.pluso-small.pluso-round .pluso-springpad{ background-position:-200px -140px;}
+.pluso-theme-light.pluso-small.pluso-round .pluso-stumbleupon{ background-position:-220px -140px;}
+.pluso-theme-light.pluso-small.pluso-round .pluso-myspace{ background-position:-240px -140px;}
+.pluso-theme-light.pluso-small.pluso-round .pluso-formspring{ background-position:-260px -140px;}
+.pluso-theme-light.pluso-small.pluso-round .pluso-blogger{ background-position:-280px -140px;}
+.pluso-theme-light.pluso-small.pluso-round .pluso-digg{ background-position:-300px -140px;}
+.pluso-theme-light.pluso-small.pluso-round .pluso-surfingbird{ background-position:-320px -140px;}
+.pluso-theme-light.pluso-small.pluso-round .pluso-bobrdobr{ background-position:-340px -140px;}
+.pluso-theme-light.pluso-small.pluso-round .pluso-readability{ background-position:-360px -140px;}
+.pluso-theme-light.pluso-small.pluso-round .pluso-instapaper{ background-position:-380px -140px;}
+.pluso-theme-light.pluso-small.pluso-round .pluso-evernote{ background-position:-400px -140px;}
+.pluso-theme-light.pluso-small.pluso-round .pluso-bookmark{ background-position:-420px -140px;}
+.pluso-theme-light.pluso-small.pluso-round .pluso-email{ background-position:-440px -140px;}
+.pluso-theme-light.pluso-small.pluso-round .pluso-print{ background-position:-460px -140px;}
+.pluso-theme-light.pluso-small.pluso-round .pluso-vkrugu{ background-position:-480px -140px; }
+.pluso-theme-light.pluso-small.pluso-round .pluso-delicious{ background-position:-500px -140px; }
+.pluso-theme-light.pluso-small.pluso-round .pluso-pinme{ background-position:-520px -140px; }
+.pluso-theme-light.pluso-small.pluso-round .pluso-yandex{ background-position:-540px -140px; }
+
+.pluso-theme-dark.pluso-small.pluso-round .pluso-facebook{ background-position:0 -160px;}
+.pluso-theme-dark.pluso-small.pluso-round .pluso-twitter{ background-position:-20px -160px;}
+.pluso-theme-dark.pluso-small.pluso-round .pluso-tumblr{ background-position:-40px -160px;}
+.pluso-theme-dark.pluso-small.pluso-round .pluso-odnoklassniki{ background-position:-60px -160px;}
+.pluso-theme-dark.pluso-small.pluso-round .pluso-vkontakte{ background-position:-80px -160px;}
+.pluso-theme-dark.pluso-small.pluso-round .pluso-pinterest{ background-position:-100px -160px;}
+.pluso-theme-dark.pluso-small.pluso-round .pluso-google{ background-position:-120px -160px;}
+.pluso-theme-dark.pluso-small.pluso-round .pluso-moimir{ background-position:-140px -160px;}
+.pluso-theme-dark.pluso-small.pluso-round .pluso-livejournal{ background-position:-160px -160px;}
+.pluso-theme-dark.pluso-small.pluso-round .pluso-liveinternet{ background-position:-180px -160px;}
+.pluso-theme-dark.pluso-small.pluso-round .pluso-springpad{ background-position:-200px -160px;}
+.pluso-theme-dark.pluso-small.pluso-round .pluso-stumbleupon{ background-position:-220px -160px;}
+.pluso-theme-dark.pluso-small.pluso-round .pluso-myspace{ background-position:-240px -160px;}
+.pluso-theme-dark.pluso-small.pluso-round .pluso-formspring{ background-position:-260px -160px;}
+.pluso-theme-dark.pluso-small.pluso-round .pluso-blogger{ background-position:-280px -160px;}
+.pluso-theme-dark.pluso-small.pluso-round .pluso-digg{ background-position:-300px -160px;}
+.pluso-theme-dark.pluso-small.pluso-round .pluso-surfingbird{ background-position:-320px -160px;}
+.pluso-theme-dark.pluso-small.pluso-round .pluso-bobrdobr{ background-position:-340px -160px;}
+.pluso-theme-dark.pluso-small.pluso-round .pluso-readability{ background-position:-360px -160px;}
+.pluso-theme-dark.pluso-small.pluso-round .pluso-instapaper{ background-position:-380px -160px;}
+.pluso-theme-dark.pluso-small.pluso-round .pluso-evernote{ background-position:-400px -160px;}
+.pluso-theme-dark.pluso-small.pluso-round .pluso-bookmark{ background-position:-420px -160px;}
+.pluso-theme-dark.pluso-small.pluso-round .pluso-email{ background-position:-440px -160px;}
+.pluso-theme-dark.pluso-small.pluso-round .pluso-print{ background-position:-460px -160px;}
+.pluso-theme-dark.pluso-small.pluso-round .pluso-vkrugu{ background-position:-480px -160px; }
+.pluso-theme-dark.pluso-small.pluso-round .pluso-delicious{ background-position:-500px -160px; }
+.pluso-theme-dark.pluso-small.pluso-round .pluso-pinme{ background-position:-520px -160px; }
+.pluso-theme-dark.pluso-small.pluso-round .pluso-yandex{ background-position:-540px -160px; }
+
+.pluso-theme-black.pluso-small.pluso-round .pluso-facebook{ background-position:0 -220px;}
+.pluso-theme-black.pluso-small.pluso-round .pluso-twitter{ background-position:-20px -220px;}
+.pluso-theme-black.pluso-small.pluso-round .pluso-tumblr{ background-position:-40px -220px;}
+.pluso-theme-black.pluso-small.pluso-round .pluso-odnoklassniki{ background-position:-60px -220px;}
+.pluso-theme-black.pluso-small.pluso-round .pluso-vkontakte{ background-position:-80px -220px;}
+.pluso-theme-black.pluso-small.pluso-round .pluso-pinterest{ background-position:-100px -220px;}
+.pluso-theme-black.pluso-small.pluso-round .pluso-google{ background-position:-120px -220px;}
+.pluso-theme-black.pluso-small.pluso-round .pluso-moimir{ background-position:-140px -220px;}
+.pluso-theme-black.pluso-small.pluso-round .pluso-livejournal{ background-position:-160px -220px;}
+.pluso-theme-black.pluso-small.pluso-round .pluso-liveinternet{ background-position:-180px -220px;}
+.pluso-theme-black.pluso-small.pluso-round .pluso-springpad{ background-position:-200px -220px;}
+.pluso-theme-black.pluso-small.pluso-round .pluso-stumbleupon{ background-position:-220px -220px;}
+.pluso-theme-black.pluso-small.pluso-round .pluso-myspace{ background-position:-240px -220px;}
+.pluso-theme-black.pluso-small.pluso-round .pluso-formspring{ background-position:-260px -220px;}
+.pluso-theme-black.pluso-small.pluso-round .pluso-blogger{ background-position:-280px -220px;}
+.pluso-theme-black.pluso-small.pluso-round .pluso-digg{ background-position:-300px -220px;}
+.pluso-theme-black.pluso-small.pluso-round .pluso-surfingbird{ background-position:-320px -220px;}
+.pluso-theme-black.pluso-small.pluso-round .pluso-bobrdobr{ background-position:-340px -220px;}
+.pluso-theme-black.pluso-small.pluso-round .pluso-readability{ background-position:-360px -220px;}
+.pluso-theme-black.pluso-small.pluso-round .pluso-instapaper{ background-position:-380px -220px;}
+.pluso-theme-black.pluso-small.pluso-round .pluso-evernote{ background-position:-400px -220px;}
+.pluso-theme-black.pluso-small.pluso-round .pluso-bookmark{ background-position:-420px -220px;}
+.pluso-theme-black.pluso-small.pluso-round .pluso-email{ background-position:-440px -220px;}
+.pluso-theme-black.pluso-small.pluso-round .pluso-print{ background-position:-460px -220px;}
+.pluso-theme-black.pluso-small.pluso-round .pluso-vkrugu{ background-position:-480px -220px; }
+.pluso-theme-black.pluso-small.pluso-round .pluso-delicious{ background-position:-500px -220px; }
+.pluso-theme-black.pluso-small.pluso-round .pluso-pinme{ background-position:-520px -220px; }
+.pluso-theme-black.pluso-small.pluso-round .pluso-yandex{ background-position:-540px -220px; }
+
+.pluso-theme-black-bewel.pluso-small.pluso-round .pluso-facebook{ background-position:0 -120px;}
+.pluso-theme-black-bewel.pluso-small.pluso-round .pluso-twitter{ background-position:-20px -120px;}
+.pluso-theme-black-bewel.pluso-small.pluso-round .pluso-tumblr{ background-position:-40px -120px;}
+.pluso-theme-black-bewel.pluso-small.pluso-round .pluso-odnoklassniki{ background-position:-60px -120px;}
+.pluso-theme-black-bewel.pluso-small.pluso-round .pluso-vkontakte{ background-position:-80px -120px;}
+.pluso-theme-black-bewel.pluso-small.pluso-round .pluso-pinterest{ background-position:-100px -120px;}
+.pluso-theme-black-bewel.pluso-small.pluso-round .pluso-google{ background-position:-120px -120px;}
+.pluso-theme-black-bewel.pluso-small.pluso-round .pluso-moimir{ background-position:-140px -120px;}
+.pluso-theme-black-bewel.pluso-small.pluso-round .pluso-livejournal{ background-position:-160px -120px;}
+.pluso-theme-black-bewel.pluso-small.pluso-round .pluso-liveinternet{ background-position:-180px -120px;}
+.pluso-theme-black-bewel.pluso-small.pluso-round .pluso-springpad{ background-position:-200px -120px;}
+.pluso-theme-black-bewel.pluso-small.pluso-round .pluso-stumbleupon{ background-position:-220px -120px;}
+.pluso-theme-black-bewel.pluso-small.pluso-round .pluso-myspace{ background-position:-240px -120px;}
+.pluso-theme-black-bewel.pluso-small.pluso-round .pluso-formspring{ background-position:-260px -120px;}
+.pluso-theme-black-bewel.pluso-small.pluso-round .pluso-blogger{ background-position:-280px -120px;}
+.pluso-theme-black-bewel.pluso-small.pluso-round .pluso-digg{ background-position:-300px -120px;}
+.pluso-theme-black-bewel.pluso-small.pluso-round .pluso-surfingbird{ background-position:-320px -120px;}
+.pluso-theme-black-bewel.pluso-small.pluso-round .pluso-bobrdobr{ background-position:-340px -120px;}
+.pluso-theme-black-bewel.pluso-small.pluso-round .pluso-readability{ background-position:-360px -120px;}
+.pluso-theme-black-bewel.pluso-small.pluso-round .pluso-instapaper{ background-position:-380px -120px;}
+.pluso-theme-black-bewel.pluso-small.pluso-round .pluso-evernote{ background-position:-400px -120px;}
+.pluso-theme-black-bewel.pluso-small.pluso-round .pluso-bookmark{ background-position:-420px -120px;}
+.pluso-theme-black-bewel.pluso-small.pluso-round .pluso-email{ background-position:-440px -120px;}
+.pluso-theme-black-bewel.pluso-small.pluso-round .pluso-print{ background-position:-460px -120px;}
+.pluso-theme-black-bewel.pluso-small.pluso-round .pluso-vkrugu{ background-position:-480px -120px; }
+.pluso-theme-black-bewel.pluso-small.pluso-round .pluso-delicious{ background-position:-500px -120px; }
+.pluso-theme-black-bewel.pluso-small.pluso-round .pluso-pinme{ background-position:-520px -120px; }
+.pluso-theme-black-bewel.pluso-small.pluso-round .pluso-yandex{ background-position:-540px -120px; }
+
+.pluso-theme-bewel.pluso-small.pluso-round .pluso-facebook{ background-position:0 -180px;}
+.pluso-theme-bewel.pluso-small.pluso-round .pluso-twitter{ background-position:-20px -180px;}
+.pluso-theme-bewel.pluso-small.pluso-round .pluso-tumblr{ background-position:-40px -180px;}
+.pluso-theme-bewel.pluso-small.pluso-round .pluso-odnoklassniki{ background-position:-60px -180px;}
+.pluso-theme-bewel.pluso-small.pluso-round .pluso-vkontakte{ background-position:-80px -180px;}
+.pluso-theme-bewel.pluso-small.pluso-round .pluso-pinterest{ background-position:-100px -180px;}
+.pluso-theme-bewel.pluso-small.pluso-round .pluso-google{ background-position:-120px -180px;}
+.pluso-theme-bewel.pluso-small.pluso-round .pluso-moimir{ background-position:-140px -180px;}
+.pluso-theme-bewel.pluso-small.pluso-round .pluso-livejournal{ background-position:-160px -180px;}
+.pluso-theme-bewel.pluso-small.pluso-round .pluso-liveinternet{ background-position:-180px -180px;}
+.pluso-theme-bewel.pluso-small.pluso-round .pluso-springpad{ background-position:-200px -180px;}
+.pluso-theme-bewel.pluso-small.pluso-round .pluso-stumbleupon{ background-position:-220px -180px;}
+.pluso-theme-bewel.pluso-small.pluso-round .pluso-myspace{ background-position:-240px -180px;}
+.pluso-theme-bewel.pluso-small.pluso-round .pluso-formspring{ background-position:-260px -180px;}
+.pluso-theme-bewel.pluso-small.pluso-round .pluso-blogger{ background-position:-280px -180px;}
+.pluso-theme-bewel.pluso-small.pluso-round .pluso-digg{ background-position:-300px -180px;}
+.pluso-theme-bewel.pluso-small.pluso-round .pluso-surfingbird{ background-position:-320px -180px;}
+.pluso-theme-bewel.pluso-small.pluso-round .pluso-bobrdobr{ background-position:-340px -180px;}
+.pluso-theme-bewel.pluso-small.pluso-round .pluso-readability{ background-position:-360px -180px;}
+.pluso-theme-bewel.pluso-small.pluso-round .pluso-instapaper{ background-position:-380px -180px;}
+.pluso-theme-bewel.pluso-small.pluso-round .pluso-evernote{ background-position:-400px -180px;}
+.pluso-theme-bewel.pluso-small.pluso-round .pluso-bookmark{ background-position:-420px -180px;}
+.pluso-theme-bewel.pluso-small.pluso-round .pluso-email{ background-position:-440px -180px;}
+.pluso-theme-bewel.pluso-small.pluso-round .pluso-print{ background-position:-460px -180px;}
+.pluso-theme-bewel.pluso-small.pluso-round .pluso-vkrugu{ background-position:-480px -180px; }
+.pluso-theme-bewel.pluso-small.pluso-round .pluso-delicious{ background-position:-500px -180px; }
+.pluso-theme-bewel.pluso-small.pluso-round .pluso-pinme{ background-position:-520px -180px; }
+.pluso-theme-bewel.pluso-small.pluso-round .pluso-yandex{ background-position:-540px -180px; }
+
+.pluso-theme-color.pluso-small.pluso-round .pluso-facebook{ background-position:0 -200px;}
+.pluso-theme-color.pluso-small.pluso-round .pluso-twitter{ background-position:-20px -200px;}
+.pluso-theme-color.pluso-small.pluso-round .pluso-tumblr{ background-position:-40px -200px;}
+.pluso-theme-color.pluso-small.pluso-round .pluso-odnoklassniki{ background-position:-60px -200px;}
+.pluso-theme-color.pluso-small.pluso-round .pluso-vkontakte{ background-position:-80px -200px;}
+.pluso-theme-color.pluso-small.pluso-round .pluso-pinterest{ background-position:-100px -200px;}
+.pluso-theme-color.pluso-small.pluso-round .pluso-google{ background-position:-120px -200px;}
+.pluso-theme-color.pluso-small.pluso-round .pluso-moimir{ background-position:-140px -200px;}
+.pluso-theme-color.pluso-small.pluso-round .pluso-livejournal{ background-position:-160px -200px;}
+.pluso-theme-color.pluso-small.pluso-round .pluso-liveinternet{ background-position:-180px -200px;}
+.pluso-theme-color.pluso-small.pluso-round .pluso-springpad{ background-position:-200px -200px;}
+.pluso-theme-color.pluso-small.pluso-round .pluso-stumbleupon{ background-position:-220px -200px;}
+.pluso-theme-color.pluso-small.pluso-round .pluso-myspace{ background-position:-240px -200px;}
+.pluso-theme-color.pluso-small.pluso-round .pluso-formspring{ background-position:-260px -200px;}
+.pluso-theme-color.pluso-small.pluso-round .pluso-blogger{ background-position:-280px -200px;}
+.pluso-theme-color.pluso-small.pluso-round .pluso-digg{ background-position:-300px -200px;}
+.pluso-theme-color.pluso-small.pluso-round .pluso-surfingbird{ background-position:-320px -200px;}
+.pluso-theme-color.pluso-small.pluso-round .pluso-bobrdobr{ background-position:-340px -200px;}
+.pluso-theme-color.pluso-small.pluso-round .pluso-readability{ background-position:-360px -200px;}
+.pluso-theme-color.pluso-small.pluso-round .pluso-instapaper{ background-position:-380px -200px;}
+.pluso-theme-color.pluso-small.pluso-round .pluso-evernote{ background-position:-400px -200px;}
+.pluso-theme-color.pluso-small.pluso-round .pluso-bookmark{ background-position:-420px -200px;}
+.pluso-theme-color.pluso-small.pluso-round .pluso-email{ background-position:-440px -200px;}
+.pluso-theme-color.pluso-small.pluso-round .pluso-print{ background-position:-460px -200px;}
+.pluso-theme-color.pluso-small.pluso-round .pluso-vkrugu{ background-position:-480px -200px; }
+.pluso-theme-color.pluso-small.pluso-round .pluso-delicious{ background-position:-500px -200px; }
+.pluso-theme-color.pluso-small.pluso-round .pluso-pinme{ background-position:-520px -200px; }
+.pluso-theme-color.pluso-small.pluso-round .pluso-yandex{ background-position:-540px -200px; }
+
+.pluso-box u{ display:inline-block; vertical-align:middle; height:20px; width:20px; margin-right:4px; margin-bottom:2px; background:url('/img/pluso-like/sprite_small.png') 0 0 transparent no-repeat; }
+
+.pluso-box .pluso-facebook u{ background-position:0 -200px;}
+.pluso-box .pluso-twitter u{ background-position:-20px -200px;}
+.pluso-box .pluso-tumblr u{ background-position:-40px -200px;}
+.pluso-box .pluso-odnoklassniki u{ background-position:-60px -200px;}
+.pluso-box .pluso-vkontakte u{ background-position:-80px -200px;}
+.pluso-box .pluso-pinterest u{ background-position:-100px -200px;}
+.pluso-box .pluso-google u{ background-position:-120px -200px;}
+.pluso-box .pluso-moimir u{ background-position:-140px -200px;}
+.pluso-box .pluso-livejournal u{ background-position:-160px -200px;}
+.pluso-box .pluso-liveinternet u{ background-position:-180px -200px;}
+.pluso-box .pluso-springpad u{ background-position:-200px -200px;}
+.pluso-box .pluso-stumbleupon u{ background-position:-220px -200px;}
+.pluso-box .pluso-myspace u{ background-position:-240px -200px;}
+.pluso-box .pluso-formspring u{ background-position:-260px -200px;}
+.pluso-box .pluso-blogger u{ background-position:-280px -200px;}
+.pluso-box .pluso-digg u{ background-position:-300px -200px;}
+.pluso-box .pluso-surfingbird u{ background-position:-320px -200px;}
+.pluso-box .pluso-bobrdobr u{ background-position:-340px -200px;}
+.pluso-box .pluso-readability u{ background-position:-360px -200px;}
+.pluso-box .pluso-instapaper u{ background-position:-380px -200px;}
+.pluso-box .pluso-evernote u{ background-position:-400px -200px;}
+.pluso-box .pluso-bookmark u{ background-position:-420px -200px;}
+.pluso-box .pluso-email u{ background-position:-440px -200px;}
+.pluso-box .pluso-print u{ background-position:-460px -200px;}
+.pluso-box .pluso-vkrugu u{ background-position:-480px -200px; }
+.pluso-box .pluso-delicious u{ background-position:-500px -200px; }
+.pluso-box .pluso-pinme u{ background-position:-520px -200px; }
+.pluso-box .pluso-yandex u{ background-position:-540px -200px; }

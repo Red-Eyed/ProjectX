@@ -1,0 +1,1 @@
+if (typeof pluso != "undefined") pluso.setCounter("0", "http://microtechnics.ru/stm32cube-usb-custom-hid-sozdanie-deskriptorov-ustrojstva/", undefined, undefined, undefined);

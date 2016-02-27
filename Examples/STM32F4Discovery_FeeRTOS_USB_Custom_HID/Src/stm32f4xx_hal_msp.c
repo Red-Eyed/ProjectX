@@ -1,4 +1,4 @@
-/**
+/**tttttttttt
   ******************************************************************************
   * File Name          : stm32f4xx_hal_msp.c
   * Description        : This file provides code for the MSP Initialization 
@@ -35,7 +35,7 @@
 #include "stm32f4xx_hal.h"
 
 /* USER CODE BEGIN 0 */
-#include <stm32f407xx.h>
+
 /* USER CODE END 0 */
 
 /**

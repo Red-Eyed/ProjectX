@@ -5,7 +5,7 @@
 ######################################
 # target
 ######################################
-TARGET = STM32F4Discovery_USB
+TARGET = STM32F4Discovery_FeeRTOS_USB_Custom_HID
 
 ######################################
 # building variables
@@ -21,56 +21,60 @@ OPT = -O0
 # source path
 # Build path
 BUILD_DIR = build
+PRJ_PATH = /home/vadimstupakov/GIT/ProjectX/Examples/STM32F4Discovery_FeeRTOS_USB_Custom_HID
+REPO_PATH = /home/vadimstupakov/GIT/ProjectX
 
 ######################################
 # source
 ######################################
-C_SOURCES = \
-  ./Src/freertos.c \
-  ./Src/gpio.c \
-  ./Src/main.c \
-  ./Src/stm32f4xx_hal_msp.c \
-  ./Src/stm32f4xx_it.c \
-  ./Src/tim.c \
-  ./Src/usb_device.c \
-  ./Src/usbd_conf.c \
-  ./Src/usbd_custom_hid_if.c \
-  ./Src/usbd_desc.c \
-  ./Src/wwdg.c \
-  /home/vadimstupakov/Data/STM32/STM32Cube/Repository/STM32Cube_FW_F4_V1.10.0/Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/system_stm32f4xx.c \
-  /home/vadimstupakov/Data/STM32/STM32Cube/Repository/STM32Cube_FW_F4_V1.10.0/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c \
-  /home/vadimstupakov/Data/STM32/STM32Cube/Repository/STM32Cube_FW_F4_V1.10.0/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c \
-  /home/vadimstupakov/Data/STM32/STM32Cube/Repository/STM32Cube_FW_F4_V1.10.0/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c \
-  /home/vadimstupakov/Data/STM32/STM32Cube/Repository/STM32Cube_FW_F4_V1.10.0/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c \
-  /home/vadimstupakov/Data/STM32/STM32Cube/Repository/STM32Cube_FW_F4_V1.10.0/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c \
-  /home/vadimstupakov/Data/STM32/STM32Cube/Repository/STM32Cube_FW_F4_V1.10.0/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c \
-  /home/vadimstupakov/Data/STM32/STM32Cube/Repository/STM32Cube_FW_F4_V1.10.0/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c \
-  /home/vadimstupakov/Data/STM32/STM32Cube/Repository/STM32Cube_FW_F4_V1.10.0/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c \
-  /home/vadimstupakov/Data/STM32/STM32Cube/Repository/STM32Cube_FW_F4_V1.10.0/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.c \
-  /home/vadimstupakov/Data/STM32/STM32Cube/Repository/STM32Cube_FW_F4_V1.10.0/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c \
-  /home/vadimstupakov/Data/STM32/STM32Cube/Repository/STM32Cube_FW_F4_V1.10.0/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c \
-  /home/vadimstupakov/Data/STM32/STM32Cube/Repository/STM32Cube_FW_F4_V1.10.0/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c \
-  /home/vadimstupakov/Data/STM32/STM32Cube/Repository/STM32Cube_FW_F4_V1.10.0/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c \
-  /home/vadimstupakov/Data/STM32/STM32Cube/Repository/STM32Cube_FW_F4_V1.10.0/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c \
-  /home/vadimstupakov/Data/STM32/STM32Cube/Repository/STM32Cube_FW_F4_V1.10.0/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c \
-  /home/vadimstupakov/Data/STM32/STM32Cube/Repository/STM32Cube_FW_F4_V1.10.0/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c \
-  /home/vadimstupakov/Data/STM32/STM32Cube/Repository/STM32Cube_FW_F4_V1.10.0/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_wwdg.c \
-  /home/vadimstupakov/Data/STM32/STM32Cube/Repository/STM32Cube_FW_F4_V1.10.0/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c \
-  /home/vadimstupakov/Data/STM32/STM32Cube/Repository/STM32Cube_FW_F4_V1.10.0/Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Src/usbd_customhid.c \
-  /home/vadimstupakov/Data/STM32/STM32Cube/Repository/STM32Cube_FW_F4_V1.10.0/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c \
-  /home/vadimstupakov/Data/STM32/STM32Cube/Repository/STM32Cube_FW_F4_V1.10.0/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c \
-  /home/vadimstupakov/Data/STM32/STM32Cube/Repository/STM32Cube_FW_F4_V1.10.0/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c \
-  /home/vadimstupakov/Data/STM32/STM32Cube/Repository/STM32Cube_FW_F4_V1.10.0/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c \
-  /home/vadimstupakov/Data/STM32/STM32Cube/Repository/STM32Cube_FW_F4_V1.10.0/Middlewares/Third_Party/FreeRTOS/Source/croutine.c \
-  /home/vadimstupakov/Data/STM32/STM32Cube/Repository/STM32Cube_FW_F4_V1.10.0/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c \
-  /home/vadimstupakov/Data/STM32/STM32Cube/Repository/STM32Cube_FW_F4_V1.10.0/Middlewares/Third_Party/FreeRTOS/Source/list.c \
-  /home/vadimstupakov/Data/STM32/STM32Cube/Repository/STM32Cube_FW_F4_V1.10.0/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c \
-  /home/vadimstupakov/Data/STM32/STM32Cube/Repository/STM32Cube_FW_F4_V1.10.0/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c \
-  /home/vadimstupakov/Data/STM32/STM32Cube/Repository/STM32Cube_FW_F4_V1.10.0/Middlewares/Third_Party/FreeRTOS/Source/queue.c \
-  /home/vadimstupakov/Data/STM32/STM32Cube/Repository/STM32Cube_FW_F4_V1.10.0/Middlewares/Third_Party/FreeRTOS/Source/tasks.c \
-  /home/vadimstupakov/Data/STM32/STM32Cube/Repository/STM32Cube_FW_F4_V1.10.0/Middlewares/Third_Party/FreeRTOS/Source/timers.c  
-ASM_SOURCES = \
-  /home/vadimstupakov/Data/STM32/STM32Cube/Repository/STM32Cube_FW_F4_V1.10.0/Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/gcc/startup_stm32f407xx.s
+C_SOURCES =  \
+    $(PRJ_PATH)/Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/system_stm32f4xx.c \
+    $(PRJ_PATH)/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c \
+    $(PRJ_PATH)/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c \
+    $(PRJ_PATH)/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c \
+    $(PRJ_PATH)/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c \
+    $(PRJ_PATH)/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c \
+    $(PRJ_PATH)/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c \
+    $(PRJ_PATH)/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c \
+    $(PRJ_PATH)/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c \
+    $(PRJ_PATH)/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.c \
+    $(PRJ_PATH)/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c \
+    $(PRJ_PATH)/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c \
+    $(PRJ_PATH)/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c \
+    $(PRJ_PATH)/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c \
+    $(PRJ_PATH)/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c \
+    $(PRJ_PATH)/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc.c \
+    $(PRJ_PATH)/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc_ex.c \
+    $(PRJ_PATH)/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c \
+    $(PRJ_PATH)/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c \
+    $(PRJ_PATH)/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c \
+    $(PRJ_PATH)/Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Src/usbd_customhid.c \
+    $(PRJ_PATH)/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c \
+    $(PRJ_PATH)/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c \
+    $(PRJ_PATH)/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c \
+    $(PRJ_PATH)/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c \
+    $(PRJ_PATH)/Middlewares/Third_Party/FreeRTOS/Source/croutine.c \
+    $(PRJ_PATH)/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c \
+    $(PRJ_PATH)/Middlewares/Third_Party/FreeRTOS/Source/list.c \
+    $(PRJ_PATH)/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c \
+    $(PRJ_PATH)/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c \
+    $(PRJ_PATH)/Middlewares/Third_Party/FreeRTOS/Source/queue.c \
+    $(PRJ_PATH)/Middlewares/Third_Party/FreeRTOS/Source/tasks.c \
+    $(PRJ_PATH)/Middlewares/Third_Party/FreeRTOS/Source/timers.c \
+    $(PRJ_PATH)/Src/freertos.c \
+    $(PRJ_PATH)/Src/gpio.c \
+    $(PRJ_PATH)/Src/main.c \
+    $(PRJ_PATH)/Src/stm32f4xx_hal_msp.c \
+    $(PRJ_PATH)/Src/stm32f4xx_hal_timebase_TIM.c \
+    $(PRJ_PATH)/Src/stm32f4xx_it.c \
+    $(PRJ_PATH)/Src/usb_device.c \
+    $(PRJ_PATH)/Src/usbd_conf.c \
+    $(PRJ_PATH)/Src/usbd_custom_hid_if.c \
+    $(PRJ_PATH)/Src/usbd_desc.c 
+  
+ASM_SOURCES =  \
+    $(PRJ_PATH)/Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/gcc/startup_stm32f407xx.s 
+
 
 #######################################
 # binaries
@@ -87,20 +91,28 @@ BIN = $(CP) -O binary -S
 # CFLAGS
 #######################################
 # macros for gcc
-AS_DEFS =
-C_DEFS = -D__packed="__attribute__\(\(__packed__\)\)" -DUSE_HAL_DRIVER -DSTM32F407xx
+ASM_DEFS = \
+
+C_DEFS = \
+    -D__packed="__attribute__\(\(__packed__\)\)" \
+    -DUSE_HAL_DRIVER \
+    -DSTM32F407xx 
+
 # includes for gcc
-AS_INCLUDES =
-C_INCLUDES = -IInc
-C_INCLUDES += -I/home/vadimstupakov/Data/STM32/STM32Cube/Repository/STM32Cube_FW_F4_V1.10.0/Drivers/STM32F4xx_HAL_Driver/Inc
-C_INCLUDES += -I/home/vadimstupakov/Data/STM32/STM32Cube/Repository/STM32Cube_FW_F4_V1.10.0/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy
-C_INCLUDES += -I/home/vadimstupakov/Data/STM32/STM32Cube/Repository/STM32Cube_FW_F4_V1.10.0/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
-C_INCLUDES += -I/home/vadimstupakov/Data/STM32/STM32Cube/Repository/STM32Cube_FW_F4_V1.10.0/Middlewares/ST/STM32_USB_Device_Library/Core/Inc
-C_INCLUDES += -I/home/vadimstupakov/Data/STM32/STM32Cube/Repository/STM32Cube_FW_F4_V1.10.0/Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc
-C_INCLUDES += -I/home/vadimstupakov/Data/STM32/STM32Cube/Repository/STM32Cube_FW_F4_V1.10.0/Middlewares/Third_Party/FreeRTOS/Source/include
-C_INCLUDES += -I/home/vadimstupakov/Data/STM32/STM32Cube/Repository/STM32Cube_FW_F4_V1.10.0/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS
-C_INCLUDES += -I/home/vadimstupakov/Data/STM32/STM32Cube/Repository/STM32Cube_FW_F4_V1.10.0/Drivers/CMSIS/Include
-C_INCLUDES += -I/home/vadimstupakov/Data/STM32/STM32Cube/Repository/STM32Cube_FW_F4_V1.10.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include
+ASM_INCLUDES = 
+
+C_INCLUDES = \
+    -I$(PRJ_PATH)/Inc \
+    -I$(PRJ_PATH)/Drivers/STM32F4xx_HAL_Driver/Inc \
+    -I$(PRJ_PATH)/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy \
+    -I$(PRJ_PATH)/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F \
+    -I$(PRJ_PATH)/Middlewares/ST/STM32_USB_Device_Library/Core/Inc \
+    -I$(PRJ_PATH)/Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc \
+    -I$(PRJ_PATH)/Middlewares/Third_Party/FreeRTOS/Source/include \
+    -I$(PRJ_PATH)/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS \
+    -I$(PRJ_PATH)/Drivers/CMSIS/Include \
+    -I$(PRJ_PATH)/Drivers/CMSIS/Device/ST/STM32F4xx/Include 
+
 # compile gcc flags
 ASFLAGS = -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=softfp $(AS_DEFS) $(AS_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections
 CFLAGS = -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=softfp $(C_DEFS) $(C_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections
@@ -163,7 +175,5 @@ clean:
 #######################################
 -include $(shell mkdir .dep 2>/dev/null) $(wildcard .dep/*)
 
-flash:
-	openocd -f /usr/share/openocd/scripts/board/stm32f4discovery.cfg -c "program "$(BUILD_DIR)/$(TARGET).elf" verify reset"
-
 # *** EOF ***
+

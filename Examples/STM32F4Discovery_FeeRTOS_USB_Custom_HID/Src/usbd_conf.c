@@ -67,6 +67,7 @@ void HAL_PCD_MspInit(PCD_HandleTypeDef* hpcd)
     /**USB_OTG_FS GPIO Configuration    
     PA8     ------> USB_OTG_FS_SOF
     PA9     ------> USB_OTG_FS_VBUS
+    PA10     ------> USB_OTG_FS_ID
     PA11     ------> USB_OTG_FS_DM
     PA12     ------> USB_OTG_FS_DP 
     */
@@ -82,7 +83,7 @@ void HAL_PCD_MspInit(PCD_HandleTypeDef* hpcd)
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     HAL_GPIO_Init(VBUS_FS_GPIO_Port, &GPIO_InitStruct);
 
-    GPIO_InitStruct.Pin = OTG_FS_DM_Pin|OTG_FS_DP_Pin;
+    GPIO_InitStruct.Pin = OTG_FS_ID_Pin|OTG_FS_DM_Pin|OTG_FS_DP_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     GPIO_InitStruct.Speed = GPIO_SPEED_LOW;
@@ -114,10 +115,12 @@ void HAL_PCD_MspDeInit(PCD_HandleTypeDef* hpcd)
     /**USB_OTG_FS GPIO Configuration    
     PA8     ------> USB_OTG_FS_SOF
     PA9     ------> USB_OTG_FS_VBUS
+    PA10     ------> USB_OTG_FS_ID
     PA11     ------> USB_OTG_FS_DM
     PA12     ------> USB_OTG_FS_DP 
     */
-    HAL_GPIO_DeInit(GPIOA, GPIO_PIN_8|VBUS_FS_Pin|OTG_FS_DM_Pin|OTG_FS_DP_Pin);
+    HAL_GPIO_DeInit(GPIOA, GPIO_PIN_8|VBUS_FS_Pin|OTG_FS_ID_Pin|OTG_FS_DM_Pin 
+                          |OTG_FS_DP_Pin);
 
     /* Peripheral interrupt Deinit*/
     HAL_NVIC_DisableIRQ(OTG_FS_IRQn);
@@ -496,6 +499,7 @@ uint32_t USBD_LL_GetRxDataSize  (USBD_HandleTypeDef *pdev, uint8_t  ep_addr)
 {
   return HAL_PCD_EP_GetRxCount(pdev->pData, ep_addr);
 }
+
 #if (USBD_LPM_ENABLED == 1)
 /**
   * @brief  HAL_PCDEx_LPM_Callback : Send LPM message to user layer

@@ -78,47 +78,29 @@ int main(void)
   MX_USB_DEVICE_Init();
 
   /* USER CODE BEGIN 2 */
-  uint8_t Buffer[USBD_CUSTOMHID_OUTREPORT_BUF_SIZE+1];
-  const uint8_t delay = 100;
+  uint8_t Buffer[CUSTOM_HID_EPIN_SIZE];
+  const uint8_t delay = 1000;
+  int i = 0;
+  uint8_t status = 0;
+
+  for(i = 0; i < CUSTOM_HID_EPIN_SIZE; ++i)
+    Buffer[i] = i;
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    GPIO_PinState LED3_state;
-    GPIO_PinState LED4_state;
-    GPIO_PinState LED5_state;
-    GPIO_PinState LED6_state;
-
-    LED3_state = HAL_GPIO_ReadPin(LD3_GPIO_Port, LD3_Pin);
-    LED4_state = HAL_GPIO_ReadPin(LD4_GPIO_Port, LD4_Pin);
-    LED5_state = HAL_GPIO_ReadPin(LD5_GPIO_Port, LD5_Pin);
-    LED6_state = HAL_GPIO_ReadPin(LD6_GPIO_Port, LD6_Pin);
-
-    Buffer[0] = 4;
-    Buffer[1] = LED3_state;
-    Buffer[2] = LED4_state;
-    Buffer[3] = LED5_state;
-    Buffer[4] = LED6_state;
-
     HAL_Delay(delay);
-    HAL_GPIO_TogglePin(LD3_GPIO_Port, LD3_Pin);
+    if(!status)
+    for(i = 0; i < CUSTOM_HID_EPIN_SIZE; ++i)
+      Buffer[i] += 1;
 
-    HAL_Delay(delay);
-    HAL_GPIO_TogglePin(LD4_GPIO_Port, LD4_Pin);
+    status = USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, Buffer, CUSTOM_HID_EPIN_SIZE);
 
-    HAL_Delay(delay);
-    HAL_GPIO_TogglePin(LD5_GPIO_Port, LD5_Pin);
+    /* USER CODE END WHILE */
 
-    HAL_Delay(delay);
-    HAL_GPIO_TogglePin(LD6_GPIO_Port, LD6_Pin);
-
-    USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, Buffer, 5);
-
-  /* USER CODE END WHILE */
-
-  /* USER CODE BEGIN 3 */
+    /* USER CODE BEGIN 3 */
 
   }
   /* USER CODE END 3 */
@@ -147,8 +129,8 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.PLL.PLLQ = 7;
   HAL_RCC_OscConfig(&RCC_OscInitStruct);
 
-  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_SYSCLK|RCC_CLOCKTYPE_PCLK1
-                              |RCC_CLOCKTYPE_PCLK2;
+  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
+      |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
@@ -189,7 +171,7 @@ void assert_failed(uint8_t* file, uint32_t line)
 
 /**
   * @}
-  */ 
+  */
 
 /**
   * @}

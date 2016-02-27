@@ -43,6 +43,10 @@ C_SOURCES =  \
     $(PRJ_PATH)/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c \
     $(PRJ_PATH)/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c \
     $(PRJ_PATH)/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c \
+    $(PRJ_PATH)/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc.c \
+    $(PRJ_PATH)/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc_ex.c \
+    $(PRJ_PATH)/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c \
+    $(PRJ_PATH)/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c \
     $(PRJ_PATH)/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c \
     $(PRJ_PATH)/Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Src/usbd_customhid.c \
     $(PRJ_PATH)/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c \
@@ -88,13 +92,12 @@ ASM_INCLUDES =
 
 C_INCLUDES = \
     -I$(PRJ_PATH)/Inc \
-    -I$(REPO_PATH)/Drivers/STM32F4xx_HAL_Driver/Inc \
-    -I$(REPO_PATH)/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy \
-    -I$(REPO_PATH)/Middlewares/ST/STM32_USB_Device_Library/Core/Inc \
-    -I$(REPO_PATH)/Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc \
-    -I$(REPO_PATH)/Drivers/CMSIS/Include \
-    -I$(REPO_PATH)/Drivers/CMSIS/Device/ST/STM32F4xx/Include \
-    -I$(PRJ_PATH)/Inc 
+    -I$(PRJ_PATH)/Drivers/STM32F4xx_HAL_Driver/Inc \
+    -I$(PRJ_PATH)/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy \
+    -I$(PRJ_PATH)/Middlewares/ST/STM32_USB_Device_Library/Core/Inc \
+    -I$(PRJ_PATH)/Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc \
+    -I$(PRJ_PATH)/Drivers/CMSIS/Include \
+    -I$(PRJ_PATH)/Drivers/CMSIS/Device/ST/STM32F4xx/Include 
 
 # compile gcc flags
 ASFLAGS = -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=softfp $(AS_DEFS) $(AS_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections

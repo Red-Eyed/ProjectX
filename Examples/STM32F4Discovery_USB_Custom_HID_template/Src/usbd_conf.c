@@ -499,6 +499,7 @@ uint32_t USBD_LL_GetRxDataSize  (USBD_HandleTypeDef *pdev, uint8_t  ep_addr)
 {
   return HAL_PCD_EP_GetRxCount(pdev->pData, ep_addr);
 }
+
 #if (USBD_LPM_ENABLED == 1)
 /**
   * @brief  HAL_PCDEx_LPM_Callback : Send LPM message to user layer

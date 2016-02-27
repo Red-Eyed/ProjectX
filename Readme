@@ -1,8 +1,21 @@
-1. wget http://www.st.com/st-web-ui/static/active/en/st_prod_software_internet/resource/technical/software/sw_development_suite/stm32cubemx.zip
-2. unzip stm32cubemx.zip
-3. java -jar SetupSTM32CubeMX-4.12.0.exe
-4. Run and install designated libraries for the chip. Go to Help -> Install New Libraries.
 
+1. Preparing system:
+    1. wget http://www.st.com/st-web-ui/static/active/en/st_prod_software_internet/resource/technical/software/sw_development_suite/stm32cubemx.zip
+    2. unzip stm32cubemx.zip
+    3. sudo java -jar SetupSTM32CubeMX-4.12.0.exe
+    4. Run and install designated libraries for the chip. Go to Help -> Install New Libraries.
+    5. Run ./prepare_system.sh
 
+2. Creating project:
+    1. Run STM32CubeMX(as root)
+    2. File->New Project select your Board and MCU. for example: Board:Discovery, MCU Series:STM32F4.
+    3. Configure your project in STM32CubeMX.
+    4. Project->Settings: Set project name, Toolchain/IDE: SW4STM32, Copy ALL libraries(yes, only ALL)
+    5. Project->Generate Code.
+
+ 3. Generating Project
+    1. Open terminal and make "cd" to ProjectX path.
+    2. Open ./users.config.sh file and set variables like in example in ./users.config.sh file.
+    3. Save ./users.config.sh exit and run ./generate_qtcreator_poject.sh. In project location you'll find Qt Creator project
 
 

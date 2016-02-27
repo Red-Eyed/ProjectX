@@ -2,7 +2,6 @@
 
 # installing arm toolchain and needed packages
 sudo apt-get update
-sudo apt-get upgrade
 sudo apt-get install gcc-arm-none-eabi
 sudo apt-get install gdb-arm-none-eabi
 sudo apt-get install automake
@@ -40,4 +39,6 @@ cd -
 
 echo "export PATH=\"\$PATH:$PWD/CubeMX2Makefile\"" >> ~/.bashrc
 . ~/.bashrc
+
+
 

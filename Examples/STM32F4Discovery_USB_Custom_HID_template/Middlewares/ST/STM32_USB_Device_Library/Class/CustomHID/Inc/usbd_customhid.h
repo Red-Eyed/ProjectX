@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    usbd_customhid.h
   * @author  MCD Application Team
-  * @version V2.4.1
-  * @date    19-June-2015
+  * @version V2.4.2
+  * @date    11-December-2015
   * @brief   header file for the usbd_customhid.c file.
   ******************************************************************************
   * @attention
@@ -50,10 +50,10 @@
   * @{
   */ 
 #define CUSTOM_HID_EPIN_ADDR                 0x81
-#define CUSTOM_HID_EPIN_SIZE                 0x02
+#define CUSTOM_HID_EPIN_SIZE                 0x04
 
 #define CUSTOM_HID_EPOUT_ADDR                0x01
-#define CUSTOM_HID_EPOUT_SIZE                0x0a
+#define CUSTOM_HID_EPOUT_SIZE                0x04
 
 #define USB_CUSTOM_HID_CONFIG_DESC_SIZ       41
 #define USB_CUSTOM_HID_DESC_SIZ              9

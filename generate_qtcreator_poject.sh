@@ -2,8 +2,7 @@
 
 source ./users.config.sh
 
-if [ "$STM32_CUBE_MX_INCLUDE_PATH" == "" ] ||
-   [ "$DEFINES" == "" ] ||
+if [ "$DEFINES" == "" ] ||
    [ "$PROJECT_PATH" == "" ] ||
    [ "$OPENOCD_CFG_FILE" == "" ]; then
     echo "Please, set variables in the users.config.sh!"
@@ -18,7 +17,7 @@ elif [ ! -d "$PROJECT_PATH" ]; then
     exit -1
 fi
 
-sudo chown -R $USER:$USER $PROJECT_PATH
+sudo chown -R $USER:$USER $PROJECT_PATH/*
 find -L $PROJECT_PATH -type f | xargs -I{} chmod 666 {}
 
 PROJECT_NAME="$(find -L "$PROJECT_PATH" -type f -regex '.*\.ioc' | sed -e 's/\(.*\)\.ioc/\1/g')"
@@ -30,7 +29,7 @@ else
 fi
 
 FILES=$(find -L "$PROJECT_PATH" -type f | grep -E ".*(\.(c|cpp|s|S|asm|h)|Makefile)$")
-INCLUDES=$(find -L $PROJECT_PATH $STM32_CUBE_MX_INCLUDE_PATH/Middlewares $STM32_CUBE_MX_INCLUDE_PATH/Drivers -type f -regex ".*\.h$" | xargs dirname | sort | uniq)
+INCLUDES=$(find -L $PROJECT_PATH -type f -regex ".*\.h$" | xargs dirname | sort | uniq)
 
 printf "%s\n" $FILES           > "$PROJECT_PATH/$PROJECT_NAME.files"
 printf "%s\n" $INCLUDES        > "$PROJECT_PATH/$PROJECT_NAME.includes"

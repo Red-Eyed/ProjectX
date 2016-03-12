@@ -38,12 +38,12 @@ printf "#define %s\n" $DEFINES > "$PROJECT_PATH/$PROJECT_NAME.config"
 
 # Removing -I from include file
 sed -i "s/^-I//g" "$PROJECT_PATH/$PROJECT_NAME.includes"
-
 # Removing -D from define file
 sed -i "s/-D//g" "$PROJECT_PATH/$PROJECT_NAME.config"
-
 # Removing "weak"
 sed -i "/.*weak.*/d" "$PROJECT_PATH/Makefile"
+# Removing SW4STM32 dir
+rm -rf "$PROJECT_PATH/SW4STM32"
 
 printf "\
 #!/bin/bash\n\

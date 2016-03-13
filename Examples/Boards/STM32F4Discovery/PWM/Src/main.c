@@ -33,7 +33,6 @@
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_hal.h"
 #include "tim.h"
-#include "usb_device.h"
 #include "gpio.h"
 
 /* USER CODE BEGIN Includes */
@@ -76,32 +75,44 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_USB_DEVICE_Init();
-  MX_TIM6_Init();
   MX_TIM4_Init();
 
   /* USER CODE BEGIN 2 */
-  HAL_TIM_Base_Start_IT(&htim6);
+  //HAL_TIM_Base_Start_IT(&htim6);
+  HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_1);
+  HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_2);
   HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_3);
+  HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_4);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   uint32_t counter = 1;
   uint8_t flag = 1;
-  uint8_t nops = 0;
+  uint32_t nops = 0;
   while (1)
   {
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
 
-      for(nops = 1;nops < 128; ++nops){__NOP();}
+  // Simple dalay
+  for(nops = 1;nops < 256; ++nops){__NOP();}
 
-  if(flag)
-    htim4.Instance->CCR3 = counter++;
-  else
-    htim4.Instance->CCR3 = counter--;
+  if(flag){
+    htim4.Instance->CCR1 = counter;
+    htim4.Instance->CCR2 = counter;
+    htim4.Instance->CCR3 = counter;
+    htim4.Instance->CCR4 = counter;
+    ++counter;
+  }
+  else{
+    htim4.Instance->CCR1 = counter;
+    htim4.Instance->CCR2 = counter;
+    htim4.Instance->CCR3 = counter;
+    htim4.Instance->CCR4 = counter;
+    --counter;
+  }
 
   if(counter >= 0xFFFD){
       flag = 0;

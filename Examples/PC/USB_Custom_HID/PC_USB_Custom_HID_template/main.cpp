@@ -2,8 +2,9 @@
 #include <stdio.h>
 #include <errno.h>
 #include <string.h>
+#include <inttypes.h>
 
-#define BUF_SIZE 5
+#define BUF_SIZE 4
 
 #define ID_VENDOR 0x483
 #define ID_PID 0x5750
@@ -62,14 +63,16 @@ int main(){
     char USB_data[BUF_SIZE];
     memset(USB_data, 0, BUF_SIZE);
 
-    ret = usb_bulk_read(dev, EP_OUT, USB_data, CUSTOM_HID_EPIN_SIZE, 0);
-    if (ret < 0){
-        printf("error reading:\n%s\n", usb_strerror());
-    }
-    else{
-        printf("success: bulk read %d bytes\n", ret);
-        for(int i = 0; i < BUF_SIZE; ++i)
-            printf("%d ", USB_data[i]);
+    while(1){
+        memset(USB_data, 0, BUF_SIZE);
+        ret = usb_bulk_read(dev, EP_OUT, USB_data, CUSTOM_HID_EPIN_SIZE, 0);
+        if (ret < 0){
+            printf("error reading:\n%s\n", usb_strerror());
+        }
+        else{
+            printf("success: bulk read %d bytes\n", ret);
+            printf("%u\n", *((uint32_t*)USB_data));
+        }
     }
 
     printf("\n");

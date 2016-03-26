@@ -3,6 +3,7 @@
 #include <errno.h>
 #include <string.h>
 #include <inttypes.h>
+#include <byteswap.h>
 
 #define BUF_SIZE 4
 
@@ -61,6 +62,7 @@ int main(){
     int ret=0;
 
     char USB_data[BUF_SIZE];
+    uint32_t data = 0;
     memset(USB_data, 0, BUF_SIZE);
 
     while(1){
@@ -68,10 +70,12 @@ int main(){
         ret = usb_bulk_read(dev, EP_OUT, USB_data, CUSTOM_HID_EPIN_SIZE, 0);
         if (ret < 0){
             printf("error reading:\n%s\n", usb_strerror());
+            break;
         }
         else{
+            data = (*(uint32_t*)USB_data);
             printf("success: bulk read %d bytes\n", ret);
-            printf("%u\n", *((uint32_t*)USB_data));
+            printf("%u\n", data);
         }
     }
 

@@ -38,8 +38,7 @@
 #include "gpio.h"
 
 /* USER CODE BEGIN 0 */
-//pulse_length = ((TIM_Period + 1) * DutyCycle) / 100 - 1
-int DutyCycle = 0;
+
 /* USER CODE END 0 */
 
 TIM_HandleTypeDef htim5;
@@ -64,10 +63,10 @@ void MX_TIM5_Init(void)
   sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
   HAL_TIMEx_MasterConfigSynchronization(&htim5, &sMasterConfig);
 
-  sConfigIC.ICPolarity = TIM_INPUTCHANNELPOLARITY_FALLING;
+  sConfigIC.ICPolarity = TIM_INPUTCHANNELPOLARITY_BOTHEDGE;
   sConfigIC.ICSelection = TIM_ICSELECTION_DIRECTTI;
   sConfigIC.ICPrescaler = TIM_ICPSC_DIV1;
-  sConfigIC.ICFilter = 2;
+  sConfigIC.ICFilter = 0;
   HAL_TIM_IC_ConfigChannel(&htim5, &sConfigIC, TIM_CHANNEL_1);
 
   sConfigOC.OCMode = TIM_OCMODE_PWM1;
@@ -91,9 +90,9 @@ void HAL_TIM_IC_MspInit(TIM_HandleTypeDef* htim_ic)
   /* USER CODE END TIM5_MspInit 0 */
     /* Peripheral clock enable */
     __TIM5_CLK_ENABLE();
-  
-    /**TIM5 GPIO Configuration    
-    PA0-WKUP     ------> TIM5_CH1 
+
+    /**TIM5 GPIO Configuration
+    PA0-WKUP     ------> TIM5_CH1
     */
     GPIO_InitStruct.Pin = GPIO_PIN_0;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
@@ -119,9 +118,9 @@ void HAL_TIM_MspPostInit(TIM_HandleTypeDef* htim)
   /* USER CODE BEGIN TIM5_MspPostInit 0 */
 
   /* USER CODE END TIM5_MspPostInit 0 */
-  
-    /**TIM5 GPIO Configuration    
-    PA1     ------> TIM5_CH2 
+
+    /**TIM5 GPIO Configuration
+    PA1     ------> TIM5_CH2
     */
     GPIO_InitStruct.Pin = GPIO_PIN_1;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
@@ -147,10 +146,10 @@ void HAL_TIM_IC_MspDeInit(TIM_HandleTypeDef* htim_ic)
   /* USER CODE END TIM5_MspDeInit 0 */
     /* Peripheral clock disable */
     __TIM5_CLK_DISABLE();
-  
-    /**TIM5 GPIO Configuration    
+
+    /**TIM5 GPIO Configuration
     PA0-WKUP     ------> TIM5_CH1
-    PA1     ------> TIM5_CH2 
+    PA1     ------> TIM5_CH2
     */
     HAL_GPIO_DeInit(GPIOA, GPIO_PIN_0|GPIO_PIN_1);
 
@@ -161,7 +160,7 @@ void HAL_TIM_IC_MspDeInit(TIM_HandleTypeDef* htim_ic)
   /* USER CODE BEGIN TIM5_MspDeInit 1 */
 
   /* USER CODE END TIM5_MspDeInit 1 */
-} 
+}
 
 /* USER CODE BEGIN 1 */
 

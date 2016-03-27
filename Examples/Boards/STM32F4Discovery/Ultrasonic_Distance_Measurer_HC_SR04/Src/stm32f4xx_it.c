@@ -39,11 +39,31 @@
 #include "usbd_custom_hid_if.h"
 #include "usb_device.h"
 
-uint32_t high_level_delay = 0;
-uint8_t edge = TIM_INPUTCHANNELPOLARITY_RISING;
+const uint32_t tim_clock = 84000000; // 84 MHz
+const uint16_t sonic_velocity = 340; // 340 M/S
+uint8_t  edge = 0;
 uint32_t capture_value_raising = 0;
 uint32_t capture_value_falling = 0;
 uint32_t distance = 0;
+
+void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
+{
+  if(edge == TIM_INPUTCHANNELPOLARITY_RISING){
+    edge = TIM_INPUTCHANNELPOLARITY_FALLING;
+    capture_value_raising = HAL_TIM_ReadCapturedValue(htim, TIM_CHANNEL_1);
+  }
+  else if(edge == TIM_INPUTCHANNELPOLARITY_FALLING){
+    capture_value_falling = HAL_TIM_ReadCapturedValue(htim, TIM_CHANNEL_1);
+    float capture_value = capture_value_falling - capture_value_raising;
+    distance = ((sonic_velocity * (capture_value / tim_clock)) / 2.0) * 10000; // mm
+    USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, (uint8_t*)&distance, CUSTOM_HID_EPOUT_SIZE);
+  }
+}
+
+void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim)
+{
+  edge = TIM_INPUTCHANNELPOLARITY_RISING;
+}
 
 /* USER CODE END 0 */
 
@@ -83,20 +103,6 @@ void SysTick_Handler(void)
 void TIM5_IRQHandler(void)
 {
   /* USER CODE BEGIN TIM5_IRQn 0 */
-
-  if(__HAL_TIM_GET_IT_SOURCE(&htim5, TIM_IT_CC1) != RESET){
-    if(edge == TIM_INPUTCHANNELPOLARITY_RISING){
-      edge = TIM_INPUTCHANNELPOLARITY_FALLING;
-      capture_value_raising = HAL_TIM_ReadCapturedValue(&htim5, TIM_CHANNEL_1);
-    }
-    else if(edge == TIM_INPUTCHANNELPOLARITY_FALLING){
-      edge = TIM_INPUTCHANNELPOLARITY_RISING;
-      capture_value_falling = HAL_TIM_ReadCapturedValue(&htim5, TIM_CHANNEL_1);
-    }
-    uint32_t capture_value = capture_value_falling - capture_value_raising;
-    distance = ((340.0 * (capture_value / 840000000.0)) / 2.0) * 10000; // mm
-    USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, (uint8_t*)&distance, CUSTOM_HID_EPOUT_SIZE);
-  }
 
   /* USER CODE END TIM5_IRQn 0 */
   HAL_TIM_IRQHandler(&htim5);

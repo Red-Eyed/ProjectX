@@ -82,6 +82,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
   HAL_TIM_IC_Start_IT(&htim5, TIM_CHANNEL_1);
   HAL_TIM_PWM_Start(&htim5, TIM_CHANNEL_2);
+  HAL_TIM_PWM_Start_IT(&htim5, TIM_CHANNEL_2);
   HAL_GPIO_WritePin(GPIOD, GPIO_PIN_14, GPIO_PIN_RESET);
   /* USER CODE END 2 */
 
@@ -93,7 +94,6 @@ int main(void)
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
-//  HAL_TIM_PWM_Start(&htim5, TIM_CHANNEL_2);
   HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_14);
   HAL_Delay(1000);
 

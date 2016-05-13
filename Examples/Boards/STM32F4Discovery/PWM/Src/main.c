@@ -78,47 +78,40 @@ int main(void)
   MX_TIM4_Init();
 
   /* USER CODE BEGIN 2 */
-  //HAL_TIM_Base_Start_IT(&htim6);
   HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_1);
   HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_2);
   HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_3);
   HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_4);
+
+  //pulse_length = ((TIM_Period + 1) * DutyCycle) / 100 - 1
+  uint32_t pulse_length = 0;
+  uint32_t duty_cycle = 0;
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  uint32_t counter = 1;
-  uint8_t flag = 1;
-  uint32_t nops = 0;
   while (1)
   {
-  /* USER CODE END WHILE */
+    /* USER CODE END WHILE */
 
-  /* USER CODE BEGIN 3 */
+    /* USER CODE BEGIN 3 */
 
-  // Simple dalay
-  for(nops = 1;nops < 256; ++nops){__NOP();}
+    if(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0) == GPIO_PIN_SET)
+    {
+      HAL_Delay(500);
+      duty_cycle += 10;
+      pulse_length = ((htim4.Init.Period + 1) * duty_cycle) / 100 - 1;
+    }
 
-  if(flag){
-    htim4.Instance->CCR1 = counter;
-    htim4.Instance->CCR2 = counter;
-    htim4.Instance->CCR3 = counter;
-    htim4.Instance->CCR4 = counter;
-    ++counter;
-  }
-  else{
-    htim4.Instance->CCR1 = counter;
-    htim4.Instance->CCR2 = counter;
-    htim4.Instance->CCR3 = counter;
-    htim4.Instance->CCR4 = counter;
-    --counter;
-  }
 
-  if(counter >= 0xFFFD){
-      flag = 0;
-  }
-  else if(counter == 0)
-      flag = 1;
+    htim4.Instance->CCR1 += pulse_length;
+    htim4.Instance->CCR2 += pulse_length;
+    htim4.Instance->CCR3 += pulse_length;
+    htim4.Instance->CCR4 += pulse_length;
+
+    if(pulse_length >= 100){
+      pulse_length = 0;
+    }
   }
   /* USER CODE END 3 */
 

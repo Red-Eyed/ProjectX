@@ -48,7 +48,7 @@ rm -rf "$PROJECT_PATH/SW4STM32"
 printf "\
 #!/bin/bash\n\
 FIRMWARE=\$(find -L \$PWD -iregex \".*\.elf$\")\n\
-openocd -f $OPENOCD_CFG_FILE -c \"program \"\$FIRMWARE\" verify reset\"\n\
+openocd -f $OPENOCD_CFG_FILE -c \"program \\\"\$FIRMWARE\\\" verify reset exit\"\n\
 " > $PROJECT_PATH/flash.sh
 chmod +x $PROJECT_PATH/flash.sh
 

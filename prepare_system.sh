@@ -10,7 +10,7 @@ sudo apt-get install autoconf pkg-config libusb-1.0 git
 sudo apt-get install libusb-1.0-0 libusb-1.0-0-dbg libusb-1.0-0-dev
 sudo apt-get install openocd
 sudo apt-get install qtcreator
-
+sudo apt-get install libncurses5-dev # for advanced output to terminal
 
 # Allow Users Access to USB Devices
 ST_LINK_FILE_RULES="45-usb-stlink-v2.rules"

@@ -64,15 +64,11 @@ int main(){
   char USB_data[CUSTOM_HID_EPIN_SIZE];
   memset(USB_data, 0, CUSTOM_HID_EPIN_SIZE);
 
-  int USB_data_len = 0;
   while(1){
-    USB_data_len = strlen(USB_data);
-    for(int i = 0; i < USB_data_len; ++i)
-      printf("\b");
 
-    ret = usb_bulk_read(dev, EP_OUT, USB_data, CUSTOM_HID_EPIN_SIZE, 0);
+    ret = usb_bulk_read(dev, EP_OUT, USB_data, CUSTOM_HID_EPIN_SIZE, 0x1000);
     if (ret < 0){
-      printf("error reading:\n%s\n", usb_strerror());
+      printf("error reading:%s\n", usb_strerror());
       break;
     }
     else{
@@ -81,6 +77,8 @@ int main(){
       clear();
     }
   }
+
+  endwin();
 
   printf("\n");
 

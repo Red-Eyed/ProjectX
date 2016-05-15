@@ -56,18 +56,14 @@ void SystemClock_Config(void);
 /* Private function prototypes -----------------------------------------------*/
 void SPI_send(uint8_t address, uint8_t data);
 uint8_t SPI_read(uint8_t address);
-void Sort_Signed(int16_t A[], uint8_t L);       // Bubble sort min to max, input: Array/Length
-float gToDegrees(float V, float H);             // output: degrees between two planes, input: Vertical/Horizontal force
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
 uint8_t i;
-uint8_t MSB, LSB;
+int16_t MSB, LSB;
 int16_t Xg, Yg, Zg;                             // 16-bit values from accelerometer
-float x_average;                                // x average of samples
-float y_average;                                // y average of samples
-float z_average;                                // z average of samples
-
+int16_t Xc, Yc, Zc;                             // Compensative values
+int16_t temperature;
 char print_buffer[CUSTOM_HID_EPOUT_SIZE];       // printing the values in USB
 
 
@@ -99,6 +95,12 @@ uint8_t SPI_read(uint8_t address)
   return receive_data;
 }
 
+int convert(int16_t a) {
+  int16_t ret = ((int32_t)a * 2000) / 0x7fff;
+  return ret;
+}
+
+
 /* USER CODE END 0 */
 
 int main(void)
@@ -122,12 +124,16 @@ int main(void)
   MX_SPI1_Init();
 
   /* USER CODE BEGIN 2 */
-//  SPI_send(0x23, 0xc9);                         // resetting the accelerometer internal circuit
-  SPI_send(0x20, 0x67);                         // 100Hz data update rate, block data update disable, x/y/z enabled
+  Xc = Yc = Xc = 0;
+
+
+  SPI_send(0x20, 0x67);                         // 100Hz data update rate, block data update enabled, x/y/z enabled
+  SPI_send(0x23, 0xc8);                         // resetting the accelerometer internal circuit
   SPI_send(0x24, 0x20);                         // Anti aliasing filter bandwidth 800Hz, 16G (very sensitive), no self-test, 4-wire interface
-  SPI_send(0x10, 0x00);                         // Output(X) = Measurement(X) - OFFSET(X) * 32;
-  SPI_send(0x11, 0x00);                         // Output(Y) = Measurement(Y) - OFFSET(Y) * 32;
-  SPI_send(0x12, 0x00);                         // Output(Z) = Measurement(Z) - OFFSET(Z) * 32;
+  //  SPI_send(0x10, 0x00);                         // Output(X) = Measurement(X) - OFFSET(X) * 32;
+  //  SPI_send(0x11, 0x00);                         // Output(Y) = Measurement(Y) - OFFSET(Y) * 32;
+  //  SPI_send(0x12, 0x00);                         // Output(Z) = Measurement(Z) - OFFSET(Z) * 32;
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -137,22 +143,42 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-    MSB = SPI_read(0x29);                     // X-axis MSB
-    LSB = SPI_read(0x28);                     // X-axis LSB
-    Xg = (MSB << 8) | (LSB);                  // Merging
+    uint8_t status = SPI_read(0x27);
+    if(status & 0x07){
+      LSB = SPI_read(0x28);                     // X-axis LSB
+      MSB = SPI_read(0x29);                     // X-axis MSB
+      Xg = (MSB << 8) | (LSB);                  // Merging
 
-    MSB = SPI_read(0x2a);                     // Y-axis MSB
-    LSB = SPI_read(0x2b);                     // Y-axis LSB
-    Yg = (MSB << 8) | (LSB);                  // Merging
+      LSB = SPI_read(0x2a);                     // Y-axis LSB
+      MSB = SPI_read(0x2b);                     // Y-axis MSB
+      Yg = (MSB << 8) | (LSB);                  // Merging
 
-    MSB = SPI_read(0x2d);                     // Z-axis MSB
-    LSB = SPI_read(0x2c);                     // Z-axis LSB
-    Zg = (MSB << 8) | (LSB);                  // Merging
+      LSB = SPI_read(0x2c);                     // Z-axis LSB
+      MSB = SPI_read(0x2d);                     // Z-axis MSB
+      Zg = (MSB << 8) | (LSB);                  // Merging
 
-    sprintf(print_buffer, "Xg = %d\nYg = %d\nZg = %d\nWHO_AM_I = %d\n\n", Xg, Yg, Zg, SPI_read(0xf));
+      Xg = convert(Xg);
+      Yg = convert(Yg);
+      Zg = convert(Zg);
 
-    USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, (uint8_t*)print_buffer, sizeof(print_buffer));
-    HAL_Delay(500);
+      if(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0) == GPIO_PIN_SET){
+        Xc = -Xg;
+        Yc = -Yg;
+        Zc = -Zg;
+        HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_SET);
+        HAL_Delay(500);
+        HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_RESET);
+      }
+
+      Xg += Xc;
+      Yg += Yc;
+      Zg += Zc;
+
+
+      sprintf(print_buffer, "Xg = %d\nYg = %d\nZg = %d\ntemp = %d\n\n", Xg, Yg, Zg, SPI_read(0xc));
+      USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, (uint8_t*)print_buffer, sizeof(print_buffer));
+
+    }
   }
 
   /* USER CODE END 3 */

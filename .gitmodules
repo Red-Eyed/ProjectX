@@ -4,3 +4,6 @@
 [submodule "CubeMX2Makefile"]
 	path = CubeMX2Makefile
 	url = git@github.com:Vadim-Stupakov/CubeMX2Makefile.git
+[submodule "ChibiOS"]
+	path = ChibiOS
+	url = git@github.com:Vadim-Stupakov/ChibiOS.git

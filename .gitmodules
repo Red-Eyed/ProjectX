@@ -7,7 +7,7 @@
 [submodule "ChibiOS"]
 	path = ChibiOS
 	url = git@github.com:ChibiOS/ChibiOS.git
-
 [submodule "ChibiOS-Contrib"]
 	path = ChibiOS-Contrib
 	url = git@github.com:ChibiOS/ChibiOS-Contrib.git
+

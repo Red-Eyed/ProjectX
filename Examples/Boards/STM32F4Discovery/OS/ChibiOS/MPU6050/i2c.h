@@ -3,7 +3,6 @@
 
 #include "ch.h"
 #include "hal.h"
-#include "ch_test.h"
 
 void i2c_init(void);
 

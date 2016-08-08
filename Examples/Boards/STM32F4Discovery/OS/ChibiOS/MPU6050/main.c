@@ -16,7 +16,6 @@
 
 #include "ch.h"
 #include "hal.h"
-#include "ch_test.h"
 
 #include "i2c.h"
 #include "mpu6050.h"
@@ -64,7 +63,6 @@ static THD_FUNCTION(ThreadBlinker, arg) {
   }
 }
 
-
 /*
  * This is thread which getting info from MPU6050 sensor
  */
@@ -85,59 +83,38 @@ static THD_FUNCTION(ThreadMPU6050, arg) {
   uint8_t LSB = 0;
   uint8_t who_am_i = 0;
 
-  while (1){
-    //    ret = mpu6050_Write(MPU6050_RA_SMPLRT_DIV, 0x07);
-    ret = mpu6050_Read(0x75, &who_am_i);
-
-    if(ret != MSG_OK){
-      palSetPad(GPIOD, GPIOD_LED5);
-      chThdSleepMilliseconds(delay);
-
-      palClearPad(GPIOD, GPIOD_LED5);
-      chThdSleepMilliseconds(delay);
-      /*return error()*/;
-    }
-    else if(ret == MSG_OK){
-      palSetPad(GPIOD, GPIOD_LED6);
-      chThdSleepMilliseconds(delay);
-
-      palClearPad(GPIOD, GPIOD_LED6);
-      chThdSleepMilliseconds(delay);
-    }
+  while(1){
     chThdSleepMilliseconds(delay);
-    //    if(ret != 0) return error();
+
+    if(!who_am_i){
+      ret = mpu6050_Read(0x75, &who_am_i);
+      if(ret != 0) return error();
+    }
+
+    ret = mpu6050_Read(0x3B, &MSB);
+    if(ret != 0) return error();
+
+    ret = mpu6050_Read(0x3C, &LSB);
+    if(ret != 0) return error();
+
+    uint16_t acc_x = (MSB << 8) | LSB; // Read X accelerometer
+
+    ret = mpu6050_Read(0x3D, &MSB);
+    if(ret != 0) return error();
+
+    ret = mpu6050_Read(0x3E, &LSB);
+    if(ret != 0) return error();
+
+    uint16_t acc_y = (MSB << 8) | LSB; // Read Y accelerometer
+
+    ret = mpu6050_Read(0x3F, &MSB);
+    if(ret != 0) return error();
+
+    ret = mpu6050_Read(0x40, &LSB);
+    if(ret != 0) return error();
+
+    volatile uint16_t acc_z = (MSB << 8) | LSB; // Read Z accelerometer
   }
-  //    chThdSleepMilliseconds(delay);
-
-  //    if(!who_am_i){
-  //      ret = mpu6050_Read(0x75, &who_am_i);
-  //      if(ret != 0) return error();
-  //    }
-
-  //    ret = mpu6050_Read(0x3B, &MSB);
-  //    if(ret != 0) return error();
-
-  //    ret = mpu6050_Read(0x3C, &LSB);
-  //    if(ret != 0) return error();
-
-  //    uint16_t acc_x = (MSB << 8) | LSB; // Read X accelerometer
-
-  //    ret = mpu6050_Read(0x3D, &MSB);
-  //    if(ret != 0) return error();
-
-  //    ret = mpu6050_Read(0x3E, &LSB);
-  //    if(ret != 0) return error();
-
-  //    uint16_t acc_y = (MSB << 8) | LSB; // Read Y accelerometer
-
-  //    ret = mpu6050_Read(0x3F, &MSB);
-  //    if(ret != 0) return error();
-
-  //    ret = mpu6050_Read(0x40, &LSB);
-  //    if(ret != 0) return error();
-
-  //    volatile uint16_t acc_z = (MSB << 8) | LSB; // Read Z accelerometer
-  //  }
 }
 
 

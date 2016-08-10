@@ -1,17 +1,11 @@
 #include "mpu6050.h"
 
-static uint8_t g_addr[1], g_data[1];
-
 msg_t mpu6050_Read(uint8_t addr, uint8_t* out_data)
 {
   int ret = 0;
-  g_addr[0] = addr;
-  g_data[0] = 0;
-  ret = i2cMasterTransmitTimeout(&I2CD1, MPU6050_ADDRESS_AD0_LOW, g_addr, sizeof(g_addr), g_data, sizeof(g_data), TIME_INFINITE);
+  ret = i2cMasterTransmitTimeout(&I2CD1, MPU6050_ADDRESS_AD0_LOW, addr, sizeof(addr), out_data, sizeof(out_data), TIME_INFINITE);
   if(ret != MSG_OK)
     return ret;
-
-  *out_data = g_data[0];
 
   return 0;
 }
@@ -19,15 +13,13 @@ msg_t mpu6050_Read(uint8_t addr, uint8_t* out_data)
 msg_t mpu6050_Write(uint8_t addr, uint8_t data)
 {
   int ret = 0;
-  g_addr[0] = addr;
-  g_data[0] = data;
-  ret = i2cMasterTransmitTimeout(&I2CD1, MPU6050_ADDRESS_AD0_LOW, g_addr, sizeof(g_addr), NULL, 0, TIME_INFINITE);
+  ret = i2cMasterTransmitTimeout(&I2CD1, MPU6050_ADDRESS_AD0_LOW, addr, sizeof(addr), NULL, 0, TIME_INFINITE);
   if(ret != MSG_OK) {
     ret = i2cGetErrors(&I2CD1);
     return ret;
   }
 
-  ret = i2cMasterTransmitTimeout(&I2CD1, MPU6050_ADDRESS_AD0_LOW, g_data, sizeof(g_data), NULL, 0, TIME_INFINITE);
+  ret = i2cMasterTransmitTimeout(&I2CD1, MPU6050_ADDRESS_AD0_LOW, data, sizeof(data), NULL, 0, TIME_INFINITE);
   if(ret != MSG_OK) {
     ret = i2cGetErrors(&I2CD1);
     return ret;

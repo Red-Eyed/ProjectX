@@ -117,7 +117,6 @@ static THD_FUNCTION(ThreadMPU6050, arg) {
   }
 }
 
-
 /*
  * Application entry point.
  */

@@ -62,10 +62,6 @@ void delay_ms(uint32_t delay) {
     chThdSleepMilliseconds(delay);
 }
 
-void delay_us(uint32_t delay) {
-    chThdSleepMicroseconds(delay);
-}
-
 int write(uint8_t data) {
     if (i2cMasterTransmitTimeout(&I2CD2, LCD_ADDR, &data, sizeof(data), NULL, 0, TIME_INFINITE))
         error();
@@ -77,15 +73,15 @@ static THD_FUNCTION(ThreadLCD, arg) {
 
     (void) arg;
     chRegSetThreadName("ThreadLCD");
-    int delay = 100;
+    int delay = 700;
     i2c_init();
     liquid_crystal_t lcd;
-    LCD_init(&lcd, delay_ms, delay_us, write, 4, 4);
+    LCD_init(&lcd, delay_ms, write, 4, 4);
+    LCD_backlight_on(&lcd);
 
     while (1) {
-        LCD_backlight(&lcd);
         LCD_clear(&lcd);
-        LCD_write_String(&lcd, "Hello world!");
+        LCD_write_str(&lcd, "Hello world!");
         chThdSleepMilliseconds(delay);
     }
 }

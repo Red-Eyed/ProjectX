@@ -7,7 +7,7 @@ MAKEFLAGS += -j4
 
 # Compiler options here.
 ifeq ($(USE_OPT),)
-  USE_OPT = -O0 -ggdb -fomit-frame-pointer -falign-functions=16
+  USE_OPT = -O3 -ggdb -fomit-frame-pointer -falign-functions=16 -nostdlib
 endif
 
 # C specific options here (added to USE_OPT).
@@ -87,6 +87,8 @@ endif
 # Define project name here
 PROJECT = MPU6050
 
+LIQUID_CRYSTAL_PATH=../../../../../../lib/liquid_crystal
+
 # Imported source files and paths
 CHIBIOS = ../../../../../../ChibiOS
 # Startup files.
@@ -117,7 +119,8 @@ CSRC = $(STARTUPSRC) \
        $(TESTSRC) \
        main.c \
        mpu6050.c \
-       i2c.c
+       i2c.c \
+       $(LIQUID_CRYSTAL_PATH)/liquid_crystal.c
 
 # C++ sources that can be compiled in ARM or THUMB mode depending on the global
 # setting.
@@ -151,7 +154,8 @@ INCDIR = $(CHIBIOS)/os/license \
          $(STARTUPINC) $(KERNINC) $(PORTINC) $(OSALINC) \
          $(HALINC) $(PLATFORMINC) $(BOARDINC) $(TESTINC) \
          $(CHIBIOS)/os/various \
-         ./
+         ./ \
+         $(LIQUID_CRYSTAL_PATH)
 
 #
 # Project, sources and paths
@@ -213,7 +217,7 @@ UINCDIR =
 ULIBDIR =
 
 # List all user libraries here
-ULIBS =
+ULIBS = -lc -lm -lgcc -lnosys -specs=nano.specs
 
 #
 # End of user defines

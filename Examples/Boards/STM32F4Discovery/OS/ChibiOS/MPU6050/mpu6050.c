@@ -2,24 +2,16 @@
 
 msg_t mpu6050_Read(uint8_t addr, uint8_t* out_data)
 {
-  int ret = 0;
-  ret = i2cMasterTransmitTimeout(&I2CD1, MPU6050_ADDRESS_AD0_LOW, addr, sizeof(addr), out_data, sizeof(out_data), TIME_INFINITE);
-  if(ret != MSG_OK)
-    return ret;
-
-  return 0;
+  return i2cMasterTransmitTimeout(&I2CD1, MPU6050_ADDRESS_AD0_LOW, &addr, sizeof(addr), out_data, sizeof(*out_data), TIME_INFINITE);
 }
 
 msg_t mpu6050_Write(uint8_t addr, uint8_t data)
 {
+  uint8_t data_arr[2];
+  data_arr[0] = addr;
+  data_arr[1] = data;
   int ret = 0;
-  ret = i2cMasterTransmitTimeout(&I2CD1, MPU6050_ADDRESS_AD0_LOW, addr, sizeof(addr), NULL, 0, TIME_INFINITE);
-  if(ret != MSG_OK) {
-    ret = i2cGetErrors(&I2CD1);
-    return ret;
-  }
-
-  ret = i2cMasterTransmitTimeout(&I2CD1, MPU6050_ADDRESS_AD0_LOW, data, sizeof(data), NULL, 0, TIME_INFINITE);
+  ret = i2cMasterTransmitTimeout(&I2CD1, MPU6050_ADDRESS_AD0_LOW, data_arr, sizeof(data_arr), NULL, 0, TIME_INFINITE);
   if(ret != MSG_OK) {
     ret = i2cGetErrors(&I2CD1);
     return ret;
@@ -74,6 +66,10 @@ int mpu6050_init(void)
 
   //Disable sensor output to FIFO buffer
   ret = mpu6050_Write(MPU6050_RA_FIFO_EN, 0x00);
+  if(ret != 0) return ret;
+
+  //Disable sleep mode
+  ret = mpu6050_Write(MPU6050_RA_PWR_MGMT_1, MPU6050_PWR1_CYCLE_BIT);
   if(ret != 0) return ret;
 
   return 0;

@@ -57,15 +57,15 @@ void LCD_write(liquid_crystal_t* lcd, uint8_t value) {
 }
 
 void LCD_init(liquid_crystal_t* lcd, void* delay_ms,
-              void* write, uint8_t lcd_cols, uint8_t lcd_rows){
-    lcd->cols = lcd_cols;
-    lcd->rows = lcd_rows;
+              void* write, uint8_t x_max, uint8_t y_max){
+    lcd->x_max = x_max;
+    lcd->y_max = y_max;
     lcd->backlightval = LCD_NOBACKLIGHT;
     lcd->delay_ms = delay_ms;
     lcd->write = write;
     lcd->displayfunction = LCD_4BITMODE | LCD_1LINE | LCD_5x8DOTS;
 
-    LCD_begin(lcd, lcd_cols, lcd_rows);
+    LCD_begin(lcd, x_max, y_max);
 }
 
 void LCD_begin(liquid_crystal_t* lcd, uint8_t cols, uint8_t lines) {
@@ -73,7 +73,7 @@ void LCD_begin(liquid_crystal_t* lcd, uint8_t cols, uint8_t lines) {
         lcd->displayfunction |= LCD_2LINE;
     }
     lcd->numlines = lines;
-    lcd->cols = cols;
+    lcd->x_max = cols;
 
     // SEE PAGE 45/46 FOR INITIALIZATION SPECIFICATION!
     // according to datasheet, we need at least 40ms after power rises above 2.7V
@@ -133,12 +133,12 @@ void LCD_home(liquid_crystal_t* lcd) {
     lcd->delay_ms(30);  // this command takes a long time!
 }
 
-void LCD_set_cursor(liquid_crystal_t* lcd, uint8_t col, uint8_t row) {
+void LCD_set_cursor(liquid_crystal_t* lcd, uint8_t x_pos, uint8_t y_pos) {
     int row_offsets[] = { 0x00, 0x40, 0x14, 0x54 };
-    if (row > lcd->numlines) {
-        row = lcd->numlines - 1;    // we count rows starting w/0
+    if (y_pos > lcd->numlines) {
+        y_pos = lcd->numlines - 1;    // we count rows starting w/0
     }
-    LCD_command(lcd, LCD_SETDDRAMADDR | (col + row_offsets[row]));
+    LCD_command(lcd, LCD_SETDDRAMADDR | (x_pos + row_offsets[y_pos]));
 }
 
 // Turn the display on/off (quickly)
@@ -265,10 +265,8 @@ void LCD_load_custom_character(liquid_crystal_t* lcd, uint8_t char_num, uint8_t 
 }
 
 void LCD_write_str(liquid_crystal_t* lcd, char* str) {
-    uint8_t i = 0;
-    while (str[i]) {
-        LCD_write(lcd, str[i]);
-        i++;
+    while (*str) {
+        LCD_write(lcd, *str++);
     }
 }
 

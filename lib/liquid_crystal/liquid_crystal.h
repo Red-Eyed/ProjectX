@@ -8,8 +8,8 @@ typedef struct {
     uint8_t displaycontrol;
     uint8_t displaymode;
     uint8_t numlines;
-    uint8_t cols;
-    uint8_t rows;
+    uint8_t x_max;
+    uint8_t y_max;
     uint8_t backlightval;
     void(*delay_ms)(uint32_t);
     int(*write)(uint8_t data);

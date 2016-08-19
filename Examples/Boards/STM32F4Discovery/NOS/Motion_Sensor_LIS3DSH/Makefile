@@ -21,7 +21,7 @@ OPT = -O0
 # source path
 # Build path
 BUILD_DIR = build
-PRJ_PATH = /mnt/Data/GIT/ProjectX/Examples/Boards/STM32F4Discovery/Motion_Sensor_LIS3DSH
+PRJ_PATH = $(shell pwd)
 REPO_PATH = /mnt/Data/STM32/STM32Cube/Repository/STM32Cube_FW_F4_V1.10.0
 
 ######################################
@@ -59,10 +59,10 @@ C_SOURCES =  \
     $(PRJ_PATH)/Src/usb_device.c \
     $(PRJ_PATH)/Src/usbd_conf.c \
     $(PRJ_PATH)/Src/usbd_custom_hid_if.c \
-    $(PRJ_PATH)/Src/usbd_desc.c 
-  
+    $(PRJ_PATH)/Src/usbd_desc.c
+
 ASM_SOURCES =  \
-    $(PRJ_PATH)/Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/gcc/startup_stm32f407xx.s 
+    $(PRJ_PATH)/Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/gcc/startup_stm32f407xx.s
 
 
 #######################################
@@ -75,7 +75,7 @@ AR = arm-none-eabi-ar
 SZ = arm-none-eabi-size
 HEX = $(CP) -O ihex
 BIN = $(CP) -O binary -S
- 
+
 #######################################
 # CFLAGS
 #######################################
@@ -85,10 +85,10 @@ ASM_DEFS = \
 C_DEFS = \
     -D__packed="__attribute__\(\(__packed__\)\)" \
     -DUSE_HAL_DRIVER \
-    -DSTM32F407xx 
+    -DSTM32F407xx
 
 # includes for gcc
-ASM_INCLUDES = 
+ASM_INCLUDES =
 
 C_INCLUDES = \
     -I$(PRJ_PATH)/Inc \
@@ -97,7 +97,7 @@ C_INCLUDES = \
     -I$(PRJ_PATH)/Middlewares/ST/STM32_USB_Device_Library/Core/Inc \
     -I$(PRJ_PATH)/Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc \
     -I$(PRJ_PATH)/Drivers/CMSIS/Include \
-    -I$(PRJ_PATH)/Drivers/CMSIS/Device/ST/STM32F4xx/Include 
+    -I$(PRJ_PATH)/Drivers/CMSIS/Device/ST/STM32F4xx/Include
 
 # compile gcc flags
 ASFLAGS = -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=softfp $(AS_DEFS) $(AS_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections
@@ -153,7 +153,7 @@ vpath %.c $(sort $(dir $(C_SOURCES)))
 OBJECTS += $(addprefix $(BUILD_DIR)/,$(notdir $(ASM_SOURCES:.s=.o)))
 vpath %.s $(sort $(dir $(ASM_SOURCES)))
 
-$(BUILD_DIR)/%.o: %.c Makefile | $(BUILD_DIR) 
+$(BUILD_DIR)/%.o: %.c Makefile | $(BUILD_DIR)
 	$(CC) -c $(CFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
 
 $(BUILD_DIR)/%.o: %.s Makefile | $(BUILD_DIR)
@@ -165,23 +165,22 @@ $(BUILD_DIR)/$(TARGET).elf: $(OBJECTS) Makefile
 
 $(BUILD_DIR)/%.hex: $(BUILD_DIR)/%.elf | $(BUILD_DIR)
 	$(HEX) $< $@
-	
+
 $(BUILD_DIR)/%.bin: $(BUILD_DIR)/%.elf | $(BUILD_DIR)
-	$(BIN) $< $@	
-	
+	$(BIN) $< $@
+
 $(BUILD_DIR):
-	mkdir -p $@		
+	mkdir -p $@
 
 #######################################
 # clean up
 #######################################
 clean:
 	-rm -fR .dep $(BUILD_DIR)
-  
+
 #######################################
 # dependencies
 #######################################
 -include $(shell mkdir .dep 2>/dev/null) $(wildcard .dep/*)
 
 # *** EOF ***
-

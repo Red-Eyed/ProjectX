@@ -3,7 +3,7 @@
 # NOTE: Can be overridden externally.
 #
 
-MAKEFLAGS += -j4
+MAKEFLAGS += j$(shell getconf _NPROCESSORS_ONLN)
 
 # Compiler options here.
 ifeq ($(USE_OPT),)

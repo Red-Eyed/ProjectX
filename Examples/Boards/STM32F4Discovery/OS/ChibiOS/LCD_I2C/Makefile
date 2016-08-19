@@ -4,7 +4,6 @@
 #
 
 MAKEFLAGS += j$(shell getconf _NPROCESSORS_ONLN)
-VERBOSE=1
 
 # Compiler options here.
 ifeq ($(USE_OPT),)
@@ -87,6 +86,7 @@ endif
 
 # Define project name here
 PROJECT = LCD_I2C
+LIQUID_CRYSTAL_PATH=../../../../../../lib/liquid_crystal
 
 # Imported source files and paths
 CHIBIOS = ../../../../../../ChibiOS
@@ -118,7 +118,7 @@ CSRC = $(STARTUPSRC) \
        $(TESTSRC) \
        main.c \
        i2c.c \
-       liquid_crystal.c
+       $(LIQUID_CRYSTAL_PATH)/liquid_crystal.c
 
 # C++ sources that can be compiled in ARM or THUMB mode depending on the global
 # setting.
@@ -152,6 +152,7 @@ INCDIR = $(CHIBIOS)/os/license \
          $(STARTUPINC) $(KERNINC) $(PORTINC) $(OSALINC) \
          $(HALINC) $(PLATFORMINC) $(BOARDINC) $(TESTINC) \
          $(CHIBIOS)/os/various \
+         $(LIQUID_CRYSTAL_PATH) \
          ./
 
 #

@@ -35,45 +35,23 @@
 							</builder>
 							<tool errorParsers="org.eclipse.cdt.core.GASErrorParser;org.eclipse.cdt.core.GLDErrorParser;org.eclipse.cdt.core.VCErrorParser;org.eclipse.cdt.core.GCCErrorParser" id="org.eclipse.cdt.build.core.settings.holder.libs.967954744" name="holder for library settings" superClass="org.eclipse.cdt.build.core.settings.holder.libs"/>
 							<tool errorParsers="org.eclipse.cdt.core.GASErrorParser;org.eclipse.cdt.core.GLDErrorParser;org.eclipse.cdt.core.VCErrorParser;org.eclipse.cdt.core.GCCErrorParser" id="org.eclipse.cdt.build.core.settings.holder.2135400973" name="Assembly" superClass="org.eclipse.cdt.build.core.settings.holder">
+								<option id="org.eclipse.cdt.build.core.settings.holder.incpaths.1982292351" name="Include Paths" superClass="org.eclipse.cdt.build.core.settings.holder.incpaths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/LCD_I2C}&quot;"/>
+								</option>
 								<inputType id="org.eclipse.cdt.build.core.settings.holder.inType.1229495050" languageId="org.eclipse.cdt.core.assembly" languageName="Assembly" sourceContentType="org.eclipse.cdt.core.asmSource" superClass="org.eclipse.cdt.build.core.settings.holder.inType"/>
 							</tool>
 							<tool errorParsers="org.eclipse.cdt.core.GASErrorParser;org.eclipse.cdt.core.GLDErrorParser;org.eclipse.cdt.core.VCErrorParser;org.eclipse.cdt.core.GCCErrorParser" id="org.eclipse.cdt.build.core.settings.holder.1919354146" name="GNU C++" superClass="org.eclipse.cdt.build.core.settings.holder">
+								<option id="org.eclipse.cdt.build.core.settings.holder.incpaths.183305692" name="Include Paths" superClass="org.eclipse.cdt.build.core.settings.holder.incpaths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/LCD_I2C}&quot;"/>
+								</option>
 								<inputType id="org.eclipse.cdt.build.core.settings.holder.inType.1547667" languageId="org.eclipse.cdt.core.g++" languageName="GNU C++" sourceContentType="org.eclipse.cdt.core.cxxSource,org.eclipse.cdt.core.cxxHeader" superClass="org.eclipse.cdt.build.core.settings.holder.inType"/>
 							</tool>
 							<tool errorParsers="org.eclipse.cdt.core.GASErrorParser;org.eclipse.cdt.core.GLDErrorParser;org.eclipse.cdt.core.VCErrorParser;org.eclipse.cdt.core.GCCErrorParser" id="org.eclipse.cdt.build.core.settings.holder.516828039" name="GNU C" superClass="org.eclipse.cdt.build.core.settings.holder">
 								<option id="org.eclipse.cdt.build.core.settings.holder.incpaths.2096943282" name="Include Paths" superClass="org.eclipse.cdt.build.core.settings.holder.incpaths" valueType="includePath">
-									<listOptionValue builtIn="false" value="${ProjDirPath}/ChibiOS/os/license"/>
-									<listOptionValue builtIn="false" value="${ProjDirPath}/ChibiOS/os/common/startup/ARMCMx/compilers/GCC"/>
-									<listOptionValue builtIn="false" value="${ProjDirPath}/ChibiOS/os/common/startup/ARMCMx/devices/STM32F4xx"/>
-									<listOptionValue builtIn="false" value="${ProjDirPath}/ChibiOS/os/common/ext/CMSIS/include"/>
-									<listOptionValue builtIn="false" value="${ProjDirPath}/ChibiOS/os/common/ext/CMSIS/ST/STM32F4xx"/>
-									<listOptionValue builtIn="false" value="${ProjDirPath}/ChibiOS/os/rt/include"/>
-									<listOptionValue builtIn="false" value="${ProjDirPath}/ChibiOS/os/common/oslib/include"/>
-									<listOptionValue builtIn="false" value="${ProjDirPath}/ChibiOS/os/common/ports/ARMCMx"/>
-									<listOptionValue builtIn="false" value="${ProjDirPath}/ChibiOS/os/common/ports/ARMCMx/compilers/GCC"/>
-									<listOptionValue builtIn="false" value="${ProjDirPath}/ChibiOS/os/hal/osal/rt"/>
-									<listOptionValue builtIn="false" value="${ProjDirPath}/ChibiOS/os/hal/include"/>
-									<listOptionValue builtIn="false" value="${ProjDirPath}/ChibiOS/os/hal/ports/common/ARMCMx"/>
-									<listOptionValue builtIn="false" value="${ProjDirPath}/ChibiOS/os/hal/ports/STM32/STM32F4xx"/>
-									<listOptionValue builtIn="false" value="${ProjDirPath}/ChibiOS/os/hal/ports/STM32/LLD/ADCv2"/>
-									<listOptionValue builtIn="false" value="${ProjDirPath}/ChibiOS/os/hal/ports/STM32/LLD/CANv1"/>
-									<listOptionValue builtIn="false" value="${ProjDirPath}/ChibiOS/os/hal/ports/STM32/LLD/DACv1"/>
-									<listOptionValue builtIn="false" value="${ProjDirPath}/ChibiOS/os/hal/ports/STM32/LLD/DMAv2"/>
-									<listOptionValue builtIn="false" value="${ProjDirPath}/ChibiOS/os/hal/ports/STM32/LLD/EXTIv1"/>
-									<listOptionValue builtIn="false" value="${ProjDirPath}/ChibiOS/os/hal/ports/STM32/LLD/GPIOv2"/>
-									<listOptionValue builtIn="false" value="${ProjDirPath}/ChibiOS/os/hal/ports/STM32/LLD/I2Cv1"/>
-									<listOptionValue builtIn="false" value="${ProjDirPath}/ChibiOS/os/hal/ports/STM32/LLD/MACv1"/>
-									<listOptionValue builtIn="false" value="${ProjDirPath}/ChibiOS/os/hal/ports/STM32/LLD/OTGv1"/>
-									<listOptionValue builtIn="false" value="${ProjDirPath}/ChibiOS/os/hal/ports/STM32/LLD/QUADSPIv1"/>
-									<listOptionValue builtIn="false" value="${ProjDirPath}/ChibiOS/os/hal/ports/STM32/LLD/RTCv2"/>
-									<listOptionValue builtIn="false" value="${ProjDirPath}/ChibiOS/os/hal/ports/STM32/LLD/SDIOv1"/>
-									<listOptionValue builtIn="false" value="${ProjDirPath}/ChibiOS/os/hal/ports/STM32/LLD/SPIv1"/>
-									<listOptionValue builtIn="false" value="${ProjDirPath}/ChibiOS/os/hal/ports/STM32/LLD/TIMv1"/>
-									<listOptionValue builtIn="false" value="${ProjDirPath}/ChibiOS/os/hal/ports/STM32/LLD/USARTv1"/>
-									<listOptionValue builtIn="false" value="${ProjDirPath}/ChibiOS/os/hal/ports/STM32/LLD/xWDGv1"/>
-									<listOptionValue builtIn="false" value="${ProjDirPath}/ChibiOS/os/hal/boards/ST_STM32F4_DISCOVERY"/>
-									<listOptionValue builtIn="false" value="${ProjDirPath}/ChibiOS/os/various"/>
-									<listOptionValue builtIn="false" value="${ProjDirPath}/"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/LCD_I2C}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/LCD_I2C/ChibiOS}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/LCD_I2C/ChibiOS-Contrib}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/LCD_I2C/liquid_crystal}&quot;"/>
 								</option>
 								<inputType id="org.eclipse.cdt.build.core.settings.holder.inType.1753663087" languageId="org.eclipse.cdt.core.gcc" languageName="GNU C" sourceContentType="org.eclipse.cdt.core.cSource,org.eclipse.cdt.core.cHeader" superClass="org.eclipse.cdt.build.core.settings.holder.inType"/>
 							</tool>
@@ -88,7 +66,11 @@
 		<project id="MPU6050.null.334859283" name="MPU6050"/>
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
-	<storageModule moduleId="refreshScope"/>
+	<storageModule moduleId="refreshScope" versionNumber="2">
+		<configuration configurationName="Default">
+			<resource resourceType="PROJECT" workspacePath="/LCD_I2C"/>
+		</configuration>
+	</storageModule>
 	<storageModule moduleId="scannerConfiguration">
 		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		<scannerConfigBuildInfo instanceId="0.2017159125">

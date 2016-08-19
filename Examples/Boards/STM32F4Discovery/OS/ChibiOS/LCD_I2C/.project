@@ -24,4 +24,21 @@
 		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>ChibiOS</name>
+			<type>2</type>
+			<location>/home/vadimstupakov/ProjectX/ChibiOS</location>
+		</link>
+		<link>
+			<name>ChibiOS-Contrib</name>
+			<type>2</type>
+			<location>/home/vadimstupakov/ProjectX/ChibiOS-Contrib</location>
+		</link>
+		<link>
+			<name>liquid_crystal</name>
+			<type>2</type>
+			<location>/home/vadimstupakov/ProjectX/lib/liquid_crystal</location>
+		</link>
+	</linkedResources>
 </projectDescription>

@@ -47,7 +47,7 @@ static THD_FUNCTION(ThreadBlinker, arg) {
   (void)arg;
   chRegSetThreadName("ThreadBlinker");
 
-  uint16_t delay = 500;
+  uint16_t delay = 100;
 
   while (1) {
     palSetPad(GPIOD, GPIOD_LED4);
@@ -82,6 +82,14 @@ static THD_FUNCTION(ThreadMPU6050, arg) {
   LCD_init(&lcd, delay_ms, write, 4, 4);
   LCD_backlight_on(&lcd);
 
+  uint16_t gyro_x_err = 65200;
+  uint16_t gyro_y_err = 120;
+  uint16_t gyro_z_err = 65200;
+
+  uint16_t acc_x_err = 62556;
+  uint16_t acc_y_err = 8748;
+  uint16_t acc_z_err = 13036;
+
   msg_t ret = 0;
   uint16_t delay = 1000;
   uint8_t MSB = 1;
@@ -95,44 +103,93 @@ static THD_FUNCTION(ThreadMPU6050, arg) {
       if(ret != 0) return error();
     }
 
+    // reading the accelerometer data
     ret = mpu6050_Read(MPU6050_RA_ACCEL_XOUT_H, &MSB);
     if(ret != 0) return error();
 
     ret = mpu6050_Read(MPU6050_RA_ACCEL_XOUT_L, &LSB);
     if(ret != 0) return error();
 
-    uint16_t acc_x = (MSB << 8) | LSB; // Read X accelerometer
+    uint16_t acc_x = (MSB << 8) | LSB;
 
-    ret = mpu6050_Read(0x3D, &MSB);
+    ret = mpu6050_Read(MPU6050_RA_ACCEL_YOUT_H, &MSB);
     if(ret != 0) return error();
 
-    ret = mpu6050_Read(0x3E, &LSB);
+    ret = mpu6050_Read(MPU6050_RA_ACCEL_YOUT_L, &LSB);
     if(ret != 0) return error();
 
-    uint16_t acc_y = (MSB << 8) | LSB; // Read Y accelerometer
+    uint16_t acc_y = (MSB << 8) | LSB;
 
-    ret = mpu6050_Read(0x3F, &MSB);
+    ret = mpu6050_Read(MPU6050_RA_ACCEL_ZOUT_H, &MSB);
     if(ret != 0) return error();
 
-    ret = mpu6050_Read(0x40, &LSB);
+    ret = mpu6050_Read(MPU6050_RA_ACCEL_ZOUT_L, &LSB);
     if(ret != 0) return error();
 
-    uint16_t acc_z = (MSB << 8) | LSB; // Read Z accelerometer
+    uint16_t acc_z = (MSB << 8) | LSB;
 
+    // reading the gyro data
+    ret = mpu6050_Read(MPU6050_RA_GYRO_XOUT_H, &MSB);
+    if(ret != 0) return error();
+
+    ret = mpu6050_Read(MPU6050_RA_GYRO_XOUT_L, &LSB);
+    if(ret != 0) return error();
+
+    uint16_t gyro_x = (MSB << 8) | LSB;
+
+    ret = mpu6050_Read(MPU6050_RA_GYRO_YOUT_H, &MSB);
+    if(ret != 0) return error();
+
+    ret = mpu6050_Read(MPU6050_RA_GYRO_YOUT_L, &LSB);
+    if(ret != 0) return error();
+
+    uint16_t gyro_y = (MSB << 8) | LSB;
+
+    ret = mpu6050_Read(MPU6050_RA_GYRO_ZOUT_H, &MSB);
+    if(ret != 0) return error();
+
+    ret = mpu6050_Read(MPU6050_RA_GYRO_ZOUT_L, &LSB);
+    if(ret != 0) return error();
+
+    uint16_t gyro_z = (MSB << 8) | LSB;
+
+    // reading the temperature
+    ret = mpu6050_Read(0x41, &MSB);
+    if(ret != 0) return error();
+
+    ret = mpu6050_Read(0x42, &LSB);
+    if(ret != 0) return error();
+
+    uint16_t temperature = (MSB << 8) | LSB;
+
+    // Printing the output
     LCD_clear(&lcd);
-    sprintf(buf, "X = %d", acc_x);
+
+    sprintf(buf, "Xa=%d", acc_x - acc_x_err);
     LCD_set_cursor(&lcd, 0, 0);
     LCD_write_str(&lcd, buf);
 
-    sprintf(buf, "Y = %d", acc_y);
+    sprintf(buf, "Ya=%d", acc_y - acc_y_err);
     LCD_set_cursor(&lcd, 0, 1);
     LCD_write_str(&lcd, buf);
 
-    sprintf(buf, "Z = %d", acc_z);
+    sprintf(buf, "Za=%d", acc_z - acc_z_err);
     LCD_set_cursor(&lcd, 0, 2);
     LCD_write_str(&lcd, buf);
 
-    sprintf(buf, "Who am i = 0x%X", who_am_i);
+    sprintf(buf, "Xg=%d", gyro_x - gyro_x_err);
+    LCD_set_cursor(&lcd, 10, 0);
+    LCD_write_str(&lcd, buf);
+
+    sprintf(buf, "Yg=%d", gyro_y - gyro_y_err);
+    LCD_set_cursor(&lcd, 10, 1);
+    LCD_write_str(&lcd, buf);
+
+    sprintf(buf, "Zg=%d", gyro_z - gyro_z_err);
+    LCD_set_cursor(&lcd, 10, 2);
+    LCD_write_str(&lcd, buf);
+
+    sprintf(buf, "Temp=%d", temperature);
     LCD_set_cursor(&lcd, 0, 3);
     LCD_write_str(&lcd, buf);
 

@@ -82,14 +82,6 @@ static THD_FUNCTION(ThreadMPU6050, arg) {
   LCD_init(&lcd, delay_ms, write, 4, 4);
   LCD_backlight_on(&lcd);
 
-  uint16_t gyro_x_err = 65200;
-  uint16_t gyro_y_err = 120;
-  uint16_t gyro_z_err = 65200;
-
-  uint16_t acc_x_err = 62556;
-  uint16_t acc_y_err = 8748;
-  uint16_t acc_z_err = 13036;
-
   msg_t ret = 0;
   uint16_t delay = 1000;
   uint8_t MSB = 1;
@@ -165,27 +157,27 @@ static THD_FUNCTION(ThreadMPU6050, arg) {
     // Printing the output
     LCD_clear(&lcd);
 
-    sprintf(buf, "Xa=%d", acc_x - acc_x_err);
+    sprintf(buf, "Xa=%d", acc_x);
     LCD_set_cursor(&lcd, 0, 0);
     LCD_write_str(&lcd, buf);
 
-    sprintf(buf, "Ya=%d", acc_y - acc_y_err);
+    sprintf(buf, "Ya=%d", acc_y);
     LCD_set_cursor(&lcd, 0, 1);
     LCD_write_str(&lcd, buf);
 
-    sprintf(buf, "Za=%d", acc_z - acc_z_err);
+    sprintf(buf, "Za=%d", acc_z);
     LCD_set_cursor(&lcd, 0, 2);
     LCD_write_str(&lcd, buf);
 
-    sprintf(buf, "Xg=%d", gyro_x - gyro_x_err);
+    sprintf(buf, "Xg=%d", gyro_x);
     LCD_set_cursor(&lcd, 10, 0);
     LCD_write_str(&lcd, buf);
 
-    sprintf(buf, "Yg=%d", gyro_y - gyro_y_err);
+    sprintf(buf, "Yg=%d", gyro_y);
     LCD_set_cursor(&lcd, 10, 1);
     LCD_write_str(&lcd, buf);
 
-    sprintf(buf, "Zg=%d", gyro_z - gyro_z_err);
+    sprintf(buf, "Zg=%d", gyro_z);
     LCD_set_cursor(&lcd, 10, 2);
     LCD_write_str(&lcd, buf);
 

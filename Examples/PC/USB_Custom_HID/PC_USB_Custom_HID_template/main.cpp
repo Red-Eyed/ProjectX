@@ -8,7 +8,7 @@
 #define BUF_SIZE 4
 
 #define ID_VENDOR 0x483
-#define ID_PID 0x5750
+#define ID_PID 0x5740
 
 #define CONFIG 1
 #define INTERFACE 0
@@ -62,11 +62,9 @@ int main(){
     int ret=0;
 
     char USB_data[BUF_SIZE];
-    uint32_t data = 0;
     memset(USB_data, 0, BUF_SIZE);
 
     while(1){
-	printf("lol\n");
         memset(USB_data, 0, BUF_SIZE);
         ret = usb_bulk_read(dev, EP_OUT, USB_data, CUSTOM_HID_EPIN_SIZE, 0);
         if (ret < 0){
@@ -74,9 +72,8 @@ int main(){
             break;
         }
         else{
-            data = (*(uint32_t*)USB_data);
             printf("success: bulk read %d bytes\n", ret);
-            printf("%u\n", data);
+            printf("%s\n", USB_data);
         }
     }
 

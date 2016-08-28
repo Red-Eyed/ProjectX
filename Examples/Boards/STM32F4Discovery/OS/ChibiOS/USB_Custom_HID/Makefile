@@ -7,7 +7,7 @@ MAKEFLAGS += j$(shell getconf _NPROCESSORS_ONLN)
 
 # Compiler options here.
 ifeq ($(USE_OPT),)
-  USE_OPT = -O3 -ggdb -fomit-frame-pointer -falign-functions=16 -nostdlib
+  USE_OPT = -std=c99 -O0 -ggdb -fomit-frame-pointer -falign-functions=16 -nostdlib
 endif
 
 # C specific options here (added to USE_OPT).
@@ -87,10 +87,8 @@ endif
 # Define project name here
 PROJECT = $(shell basename $(PWD))
 
-LIQUID_CRYSTAL_PATH=../../../../../../lib/liquid_crystal
-
 # Imported source files and paths
-CHIBIOS = ../../../../../../ChibiOS
+CHIBIOS = ../../../../../../../ChibiOS
 # Startup files.
 include $(CHIBIOS)/os/common/startup/ARMCMx/compilers/GCC/mk/startup_stm32f4xx.mk
 # HAL-OSAL files (optional).
@@ -102,7 +100,7 @@ include $(CHIBIOS)/os/hal/osal/rt/osal.mk
 include $(CHIBIOS)/os/rt/rt.mk
 include $(CHIBIOS)/os/common/ports/ARMCMx/compilers/GCC/mk/port_v7m.mk
 # Other files (optional).
-#include $(CHIBIOS)/test/rt/test.mk
+include $(CHIBIOS)/test/rt/test.mk
 
 # Define linker script file here
 LDSCRIPT= $(STARTUPLD)/STM32F407xG.ld
@@ -117,10 +115,8 @@ CSRC = $(STARTUPSRC) \
        $(PLATFORMSRC) \
        $(BOARDSRC) \
        $(TESTSRC) \
-       main.c \
-       mpu6050.c \
-       i2c.c \
-       $(LIQUID_CRYSTAL_PATH)/liquid_crystal.c
+       $(CHIBIOS)/os/hal/lib/streams/chprintf.c\
+       main.c
 
 # C++ sources that can be compiled in ARM or THUMB mode depending on the global
 # setting.
@@ -154,8 +150,8 @@ INCDIR = $(CHIBIOS)/os/license \
          $(STARTUPINC) $(KERNINC) $(PORTINC) $(OSALINC) \
          $(HALINC) $(PLATFORMINC) $(BOARDINC) $(TESTINC) \
          $(CHIBIOS)/os/various \
-         ./ \
-         $(LIQUID_CRYSTAL_PATH)
+         $(CHIBIOS)/os/hal/lib/streams \
+         ./ 
 
 #
 # Project, sources and paths
@@ -225,6 +221,10 @@ ULIBS = -lc -lm -lgcc -lnosys -specs=nano.specs
 
 RULESPATH = $(CHIBIOS)/os/common/startup/ARMCMx/compilers/GCC
 include $(RULESPATH)/rules.mk
+
+# Flash firmware to the device
+flash: all
+	openocd -f /usr/share/openocd/scripts/board/stm32f4discovery.cfg -c "program "./build/$(PROJECT).hex" verify reset exit"
 
 #######################################################
 # Printing variables needed for generating any project

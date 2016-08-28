@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>MPU6050</name>
+	<name>USB_Custom_HID</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -34,11 +34,6 @@
 			<name>ChibiOS-Contrib</name>
 			<type>2</type>
 			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/ChibiOS-Contrib</locationURI>
-		</link>
-		<link>
-			<name>liquid_crystal</name>
-			<type>2</type>
-			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/lib/liquid_crystal</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>

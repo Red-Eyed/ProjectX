@@ -35,30 +35,10 @@
 								<inputType id="org.eclipse.cdt.build.core.settings.holder.inType.1547667" languageId="org.eclipse.cdt.core.g++" languageName="GNU C++" sourceContentType="org.eclipse.cdt.core.cxxSource,org.eclipse.cdt.core.cxxHeader" superClass="org.eclipse.cdt.build.core.settings.holder.inType"/>
 							</tool>
 							<tool id="org.eclipse.cdt.build.core.settings.holder.516828039" name="GNU C" superClass="org.eclipse.cdt.build.core.settings.holder">
-								<option id="org.eclipse.cdt.build.core.settings.holder.incpaths.1747740593" superClass="org.eclipse.cdt.build.core.settings.holder.incpaths" valueType="includePath">
+								<option id="org.eclipse.cdt.build.core.settings.holder.incpaths.1747740593" name="Include Paths" superClass="org.eclipse.cdt.build.core.settings.holder.incpaths" valueType="includePath">
 									<listOptionValue builtIn="false" value="/usr/lib/arm-none-eabi/include/"/>
 								</option>
 								<inputType id="org.eclipse.cdt.build.core.settings.holder.inType.1753663087" languageId="org.eclipse.cdt.core.gcc" languageName="GNU C" sourceContentType="org.eclipse.cdt.core.cSource,org.eclipse.cdt.core.cHeader" superClass="org.eclipse.cdt.build.core.settings.holder.inType"/>
-							</tool>
-						</toolChain>
-					</folderInfo>
-					<folderInfo id="0.2017159125.135018780" name="/" resourcePath="liquid_crystal">
-						<toolChain id="org.eclipse.cdt.build.core.prefbase.toolchain.495855821" name="No ToolChain" superClass="org.eclipse.cdt.build.core.prefbase.toolchain" unusedChildren="">
-							<tool id="org.eclipse.cdt.build.core.settings.holder.libs.475431736" name="holder for library settings" superClass="org.eclipse.cdt.build.core.settings.holder.libs.967954744"/>
-							<tool id="org.eclipse.cdt.build.core.settings.holder.1942573228" name="Assembly" superClass="org.eclipse.cdt.build.core.settings.holder.2135400973">
-								<inputType id="org.eclipse.cdt.build.core.settings.holder.inType.2018268566" languageId="org.eclipse.cdt.core.assembly" languageName="Assembly" sourceContentType="org.eclipse.cdt.core.asmSource" superClass="org.eclipse.cdt.build.core.settings.holder.inType"/>
-							</tool>
-							<tool id="org.eclipse.cdt.build.core.settings.holder.981101701" name="GNU C++" superClass="org.eclipse.cdt.build.core.settings.holder.2135400973">
-								<inputType id="org.eclipse.cdt.build.core.settings.holder.inType.1598577134" languageId="org.eclipse.cdt.core.g++" languageName="GNU C++" sourceContentType="org.eclipse.cdt.core.cxxSource,org.eclipse.cdt.core.cxxHeader" superClass="org.eclipse.cdt.build.core.settings.holder.inType"/>
-							</tool>
-							<tool id="org.eclipse.cdt.build.core.settings.holder.805429836" name="GNU C" superClass="org.eclipse.cdt.build.core.settings.holder.2135400973">
-								<option id="org.eclipse.cdt.build.core.settings.holder.incpaths.404182539" name="Include Paths" superClass="org.eclipse.cdt.build.core.settings.holder.incpaths" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/MPU6050/liquid_crystal}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/MPU6050/ChibiOS}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/MPU6050}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/MPU6050/ChibiOS-Contrib}&quot;"/>
-								</option>
-								<inputType id="org.eclipse.cdt.build.core.settings.holder.inType.869013156" languageId="org.eclipse.cdt.core.gcc" languageName="GNU C" sourceContentType="org.eclipse.cdt.core.cSource,org.eclipse.cdt.core.cHeader" superClass="org.eclipse.cdt.build.core.settings.holder.inType"/>
 							</tool>
 						</toolChain>
 					</folderInfo>

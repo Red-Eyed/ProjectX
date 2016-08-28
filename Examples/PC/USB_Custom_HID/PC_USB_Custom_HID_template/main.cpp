@@ -16,7 +16,7 @@
 #define EP_IN 0x81
 #define EP_OUT 0x01
 
-#define CUSTOM_HID_EPIN_SIZE 0x04
+#define CUSTOM_HID_EPIN_SIZE 0x40
 
 usb_dev_handle *open_dev(void);
 
@@ -66,6 +66,7 @@ int main(){
     memset(USB_data, 0, BUF_SIZE);
 
     while(1){
+	printf("lol\n");
         memset(USB_data, 0, BUF_SIZE);
         ret = usb_bulk_read(dev, EP_OUT, USB_data, CUSTOM_HID_EPIN_SIZE, 0);
         if (ret < 0){

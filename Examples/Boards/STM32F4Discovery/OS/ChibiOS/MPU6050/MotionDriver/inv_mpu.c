@@ -116,7 +116,14 @@ static inline int reg_int_cb(struct int_param_s *int_param)
 #define labs        abs
 #define fabs(x)     (((x)>0)?(x):-(x))
 #else
-#error  Gyro driver is missing the system layer implementations.
+extern int i2c_write(unsigned char slave_addr, unsigned char reg_addr, unsigned char len, unsigned char const* data);
+extern int i2c_read(unsigned char slave_addr, unsigned char reg_addr, unsigned char len, unsigned char const* data);
+extern void delay_ms(unsigned long ms);
+extern void get_ms(unsigned long* ms_out);
+#define min(a,b) ((a<b)?a:b)
+#define log_i(...)
+#define log_e(...)
+
 #endif
 
 #if !defined MPU6050 && !defined MPU9150 && !defined MPU6500 && !defined MPU9250
@@ -916,8 +923,8 @@ int mpu_get_accel_reg(short *data, unsigned long *timestamp)
 {
     unsigned char tmp[6];
 
-    if (!(st.chip_cfg.sensors & INV_XYZ_ACCEL))
-        return -1;
+//    if (!(st.chip_cfg.sensors & INV_XYZ_ACCEL))
+//        return -1;
 
     if (i2c_read(st.hw->addr, st.reg->raw_accel, 6, tmp))
         return -1;
@@ -984,7 +991,7 @@ int mpu_read_6500_accel_bias(long *accel_bias) {
  *  @return     0 if successful.
  */
 int mpu_read_6050_accel_bias(long *accel_bias) {
-	unsigned char data[6];
+	unsigned char data[6] = {0};
 	if (i2c_read(st.hw->addr, 0x06, 2, &data[0]))
 		return -1;
 	if (i2c_read(st.hw->addr, 0x08, 2, &data[2]))

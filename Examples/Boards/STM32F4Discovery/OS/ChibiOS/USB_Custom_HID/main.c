@@ -24,7 +24,6 @@
 
 #include "usbcfg.h"
 
-
 /*
  * Red LED blinker thread, times are in milliseconds.
  */
@@ -42,9 +41,6 @@ static THD_FUNCTION(Thread1, arg) {
   }
 }
 
-/*
- * Application entry point.
- */
 int main(void) {
 
   /*
@@ -78,10 +74,6 @@ int main(void) {
    */
   chThdCreateStatic(waThread1, sizeof(waThread1), NORMALPRIO, Thread1, NULL);
 
-  /*
-   * Normal main() thread activity, spawning shells.
-   */
-  int digit = 9;
   while (true) {
     chprintf((BaseSequentialStream*)&SDU1, "Hello!");
     chThdSleepMilliseconds(100);
